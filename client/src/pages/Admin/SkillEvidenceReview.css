@@ -1,0 +1,772 @@
+
+/* =========================================================
+   AI CAREER OS — SKILL EVIDENCE REVIEW
+   Complete Light + Dark Theme Stylesheet
+========================================================= */
+
+/* ---------- Theme variables ---------- */
+
+.evidence-review-page {
+    --er-bg: var(--app-bg, #f5f7fc);
+    --er-surface: var(--surface, #ffffff);
+    --er-muted-bg: var(--surface-muted, #edf2fa);
+    --er-hover-bg: var(--surface-hover, #e4ebf7);
+    --er-text: var(--text-primary, #172033);
+    --er-secondary: var(--text-secondary, #52627a);
+    --er-muted: var(--text-muted, #718198);
+    --er-border: var(--border-color, #dce4f0);
+    --er-input-bg: var(--input-bg, #ffffff);
+    --er-primary: var(--primary-color, #5146e5);
+
+    width: 100%;
+    min-width: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    container: evidence-review / inline-size;
+    padding: 8px 0 24px;
+    min-height: 100%;
+    background: var(--er-bg);
+    color: var(--er-text);
+    transition: background-color 180ms ease, color 180ms ease;
+}
+
+/* Legacy page styles also define the primary token. Keep small accent text
+   readable on navy surfaces without replacing the shared surface palette. */
+html[data-theme="dark"] .evidence-review-page,
+body[data-theme="dark"] .evidence-review-page {
+    --er-primary: #9bb7ff;
+}
+
+/* ---------- Header ---------- */
+
+.evidence-review-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.evidence-review-eyebrow {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: var(--er-primary);
+    font-size: var(--type-caption);
+    font-weight: 600;
+    letter-spacing: 1.5px;
+}
+
+.evidence-review-header h1 {
+    margin: 0 0 6px;
+    color: var(--er-text);
+    font-size: var(--type-page-title);
+    font-weight: 600;
+    line-height: var(--line-heading);
+    letter-spacing: -0.5px;
+    overflow-wrap: anywhere;
+}
+
+.evidence-review-header > div:first-child > p {
+    max-width: 700px;
+    margin: 0;
+    color: var(--er-secondary);
+    font-size: var(--type-body-sm);
+    line-height: 1.7;
+}
+
+.evidence-review-header-icon {
+    display: grid;
+    width: 44px;
+    height: 44px;
+    order: -1;
+    color: var(--er-primary);
+    flex-shrink: 0;
+    place-items: center;
+    border: 1px solid var(--er-border);
+    border-radius: 10px;
+    background: var(--er-muted-bg);
+    font-size: 30px;
+}
+
+/* ---------- Summary banner ---------- */
+
+.evidence-review-summary {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 16px;
+    margin-bottom: 18px;
+    border: 1px solid var(--er-border);
+    border-radius: 10px;
+    background: var(--er-surface);
+    color: var(--er-text);
+}
+
+.evidence-review-summary-icon {
+    display: grid;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    place-items: center;
+    border: 1px solid var(--er-border);
+    border-radius: 12px;
+    background: var(--er-muted-bg);
+    font-size: 18px;
+}
+
+.evidence-review-summary h2 {
+    margin: 0 0 6px;
+    color: var(--er-text);
+    font-size: 17px;
+    font-weight: 650;
+}
+
+.evidence-review-summary p {
+    margin: 0;
+    color: var(--er-secondary);
+    font-size: var(--type-control);
+    line-height: 1.6;
+}
+
+/* ---------- Main panel ---------- */
+
+.evidence-review-panel {
+    min-width: 0;
+    padding: 18px;
+    border: 1px solid var(--er-border);
+    border-radius: 12px;
+    background: var(--er-surface);
+    color: var(--er-text);
+    box-shadow: 0 1px 3px rgb(0 0 0 / 3%);
+}
+
+.evidence-review-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--er-border);
+}
+
+.evidence-review-toolbar h2 {
+    margin: 0 0 6px;
+    color: var(--er-text);
+    font-size: 17px;
+    font-weight: 650;
+}
+
+.evidence-review-toolbar p {
+    margin: 0;
+    color: var(--er-secondary);
+    font-size: var(--type-control);
+}
+
+/* ---------- Filter ---------- */
+
+.evidence-review-filter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.evidence-review-filter label {
+    color: var(--er-secondary);
+    font-size: var(--type-caption);
+    font-weight: 700;
+}
+
+.evidence-review-filter select {
+    min-width: 0;
+    width: 180px;
+    max-width: 100%;
+    min-height: 40px;
+    padding: 10px 12px;
+    border: 1px solid var(--er-border);
+    border-radius: 9px;
+    background: var(--er-input-bg);
+    color: var(--er-text);
+    font: inherit;
+    font-size: var(--type-control);
+}
+
+.evidence-review-filter select option {
+    background: var(--er-surface);
+    color: var(--er-text);
+}
+
+.evidence-review-filter select:focus,
+.evidence-review-reject-form textarea:focus {
+    border-color: var(--er-primary);
+    outline: none;
+    box-shadow: 0 0 0 3px
+        color-mix(in srgb, var(--er-primary) 22%, transparent);
+}
+
+/* ---------- Refresh and secondary buttons ---------- */
+
+.evidence-review-refresh,
+.evidence-review-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 10px 14px;
+    border: 1px solid var(--er-border);
+    border-radius: 9px;
+    background: var(--er-muted-bg);
+    color: var(--er-text);
+    font-size: var(--type-caption);
+    font-weight: 650;
+    cursor: pointer;
+    transition: background-color 180ms ease, border-color 180ms ease;
+}
+
+.evidence-review-refresh:hover:not(:disabled),
+.evidence-review-secondary:hover:not(:disabled) {
+    background: var(--er-hover-bg);
+    border-color: var(--er-primary);
+    color: var(--er-text);
+}
+
+.evidence-review-refresh:disabled,
+.evidence-review-secondary:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+/* ---------- Evidence cards ---------- */
+
+.evidence-review-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+    align-items: start;
+    gap: 14px;
+    padding-top: 16px;
+}
+
+.evidence-review-card {
+    min-width: 0;
+    padding: 16px;
+    border: 1px solid var(--er-border);
+    border-radius: 10px;
+    background: var(--er-surface);
+    color: var(--er-text);
+    transition: box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.evidence-review-card:hover {
+    border-color: var(--er-primary);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 4%);
+}
+
+.evidence-review-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.evidence-review-type {
+    color: var(--er-primary);
+    font-size: var(--type-meta);
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.evidence-review-card h3 {
+    margin: 0 0 6px;
+    overflow-wrap: anywhere;
+    color: var(--er-text);
+    font-size: 17px;
+    font-weight: 650;
+}
+
+.evidence-review-skill {
+    margin: 0 0 18px;
+    color: var(--er-secondary);
+    font-size: var(--type-control);
+    line-height: 1.6;
+}
+
+.evidence-review-skill strong {
+    color: var(--er-text);
+}
+
+/* ---------- Status badges ---------- */
+
+.evidence-review-status {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font-size: var(--type-meta);
+    font-weight: 600;
+}
+
+.evidence-review-status-unverified {
+    background: var(--er-muted-bg);
+    color: var(--er-secondary);
+    border-color: var(--er-border);
+}
+
+.evidence-review-status-under-review {
+    background: #fff4d9;
+    color: #805200;
+}
+
+.evidence-review-status-verified {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.evidence-review-status-rejected {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+html[data-theme="dark"] .evidence-review-status-under-review,
+body[data-theme="dark"] .evidence-review-status-under-review {
+    background: #453516;
+    color: #fcd34d;
+}
+
+html[data-theme="dark"] .evidence-review-status-verified,
+body[data-theme="dark"] .evidence-review-status-verified {
+    background: #123b2a;
+    color: #86efac;
+}
+
+html[data-theme="dark"] .evidence-review-status-rejected,
+body[data-theme="dark"] .evidence-review-status-rejected {
+    background: #471f2a;
+    color: #fca5a5;
+}
+
+/* ---------- Owner information ---------- */
+
+.evidence-review-owner {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 10px 0;
+    border-top: 1px solid var(--er-border);
+    border-bottom: 1px solid var(--er-border);
+}
+
+.evidence-review-avatar {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--er-hover-bg);
+    color: var(--er-primary);
+    font-weight: 600;
+}
+
+.evidence-review-owner > div:last-child {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.evidence-review-owner strong {
+    color: var(--er-text);
+    font-size: var(--type-control);
+}
+
+.evidence-review-owner span {
+    color: var(--er-secondary);
+    font-size: var(--type-caption);
+    overflow-wrap: anywhere;
+}
+
+/* ---------- Description, links and metadata ---------- */
+
+.evidence-review-description {
+    margin-top: 18px;
+}
+
+.evidence-review-description > span,
+.evidence-review-note > strong {
+    color: var(--er-secondary);
+    font-size: var(--type-caption);
+    font-weight: 600;
+}
+
+.evidence-review-description p,
+.evidence-review-note p {
+    margin: 6px 0 0;
+    color: var(--er-secondary);
+    font-size: var(--type-control);
+    line-height: 1.7;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.evidence-review-link {
+    display: inline-block;
+    margin-top: 17px;
+    color: var(--er-primary);
+    font-size: var(--type-control);
+    font-weight: 600;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.evidence-review-link:hover {
+    text-decoration: underline;
+}
+
+.evidence-review-metadata {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    margin-top: 17px;
+    color: var(--er-secondary);
+    font-size: var(--type-meta);
+}
+
+/* ---------- Review notes ---------- */
+
+.evidence-review-note {
+    margin-top: 17px;
+    padding: 12px;
+    border: 1px solid var(--er-border);
+    border-radius: 9px;
+    background: var(--er-muted-bg);
+}
+
+/* ---------- Review actions ---------- */
+
+.evidence-review-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--er-border);
+}
+
+.evidence-review-verify,
+.evidence-review-reject {
+    min-height: 40px;
+    padding: 10px 13px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    font-size: var(--type-caption);
+    font-weight: 600;
+    cursor: pointer;
+    transition: filter 180ms ease, border-color 180ms ease;
+}
+
+.evidence-review-verify {
+    background: #dcfce7;
+    color: #166534;
+    border-color: #bbf7d0;
+}
+
+.evidence-review-reject {
+    background: #fee2e2;
+    color: #991b1b;
+    border-color: #fecaca;
+}
+
+.evidence-review-verify:hover:not(:disabled),
+.evidence-review-reject:hover:not(:disabled) {
+    filter: brightness(0.96);
+    border-color: currentColor;
+}
+
+html[data-theme="dark"] .evidence-review-verify,
+body[data-theme="dark"] .evidence-review-verify {
+    background: #123b2a;
+    color: #86efac;
+    border-color: #246344;
+}
+
+html[data-theme="dark"] .evidence-review-reject,
+body[data-theme="dark"] .evidence-review-reject {
+    background: #471f2a;
+    color: #fca5a5;
+    border-color: #743449;
+}
+
+.evidence-review-actions button:disabled,
+.evidence-review-reject-actions button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+/* ---------- Rejection form ---------- */
+
+.evidence-review-reject-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    box-sizing: border-box;
+    margin: 16px 0 0;
+    padding: 14px;
+    box-shadow: none;
+    border: 1px solid var(--er-border);
+    border-radius: 10px;
+    background: var(--er-muted-bg);
+}
+
+.evidence-review-reject-form label {
+    color: var(--er-text);
+    font-size: var(--type-control);
+    font-weight: 600;
+}
+
+.evidence-review-reject-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 12px;
+    resize: vertical;
+    border: 1px solid var(--er-border);
+    border-radius: 8px;
+    background: var(--er-input-bg);
+    color: var(--er-text);
+    font: inherit;
+    font-size: var(--type-control);
+    line-height: 1.6;
+}
+
+.evidence-review-reject-form textarea::placeholder {
+    color: var(--er-secondary);
+    opacity: 1;
+}
+
+.evidence-review-reject-actions {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+/* ---------- Error and success alerts ---------- */
+
+.evidence-review-alert {
+    padding: 14px 16px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    font-size: var(--type-control);
+    line-height: 1.6;
+}
+
+.evidence-review-alert p {
+    margin: 6px 0 0;
+    color: inherit;
+}
+
+.evidence-review-error {
+    border: 1px solid #fecaca;
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.evidence-review-success {
+    border: 1px solid #bbf7d0;
+    background: #dcfce7;
+    color: #166534;
+}
+
+html[data-theme="dark"] .evidence-review-error,
+body[data-theme="dark"] .evidence-review-error {
+    border-color: #743449;
+    background: #351b2a;
+    color: #fecdd3;
+}
+
+html[data-theme="dark"] .evidence-review-success,
+body[data-theme="dark"] .evidence-review-success {
+    border-color: #246344;
+    background: #123b2a;
+    color: #bbf7d0;
+}
+
+/* ---------- Loading and empty states ---------- */
+
+.evidence-review-state {
+    padding: 30px 16px;
+    text-align: center;
+    color: var(--er-secondary);
+}
+
+.evidence-review-state h3 {
+    margin: 10px 0 5px;
+    color: var(--er-text);
+    font-size: var(--type-section-title);
+    font-weight: 650;
+}
+
+.evidence-review-state p {
+    margin: 0;
+    color: var(--er-secondary);
+    font-size: var(--type-control);
+    line-height: 1.7;
+}
+
+.evidence-review-empty-icon {
+    display: grid;
+    width: 32px;
+    height: 32px;
+    margin: 0 auto;
+    place-items: center;
+    border-radius: 50%;
+    background: #dcfce7;
+    color: #166534;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+html[data-theme="dark"] .evidence-review-empty-icon,
+body[data-theme="dark"] .evidence-review-empty-icon {
+    background: #123b2a;
+    color: #86efac;
+}
+
+.evidence-review-spinner {
+    width: 28px;
+    height: 28px;
+    margin: 0 auto 14px;
+    border: 3px solid var(--er-border);
+    border-top-color: var(--er-primary);
+    border-radius: 50%;
+    animation: evidence-review-spin 0.8s linear infinite;
+}
+
+@keyframes evidence-review-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ---------- Footer note ---------- */
+
+.evidence-review-security-note {
+    margin: 18px 0 0;
+    color: var(--er-secondary);
+    font-size: var(--type-caption);
+    line-height: 1.7;
+}
+
+/* ---------- Accessibility ---------- */
+
+.evidence-review-page button:focus-visible,
+.evidence-review-page select:focus-visible,
+.evidence-review-page textarea:focus-visible,
+.evidence-review-page a:focus-visible {
+    outline: 2px solid var(--er-primary);
+    outline-offset: 3px;
+}
+
+/* ---------- Responsive layout ---------- */
+
+/* Content width includes the space consumed by the sidebar and zoom. */
+.evidence-review-header > div:first-child,
+.evidence-review-summary > div:last-child,
+.evidence-review-toolbar > div {
+    min-width: 0;
+}
+
+.evidence-review-page :is(h1, h2, strong, p, button, label) {
+    overflow-wrap: anywhere;
+}
+
+.evidence-review-page :is(button, select, textarea) {
+    font-family: inherit;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.evidence-review-page button { white-space: normal; }
+.evidence-review-header-icon svg { width: 24px; height: 24px; }
+.evidence-review-summary h2 { font-size: var(--type-control); margin-bottom: 3px; }
+.evidence-review-summary-icon { color: var(--er-primary); }
+.evidence-review-owner strong { overflow-wrap: anywhere; }
+.evidence-review-reject-actions { margin-bottom: 0; }
+.evidence-review-empty-icon { background: var(--er-muted-bg); color: var(--er-secondary); }
+
+@container evidence-review (max-width: 620px) {
+    .evidence-review-toolbar > div { flex: 1 1 100%; }
+    .evidence-review-filter label { flex-basis: 100%; }
+    .evidence-review-filter select { flex: 1 1 160px; width: auto; }
+    .evidence-review-panel { padding: 14px; }
+    .evidence-review-header { align-items: flex-start; }
+}
+
+@container evidence-review (max-width: 340px) {
+    .evidence-review-panel, .evidence-review-card { padding: 12px; }
+    .evidence-review-summary { align-items: flex-start; padding: 12px; }
+    .evidence-review-actions button,
+    .evidence-review-reject-actions button { flex: 1 1 100%; }
+    .evidence-review-header-icon { width: 32px; height: 32px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .evidence-review-page *,
+    .evidence-review-page *::before,
+    .evidence-review-page *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Desktop content canvas. Navigation remains in the shared viewport shell. */
+.evidence-review-desktop-scroll {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    overflow: auto;
+    scroll-padding-inline: 8px;
+}
+.evidence-review-desktop-scroll:focus-visible {
+    outline: 2px solid var(--primary-color, #315ff4);
+    outline-offset: -2px;
+}
+.evidence-review-desktop-scroll > .evidence-review-desktop-canvas {
+    width: 100%;
+    min-width: 1101px;
+    container: app-content / inline-size;
+}
+
+/* Preserve the review workflow while making its controls usable on tablets
+   as well as phones (the shared phone-only button rule stops at 480px). */
+@container evidence-review (max-width: 768px) {
+    .evidence-review-page .evidence-review-filter select {
+        min-width: 0;
+        min-height: 48px;
+        font-size: 16px;
+    }
+    .evidence-review-page .evidence-review-reject-form textarea {
+        min-height: 112px;
+        font-size: 16px;
+    }
+    .evidence-review-page .evidence-review-refresh,
+    .evidence-review-page .evidence-review-actions button,
+    .evidence-review-page .evidence-review-reject-actions button {
+        min-height: 44px;
+    }
+    .evidence-review-page .evidence-review-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        max-width: 100%;
+        overflow-wrap: anywhere;
+    }
+}

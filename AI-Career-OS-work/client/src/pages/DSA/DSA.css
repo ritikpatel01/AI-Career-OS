@@ -1,0 +1,1216 @@
+/* =========================================================
+   DSA PAGE
+========================================================= */
+
+.dsa-page {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 48px 42px 70px;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.dsa-page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 32px;
+}
+
+.dsa-eyebrow {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: #5b5bf7;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.dsa-page-header h1 {
+    margin: 0;
+    color: #172033;
+    font-size: 38px;
+    line-height: 1.15;
+    font-weight: 800;
+}
+
+.dsa-page-header p {
+    max-width: 650px;
+    margin: 12px 0 0;
+    color: #64748b;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.dsa-header-icon {
+    width: 64px;
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 18px;
+    background: linear-gradient(
+        135deg,
+        #eef2ff,
+        #e0e7ff
+    );
+
+    font-size: 30px;
+    box-shadow: 0 10px 25px rgba(79, 70, 229, 0.08);
+}
+
+
+/* =========================================================
+   MESSAGES
+========================================================= */
+
+.dsa-message {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 14px 18px;
+    margin-bottom: 24px;
+
+    border-radius: 12px;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.dsa-error {
+    color: #b42318;
+    background: #fef3f2;
+    border: 1px solid #fecdca;
+}
+
+.dsa-success {
+    color: #067647;
+    background: #ecfdf3;
+    border: 1px solid #abefc6;
+}
+
+
+/* =========================================================
+   FORM CARD
+========================================================= */
+
+.dsa-form-card {
+    background: #ffffff;
+
+    border: 1px solid #e7eaf0;
+    border-radius: 20px;
+
+    padding: 32px;
+
+    margin-bottom: 38px;
+
+    box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.05);
+}
+
+
+/* =========================================================
+   SECTION HEADER
+========================================================= */
+
+.dsa-section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    margin-bottom: 30px;
+}
+
+.dsa-section-icon {
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 15px;
+
+    background: #eef2ff;
+
+    font-size: 24px;
+}
+
+.dsa-section-header h2 {
+    margin: 0;
+
+    color: #172033;
+
+    font-size: 21px;
+    font-weight: 750;
+}
+
+.dsa-section-header p {
+    margin: 6px 0 0;
+
+    color: #64748b;
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   FORM GRID
+========================================================= */
+
+.dsa-form-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 24px;
+}
+
+.dsa-field {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.dsa-full-width {
+    grid-column: 1 / -1;
+}
+
+.dsa-field label {
+    color: #263247;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+.dsa-field input,
+.dsa-field select,
+.dsa-field textarea {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    border: 1px solid #d7dce5;
+    border-radius: 11px;
+
+    background: #ffffff;
+
+    color: #172033;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.dsa-field input,
+.dsa-field select {
+    height: 48px;
+    padding: 0 14px;
+}
+
+.dsa-field textarea {
+    min-height: 125px;
+    padding: 14px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+.dsa-field input::placeholder,
+.dsa-field textarea::placeholder {
+    color: #94a3b8;
+}
+
+.dsa-field input:hover,
+.dsa-field select:hover,
+.dsa-field textarea:hover {
+    border-color: #b9c0cc;
+}
+
+.dsa-field input:focus,
+.dsa-field select:focus,
+.dsa-field textarea:focus {
+    border-color: #5b5bf7;
+
+    box-shadow:
+        0 0 0 4px rgba(91, 91, 247, 0.10);
+}
+
+
+/* =========================================================
+   FORM ACTIONS
+========================================================= */
+
+.dsa-form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+
+    margin-top: 28px;
+    padding-top: 24px;
+
+    border-top: 1px solid #edf0f4;
+}
+
+.dsa-primary-button,
+.dsa-secondary-button {
+    min-height: 46px;
+
+    padding: 0 22px;
+
+    border-radius: 10px;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.dsa-primary-button {
+    border: none;
+
+    color: #ffffff;
+
+    background: linear-gradient(
+        135deg,
+        #4f46e5,
+        #6366f1
+    );
+
+    box-shadow:
+        0 8px 18px rgba(79, 70, 229, 0.20);
+}
+
+.dsa-primary-button:hover:not(:disabled) {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 12px 24px rgba(79, 70, 229, 0.25);
+}
+
+.dsa-primary-button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.dsa-secondary-button {
+    border: 1px solid #d7dce5;
+
+    color: #475569;
+
+    background: #ffffff;
+}
+
+.dsa-secondary-button:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+}
+
+
+/* =========================================================
+   TOPICS SECTION
+========================================================= */
+
+.dsa-topics-section {
+    width: 100%;
+}
+
+.dsa-section-title {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 22px;
+}
+
+.dsa-section-title .dsa-eyebrow {
+    margin-bottom: 5px;
+}
+
+.dsa-section-title h2 {
+    margin: 0;
+
+    color: #172033;
+
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.dsa-topic-count {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 34px;
+
+    padding: 0 13px;
+
+    border-radius: 999px;
+
+    color: #4f46e5;
+
+    background: #eef2ff;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   TOPICS GRID
+========================================================= */
+
+.dsa-topics-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+   TOPIC CARD
+========================================================= */
+
+.dsa-topic-card {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+
+    padding: 24px;
+
+    border: 1px solid #e7eaf0;
+    border-radius: 17px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 7px 22px rgba(15, 23, 42, 0.045);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.dsa-topic-card:hover {
+    transform: translateY(-2px);
+
+    border-color: #d9ddff;
+
+    box-shadow:
+        0 14px 30px rgba(15, 23, 42, 0.08);
+}
+
+
+/* =========================================================
+   TOPIC HEADER
+========================================================= */
+
+.dsa-topic-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    margin-bottom: 14px;
+}
+
+.dsa-topic-header h3 {
+    margin: 0;
+
+    color: #172033;
+
+    font-size: 19px;
+    font-weight: 800;
+
+    word-break: break-word;
+}
+
+.dsa-topic-header p {
+    margin: 6px 0 0;
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   DIFFICULTY
+========================================================= */
+
+.dsa-difficulty {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    min-height: 30px;
+
+    padding: 0 11px;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 750;
+    text-transform: capitalize;
+}
+
+.dsa-difficulty.easy {
+    color: #027a48;
+    background: #ecfdf3;
+}
+
+.dsa-difficulty.medium {
+    color: #b54708;
+    background: #fffaeb;
+}
+
+.dsa-difficulty.hard {
+    color: #b42318;
+    background: #fef3f2;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.dsa-topic-status {
+    margin-bottom: 20px;
+}
+
+.dsa-status {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 30px;
+
+    padding: 0 11px;
+
+    border-radius: 8px;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.dsa-status.not-started {
+    color: #475467;
+    background: #f2f4f7;
+}
+
+.dsa-status.in-progress {
+    color: #175cd3;
+    background: #eff8ff;
+}
+
+.dsa-status.completed {
+    color: #067647;
+    background: #ecfdf3;
+}
+
+
+/* =========================================================
+   TOPIC INFO
+========================================================= */
+
+.dsa-topic-info {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 12px;
+
+    margin-bottom: 18px;
+}
+
+.dsa-topic-info > div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    padding: 14px;
+
+    border-radius: 11px;
+
+    background: #f8fafc;
+
+    border: 1px solid #edf0f4;
+}
+
+.dsa-topic-info span {
+    color: #64748b;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.dsa-topic-info strong {
+    color: #172033;
+
+    font-size: 17px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   NOTES
+========================================================= */
+
+.dsa-topic-notes {
+    margin-bottom: 20px;
+
+    padding: 14px;
+
+    border-left: 3px solid #6366f1;
+
+    border-radius: 0 10px 10px 0;
+
+    background: #f8f9ff;
+}
+
+.dsa-topic-notes span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #475467;
+
+    font-size: 12px;
+    font-weight: 750;
+}
+
+.dsa-topic-notes p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 13px;
+    line-height: 1.6;
+
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   TOPIC ACTIONS
+========================================================= */
+
+.dsa-topic-actions {
+    margin-top: auto;
+
+    padding-top: 18px;
+
+    border-top: 1px solid #edf0f4;
+}
+
+.dsa-topic-actions button {
+    width: 100%;
+
+    min-height: 42px;
+
+    border: 1px solid #d9ddff;
+    border-radius: 9px;
+
+    color: #4f46e5;
+
+    background: #f7f7ff;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 750;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.dsa-topic-actions button:hover {
+    background: #eef2ff;
+    border-color: #c7ccff;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.dsa-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 260px;
+
+    padding: 40px;
+
+    border: 1px dashed #d7dce5;
+    border-radius: 17px;
+
+    background: #ffffff;
+
+    text-align: center;
+}
+
+.dsa-empty-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 15px;
+
+    border-radius: 16px;
+
+    background: #eef2ff;
+
+    font-size: 27px;
+}
+
+.dsa-empty-state h3 {
+    margin: 0;
+
+    color: #172033;
+
+    font-size: 18px;
+    font-weight: 750;
+}
+
+.dsa-empty-state p {
+    max-width: 450px;
+
+    margin: 8px 0 0;
+
+    color: #64748b;
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.dsa-loading {
+    min-height: 300px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #64748b;
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .dsa-page {
+        padding: 35px 25px 55px;
+    }
+
+    .dsa-topics-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .dsa-page {
+        padding: 28px 18px 45px;
+    }
+
+    .dsa-page-header {
+        align-items: flex-start;
+    }
+
+    .dsa-page-header h1 {
+        font-size: 30px;
+    }
+
+    .dsa-page-header p {
+        font-size: 14px;
+    }
+
+    .dsa-header-icon {
+        width: 52px;
+        height: 52px;
+
+        border-radius: 14px;
+
+        font-size: 24px;
+    }
+
+    .dsa-form-card {
+        padding: 22px 18px;
+
+        border-radius: 16px;
+    }
+
+    .dsa-form-grid {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+    .dsa-full-width {
+        grid-column: auto;
+    }
+
+    .dsa-section-header {
+        align-items: flex-start;
+    }
+
+    .dsa-section-header h2 {
+        font-size: 19px;
+    }
+
+    .dsa-form-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .dsa-primary-button,
+    .dsa-secondary-button {
+        width: 100%;
+    }
+
+    .dsa-section-title {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .dsa-topic-card {
+        padding: 20px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .dsa-page {
+        padding: 24px 14px 40px;
+    }
+
+    .dsa-page-header {
+        gap: 15px;
+    }
+
+    .dsa-page-header h1 {
+        font-size: 27px;
+    }
+
+    .dsa-eyebrow {
+        font-size: 11px;
+        letter-spacing: 1.2px;
+    }
+
+    .dsa-header-icon {
+        width: 45px;
+        height: 45px;
+
+        border-radius: 12px;
+
+        font-size: 20px;
+    }
+
+    .dsa-topic-header {
+        flex-direction: column;
+    }
+
+    .dsa-difficulty {
+        align-self: flex-start;
+    }
+
+    .dsa-topic-info {
+        grid-template-columns: 1fr;
+    }
+
+    .dsa-section-header {
+        gap: 12px;
+    }
+
+    .dsa-section-icon {
+        width: 44px;
+        height: 44px;
+
+        font-size: 20px;
+    }
+
+}
+
+
+/* ==========================================
+   DSA PROGRESS
+   ========================================== */
+
+.dsa-progress-container {
+    width: 100%;
+    margin-top: 16px;
+}
+
+.dsa-progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.dsa-progress-fill {
+    height: 100%;
+    background: #2563eb;
+    border-radius: 999px;
+    transition: width 0.4s ease;
+}
+
+
+/* =========================================================
+   AI CAREER OS — DSA PAGE
+   COMPLETE DARK MODE OVERRIDES
+   Matches the existing DSA.jsx class names
+   ========================================================= */
+
+/* Page background and base text */
+html[data-theme="dark"] .dsa-page,
+body[data-theme="dark"] .dsa-page {
+    background: var(--app-bg, #0b1120);
+    color: var(--text-primary, #edf2fb);
+}
+
+/* Main headings */
+html[data-theme="dark"] .dsa-page h1,
+html[data-theme="dark"] .dsa-page h2,
+html[data-theme="dark"] .dsa-page h3,
+html[data-theme="dark"] .dsa-page h4 {
+    color: var(--text-primary, #edf2fb) !important;
+}
+
+/* Paragraphs and secondary text */
+html[data-theme="dark"] .dsa-page p,
+html[data-theme="dark"] .dsa-page .dsa-topic-header p,
+html[data-theme="dark"] .dsa-page .dsa-topic-info span,
+html[data-theme="dark"] .dsa-page .dsa-topic-notes p,
+html[data-theme="dark"] .dsa-page .dsa-topic-notes span,
+html[data-theme="dark"] .dsa-page .dsa-page-header p,
+html[data-theme="dark"] .dsa-page .dsa-section-header p {
+    color: var(--text-secondary, #b0bfd4) !important;
+}
+
+/* Page eyebrow and section labels */
+html[data-theme="dark"] .dsa-page .dsa-eyebrow {
+    color: #93b4ff !important;
+}
+
+/* Header icon */
+html[data-theme="dark"] .dsa-page .dsa-header-icon,
+html[data-theme="dark"] .dsa-page .dsa-section-icon,
+html[data-theme="dark"] .dsa-page .dsa-empty-icon {
+    background: #1e3150 !important;
+    color: #a9c5ff !important;
+    box-shadow: none;
+}
+
+/* Main form card */
+html[data-theme="dark"] .dsa-page .dsa-form-card {
+    background: var(--surface, #111c2e) !important;
+    color: var(--text-primary, #edf2fb) !important;
+    border-color: var(--border-color, #2b3b53) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+}
+
+/* Form labels */
+html[data-theme="dark"] .dsa-page .dsa-field label {
+    color: var(--text-primary, #edf2fb) !important;
+}
+
+/* Inputs, dropdowns and textareas */
+html[data-theme="dark"] .dsa-page .dsa-field input,
+html[data-theme="dark"] .dsa-page .dsa-field select,
+html[data-theme="dark"] .dsa-page .dsa-field textarea {
+    background: var(--input-bg, #0e192b) !important;
+    color: var(--text-primary, #edf2fb) !important;
+    border-color: var(--border-color, #2b3b53) !important;
+}
+
+html[data-theme="dark"] .dsa-page .dsa-field input::placeholder,
+html[data-theme="dark"] .dsa-page .dsa-field textarea::placeholder {
+    color: var(--text-muted, #8799b2) !important;
+    opacity: 1;
+}
+
+html[data-theme="dark"] .dsa-page .dsa-field select option {
+    background: #111c2e;
+    color: #edf2fb;
+}
+
+html[data-theme="dark"] .dsa-page .dsa-field input:focus,
+html[data-theme="dark"] .dsa-page .dsa-field select:focus,
+html[data-theme="dark"] .dsa-page .dsa-field textarea:focus {
+    border-color: #60a5fa !important;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.16) !important;
+}
+
+/* Disabled fields */
+html[data-theme="dark"] .dsa-page .dsa-field input:disabled,
+html[data-theme="dark"] .dsa-page .dsa-field select:disabled,
+html[data-theme="dark"] .dsa-page .dsa-field textarea:disabled {
+    background: #172338 !important;
+    color: #a7b6cc !important;
+    opacity: 1;
+    cursor: not-allowed;
+}
+
+/* Form action divider */
+html[data-theme="dark"] .dsa-page .dsa-form-actions {
+    border-top-color: var(--border-color, #2b3b53) !important;
+}
+
+/* Primary button */
+html[data-theme="dark"] .dsa-page .dsa-primary-button {
+    background: #2563eb !important;
+    color: #ffffff !important;
+    border-color: transparent !important;
+}
+
+html[data-theme="dark"] .dsa-page .dsa-primary-button:hover:not(:disabled) {
+    background: #1d4ed8 !important;
+}
+
+/* Secondary button */
+html[data-theme="dark"] .dsa-page .dsa-secondary-button {
+    background: var(--surface-muted, #172338) !important;
+    color: var(--text-primary, #edf2fb) !important;
+    border-color: var(--border-color, #2b3b53) !important;
+}
+
+html[data-theme="dark"] .dsa-page .dsa-secondary-button:hover {
+    background: var(--surface-hover, #22314a) !important;
+}
+
+/* Topic count */
+html[data-theme="dark"] .dsa-page .dsa-topic-count {
+    background: #1d3762 !important;
+    color: #a9c5ff !important;
+}
+
+/* DSA topic cards */
+html[data-theme="dark"] .dsa-page .dsa-topic-card {
+    background: var(--surface, #111c2e) !important;
+    color: var(--text-primary, #edf2fb) !important;
+    border-color: var(--border-color, #2b3b53) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+}
+
+html[data-theme="dark"] .dsa-page .dsa-topic-card:hover {
+    background: #142137 !important;
+    border-color: #3b5272 !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+}
+
+/* Difficulty badges — retain their semantic colors */
+html[data-theme="dark"] .dsa-page .dsa-difficulty.easy {
+    background: #123c30 !important;
+    color: #86efac !important;
+}
+
+html[data-theme="dark"] .dsa-page .dsa-difficulty.medium {
+    background: #422d12 !important;
+    color: #fcd34d !important;
+}
+
+html[data-theme="dark"] .dsa-page .dsa-difficulty.hard {
+    background: #451d27 !important;
+    color: #fda4af !important;
+}
+
+/* Status badges */
+html[data-theme="dark"] .dsa-page .dsa-status.not-started {
+    background: #273449 !important;
+    color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] .dsa-page .dsa-status.in-progress {
+    background: #172f52 !important;
+    color: #93c5fd !important;
+}
+
+html[data-theme="dark"] .dsa-page .dsa-status.completed {
+    background: #123c30 !important;
+    color: #86efac !important;
+}
+
+/* Problems solved and progress statistic boxes
+   This fixes the white boxes in your screenshot. */
+html[data-theme="dark"] .dsa-page .dsa-topic-info > div {
+    background: var(--surface-muted, #172338) !important;
+    color: var(--text-primary, #edf2fb) !important;
+    border-color: var(--border-color, #2b3b53) !important;
+}
+
+html[data-theme="dark"] .dsa-page .dsa-topic-info span {
+    color: var(--text-secondary, #b0bfd4) !important;
+}
+
+html[data-theme="dark"] .dsa-page .dsa-topic-info strong {
+    color: var(--text-primary, #edf2fb) !important;
+}
+
+/* Progress bar track */
+html[data-theme="dark"] .dsa-page .dsa-progress-bar {
+    background: #2b3b53 !important;
+    border: none !important;
+}
+
+/* Progress fill remains blue */
+html[data-theme="dark"] .dsa-page .dsa-progress-fill {
+    background: linear-gradient(90deg, #2563eb, #60a5fa) !important;
+}
+
+/* Notes panel */
+html[data-theme="dark"] .dsa-page .dsa-topic-notes {
+    background: var(--surface-muted, #172338) !important;
+    color: var(--text-primary, #edf2fb) !important;
+    border-left-color: #818cf8 !important;
+}
+
+html[data-theme="dark"] .dsa-page .dsa-topic-notes span {
+    color: var(--text-primary, #edf2fb) !important;
+}
+
+/* Card footer divider */
+html[data-theme="dark"] .dsa-page .dsa-topic-actions {
+    border-top-color: var(--border-color, #2b3b53) !important;
+}
+
+/* Edit Topic button
+   Fixes the pale button and low-contrast text. */
+html[data-theme="dark"] .dsa-page .dsa-topic-actions button {
+    background: var(--surface-muted, #172338) !important;
+    color: #a9c5ff !important;
+    border-color: #344866 !important;
+}
+
+html[data-theme="dark"] .dsa-page .dsa-topic-actions button:hover {
+    background: var(--surface-hover, #22314a) !important;
+    color: #ffffff !important;
+    border-color: #4d6b95 !important;
+}
+
+/* Empty state */
+html[data-theme="dark"] .dsa-page .dsa-empty-state {
+    background: var(--surface, #111c2e) !important;
+    color: var(--text-primary, #edf2fb) !important;
+    border-color: var(--border-color, #2b3b53) !important;
+}
+
+html[data-theme="dark"] .dsa-page .dsa-empty-state h3 {
+    color: var(--text-primary, #edf2fb) !important;
+}
+
+html[data-theme="dark"] .dsa-page .dsa-empty-state p {
+    color: var(--text-secondary, #b0bfd4) !important;
+}
+
+/* Loading state */
+html[data-theme="dark"] .dsa-page .dsa-loading {
+    color: var(--text-secondary, #b0bfd4) !important;
+}
+
+/* Error and success messages */
+html[data-theme="dark"] .dsa-page .dsa-error {
+    background: #351923 !important;
+    color: #fecdd3 !important;
+    border-color: #713044 !important;
+}
+
+html[data-theme="dark"] .dsa-page .dsa-success {
+    background: #123426 !important;
+    color: #bbf7d0 !important;
+    border-color: #246044 !important;
+}
+
+/* Accessible keyboard focus */
+html[data-theme="dark"] .dsa-page button:focus-visible,
+html[data-theme="dark"] .dsa-page input:focus-visible,
+html[data-theme="dark"] .dsa-page select:focus-visible,
+html[data-theme="dark"] .dsa-page textarea:focus-visible {
+    outline: 2px solid #60a5fa !important;
+    outline-offset: 3px;
+}
+
+/* Mobile layout: preserve the original responsive grid */
+@media (max-width: 650px) {
+    html[data-theme="dark"] .dsa-page .dsa-form-card {
+        background: var(--surface, #111c2e) !important;
+    }
+
+    html[data-theme="dark"] .dsa-page .dsa-topic-card {
+        padding: 20px;
+    }
+}

@@ -1,0 +1,139 @@
+{
+  "client": {
+    "apiURLPresent": true,
+    "https": false,
+    "endsWithApi": true,
+    "publicKeys": [
+      "VITE_API_URL"
+    ]
+  },
+  "server": {
+    "nodeEnvPresent": false,
+    "required": {
+      "MONGO_URI": true,
+      "JWT_SECRET": true,
+      "MAIL_HOST": true,
+      "MAIL_PORT": true,
+      "MAIL_SECURE": true,
+      "MAIL_USER": true,
+      "MAIL_PASS": true,
+      "MAIL_FROM": true,
+      "PORT": true
+    },
+    "smtp": {
+      "gmailHost": true,
+      "implicitTLS": true,
+      "port465": true
+    },
+    "mongo": {
+      "srv": true,
+      "explicitTLSDisabled": false
+    }
+  },
+  "placeholders": {
+    "Dockerfile": true,
+    "docker-compose.yml": true,
+    ".dockerignore": true,
+    ".github/workflows/ci.yml": true,
+    ".github/workflows/deploy.yml": true,
+    "docs/project/deployment.md": true,
+    "server/.env.example": true
+  },
+  "smtpContacted": false,
+  "passwordResetRequested": false,
+  "configuredDatabasePing": true,
+  "localAPIHealth": {
+    "status": 200,
+    "setsCookie": false,
+    "cacheControlPresent": false
+  },
+  "allowedLocalPreflight": {
+    "status": 204,
+    "originMatches": true
+  },
+  "unlistedOrigin": {
+    "status": 500,
+    "reflected": false
+  },
+  "anonymousRoadmapRead": 401,
+  "tests": {
+    "recoveryCharacterization": {
+      "passed": 7,
+      "failed": 0,
+      "mockedModels": true,
+      "mockedMail": true,
+      "actualProvider": false
+    },
+    "roadmap": {
+      "passed": 93,
+      "failed": 0,
+      "skipped": 2,
+      "skipReason": "PyTorch and TensorFlow unavailable"
+    }
+  },
+  "build": {
+    "passed": true,
+    "entryKB": 287.72,
+    "entryGzipKB": 89.47,
+    "roadmapKB": 2465.97,
+    "roadmapGzipKB": 809.05,
+    "remainingLargeChunkWarning": true
+  },
+  "roadmapModules": {
+    "count": 42,
+    "largest": [
+      {
+        "id": "src/data/careerRoadmaps/roadmapPracticeBatches.js",
+        "renderedBytes": 128380
+      },
+      {
+        "id": "src/data/careerRoadmaps/roadmapPracticeAIApplications.js",
+        "renderedBytes": 122005
+      },
+      {
+        "id": "src/data/careerRoadmaps/roadmapPracticeAIAgents.js",
+        "renderedBytes": 113944
+      },
+      {
+        "id": "src/data/careerRoadmaps/roadmapPracticeAILLMEngineering.js",
+        "renderedBytes": 106242
+      },
+      {
+        "id": "src/data/careerRoadmaps/roadmapPracticeBackendAuthSecurity.js",
+        "renderedBytes": 104914
+      },
+      {
+        "id": "src/data/careerRoadmaps/roadmapPracticeAIMachineLearning.js",
+        "renderedBytes": 101228
+      },
+      {
+        "id": "src/data/careerRoadmaps/roadmapPracticeBackendDeployment.js",
+        "renderedBytes": 101142
+      },
+      {
+        "id": "src/data/careerRoadmaps/roadmapPracticeAIDeepLearning.js",
+        "renderedBytes": 98110
+      },
+      {
+        "id": "src/data/careerRoadmaps/roadmapPracticeBackendDatabases.js",
+        "renderedBytes": 97127
+      },
+      {
+        "id": "src/data/careerRoadmaps/roadmapLearningContent.js",
+        "renderedBytes": 95993
+      },
+      {
+        "id": "src/data/careerRoadmaps/roadmapPracticeAIPython.js",
+        "renderedBytes": 95843
+      },
+      {
+        "id": "src/data/careerRoadmaps/roadmapPracticeJavaScriptMore.js",
+        "renderedBytes": 89699
+      }
+    ],
+    "metric": "Rendered module bytes from existing bundle graph, not individual final minified chunk contributions"
+  },
+  "stagingPerformed": false,
+  "emailSent": false,
+  "realUserDataModified": false
+}

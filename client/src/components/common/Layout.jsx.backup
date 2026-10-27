@@ -1,0 +1,111 @@
+
+import { useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
+import Sidebar from "../layout/Sidebar";
+
+const getCurrentUser = () => {
+    try {
+        const storedUser = localStorage.getItem("user");
+
+        if (!storedUser) {
+            return null;
+        }
+
+        return JSON.parse(storedUser);
+    } catch (error) {
+        console.error("Unable to read current user:", error);
+        return null;
+    }
+};
+
+const Layout = () => {
+    const user = getCurrentUser();
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    const isAdmin =
+        typeof user?.role === "string" &&
+        user.role.trim().toLowerCase() === "admin";
+
+    const closeMobileMenu = () => {
+        setIsMobileMenuOpen(false);
+    };
+
+    const toggleMobileMenu = () => {
+        setIsMobileMenuOpen((previous) => !previous);
+    };
+
+    // Close the drawer when the Escape key is pressed.
+    useEffect(() => {
+        const handleKeyDown = (event) => {
+            if (event.key === "Escape") {
+                closeMobileMenu();
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, []);
+
+    // Prevent the page behind the drawer from scrolling on mobile.
+    useEffect(() => {
+        if (!isMobileMenuOpen) {
+            return undefined;
+        }
+
+        const previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+
+        return () => {
+            document.body.style.overflow = previousOverflow;
+        };
+    }, [isMobileMenuOpen]);
+
+    return (
+        <div className="app-layout">
+            <button
+                type="button"
+                className="mobile-menu-toggle"
+                onClick={toggleMobileMenu}
+                aria-label={
+                    isMobileMenuOpen
+                        ? "Close navigation menu"
+                        : "Open navigation menu"
+                }
+                aria-expanded={isMobileMenuOpen}
+                aria-controls="career-sidebar"
+            >
+                <span className="mobile-menu-toggle-icon" aria-hidden="true">
+                    {isMobileMenuOpen ? "✕" : "☰"}
+                </span>
+                <span className="mobile-menu-toggle-label">
+                    AI Career OS
+                </span>
+            </button>
+
+            {isMobileMenuOpen && (
+                <button
+                    type="button"
+                    className="mobile-menu-backdrop"
+                    onClick={closeMobileMenu}
+                    aria-label="Close navigation menu"
+                    tabIndex={-1}
+                />
+            )}
+
+            <Sidebar
+                isAdmin={isAdmin}
+                isMobileMenuOpen={isMobileMenuOpen}
+                onNavigate={closeMobileMenu}
+            />
+
+            <main className="app-main">
+                <Outlet />
+            </main>
+        </div>
+    );
+};
+
+export default Layout;

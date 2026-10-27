@@ -1,0 +1,17 @@
+/* Keyboard access to the existing shared application shell. */
+.skip-to-content {
+    position: fixed;
+    top: 8px;
+    left: 8px;
+    z-index: 1300;
+    transform: translateY(-160%);
+    padding: 12px 16px;
+    border-radius: var(--control-radius);
+    background: var(--surface);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-card);
+}
+
+.skip-to-content:focus {
+    transform: translateY(0);
+}

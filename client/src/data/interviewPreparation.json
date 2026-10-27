@@ -1,0 +1,226 @@
+[
+  {
+    "id": "prep-01-01",
+    "category": "JavaScript",
+    "difficulty": "Easy",
+    "question": "Explain lexical scope and closures.",
+    "guidance": "Describe how a function retains access to its lexical environment. Give a counter example and discuss lifetime and memory."
+  },
+  {
+    "id": "prep-01-02",
+    "category": "JavaScript",
+    "difficulty": "Medium",
+    "question": "How do promises and async/await handle errors?",
+    "guidance": "Explain fulfillment and rejection, returning promises, try/catch around awaited operations, and Promise.all failure behavior."
+  },
+  {
+    "id": "prep-01-03",
+    "category": "JavaScript",
+    "difficulty": "Medium",
+    "question": "What is the difference between == and ===?",
+    "guidance": "Explain type coercion versus strict equality, with examples involving strings, numbers, null and undefined."
+  },
+  {
+    "id": "prep-01-04",
+    "category": "JavaScript",
+    "difficulty": "Hard",
+    "question": "Explain the event loop and microtask ordering.",
+    "guidance": "Trace synchronous code, promise callbacks and timers. Explain why an unbounded microtask chain can delay rendering."
+  },
+  {
+    "id": "prep-02-01",
+    "category": "React",
+    "difficulty": "Easy",
+    "question": "How do state and props differ in React?",
+    "guidance": "Explain ownership, immutable updates, one-way data flow and why state changes schedule rendering."
+  },
+  {
+    "id": "prep-02-02",
+    "category": "React",
+    "difficulty": "Medium",
+    "question": "When should you use an effect, and how do you clean it up?",
+    "guidance": "Use effects to synchronize external systems. Discuss dependencies, cancellation, cleanup and development Strict Mode."
+  },
+  {
+    "id": "prep-02-03",
+    "category": "React",
+    "difficulty": "Medium",
+    "question": "Why do list items need stable keys?",
+    "guidance": "Describe identity during reconciliation and how index keys can attach component state to the wrong item."
+  },
+  {
+    "id": "prep-02-04",
+    "category": "React",
+    "difficulty": "Hard",
+    "question": "How would you prevent stale asynchronous results in a React search interface?",
+    "guidance": "Compare aborting requests with request-generation guards. Cover loading, errors and unmount cleanup."
+  },
+  {
+    "id": "prep-03-01",
+    "category": "Node.js and Express",
+    "difficulty": "Easy",
+    "question": "How does Express middleware work?",
+    "guidance": "Explain ordered execution, next(), response termination, authentication before handlers and error middleware."
+  },
+  {
+    "id": "prep-03-02",
+    "category": "Node.js and Express",
+    "difficulty": "Medium",
+    "question": "How would you validate an API request?",
+    "guidance": "Validate types, bounds, unknown fields and identifiers. Derive ownership from the authenticated identity, not the body."
+  },
+  {
+    "id": "prep-03-03",
+    "category": "Node.js and Express",
+    "difficulty": "Medium",
+    "question": "What work can block the Node.js event loop?",
+    "guidance": "Discuss synchronous I/O, CPU-heavy parsing and large computations; distinguish workers from ordinary asynchronous I/O."
+  },
+  {
+    "id": "prep-03-04",
+    "category": "Node.js and Express",
+    "difficulty": "Hard",
+    "question": "How would you make a write endpoint safe to retry?",
+    "guidance": "Discuss idempotency keys, unique constraints, atomic updates, duplicate requests and response semantics."
+  },
+  {
+    "id": "prep-04-01",
+    "category": "Python",
+    "difficulty": "Easy",
+    "question": "How do lists and tuples differ?",
+    "guidance": "Compare mutability and common uses. Explain that tuple hashability also depends on its elements."
+  },
+  {
+    "id": "prep-04-02",
+    "category": "Python",
+    "difficulty": "Medium",
+    "question": "Explain generators and iterators.",
+    "guidance": "Describe iter(), next(), StopIteration, yield and lazy processing without loading an entire collection."
+  },
+  {
+    "id": "prep-04-03",
+    "category": "Python",
+    "difficulty": "Medium",
+    "question": "Why are mutable default arguments risky?",
+    "guidance": "Explain definition-time evaluation. Show a None default and per-call initialization."
+  },
+  {
+    "id": "prep-04-04",
+    "category": "Python",
+    "difficulty": "Hard",
+    "question": "When would you use threads, processes or asyncio?",
+    "guidance": "Compare I/O concurrency, CPU work and process overhead. Discuss interpreter/version assumptions around the GIL."
+  },
+  {
+    "id": "prep-05-01",
+    "category": "Databases and SQL",
+    "difficulty": "Easy",
+    "question": "What is the difference between INNER JOIN and LEFT JOIN?",
+    "guidance": "Explain unmatched rows, NULLs, one-to-many multiplicity and the effect of WHERE predicates on a left join."
+  },
+  {
+    "id": "prep-05-02",
+    "category": "Databases and SQL",
+    "difficulty": "Medium",
+    "question": "How do database indexes improve reads and affect writes?",
+    "guidance": "Discuss query selectivity, compound index order, storage overhead and write maintenance."
+  },
+  {
+    "id": "prep-05-03",
+    "category": "Databases and SQL",
+    "difficulty": "Medium",
+    "question": "What does a transaction guarantee?",
+    "guidance": "Explain atomicity, consistency, isolation and durability, noting that isolation levels affect concurrent observations."
+  },
+  {
+    "id": "prep-05-04",
+    "category": "Databases and SQL",
+    "difficulty": "Hard",
+    "question": "How would you prevent duplicate records under concurrent requests?",
+    "guidance": "Explain why a read-then-insert check is insufficient. Use a unique constraint and an atomic operation with conflict handling."
+  },
+  {
+    "id": "prep-06-01",
+    "category": "Data Structures and Algorithms",
+    "difficulty": "Easy",
+    "question": "Compare arrays and linked lists.",
+    "guidance": "Discuss random access, insertion, deletion, traversal, memory locality and the cost of finding an insertion location."
+  },
+  {
+    "id": "prep-06-02",
+    "category": "Data Structures and Algorithms",
+    "difficulty": "Medium",
+    "question": "When can you use binary search?",
+    "guidance": "State the sorted or monotonic condition, loop invariants, boundary handling and logarithmic search complexity."
+  },
+  {
+    "id": "prep-06-03",
+    "category": "Data Structures and Algorithms",
+    "difficulty": "Medium",
+    "question": "How would you detect a cycle in a linked list?",
+    "guidance": "Explain slow/fast pointers, termination conditions and O(1) auxiliary space. Compare with a visited-node set."
+  },
+  {
+    "id": "prep-06-04",
+    "category": "Data Structures and Algorithms",
+    "difficulty": "Hard",
+    "question": "How do you identify a dynamic programming solution?",
+    "guidance": "Define state, transitions, base cases and evaluation order. Compare memoization with tabulation and analyze complexity."
+  },
+  {
+    "id": "prep-07-01",
+    "category": "System Design",
+    "difficulty": "Easy",
+    "question": "How would you design a URL shortener?",
+    "guidance": "Start with requirements, then key generation, redirects, persistence, collisions, abuse controls and caching."
+  },
+  {
+    "id": "prep-07-02",
+    "category": "System Design",
+    "difficulty": "Medium",
+    "question": "How would you choose a cache invalidation strategy?",
+    "guidance": "Discuss authoritative data, TTLs, explicit invalidation, stale reads, cache stampedes and failure behavior."
+  },
+  {
+    "id": "prep-07-03",
+    "category": "System Design",
+    "difficulty": "Medium",
+    "question": "How would you design a reliable background job system?",
+    "guidance": "Cover durable queues, acknowledgments, retries, idempotency, dead-letter handling and observability."
+  },
+  {
+    "id": "prep-07-04",
+    "category": "System Design",
+    "difficulty": "Hard",
+    "question": "How would you keep data consistent across distributed services?",
+    "guidance": "Compare transactions, events, outbox patterns, compensations and eventual consistency against concrete requirements."
+  },
+  {
+    "id": "prep-08-01",
+    "category": "HR and Behavioral Interviews",
+    "difficulty": "Easy",
+    "question": "Tell me about yourself and your career goals.",
+    "guidance": "Give a concise professional introduction, relevant evidence, the role you want and why it fits. Do not invent achievements."
+  },
+  {
+    "id": "prep-08-02",
+    "category": "HR and Behavioral Interviews",
+    "difficulty": "Medium",
+    "question": "Describe a difficult problem you solved.",
+    "guidance": "Use situation, task, action and result. Explain your own decisions, constraints and what you would change."
+  },
+  {
+    "id": "prep-08-03",
+    "category": "HR and Behavioral Interviews",
+    "difficulty": "Medium",
+    "question": "Tell me about a disagreement within a team.",
+    "guidance": "Describe listening, evidence, trade-offs, respectful resolution and lessons learned without blaming colleagues."
+  },
+  {
+    "id": "prep-08-04",
+    "category": "HR and Behavioral Interviews",
+    "difficulty": "Hard",
+    "question": "Describe a failure and how it changed your approach.",
+    "guidance": "Choose a real example, own your contribution, explain corrective actions and demonstrate a specific lasting improvement."
+  }
+]

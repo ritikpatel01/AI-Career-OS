@@ -1,0 +1,1906 @@
+{
+  "baselineVite": {
+    "entryJSKB": 3303.37,
+    "entryGzipKB": 1041.06,
+    "cssKB": 533.03,
+    "cssGzipKB": 81.49
+  },
+  "finalVite": {
+    "entryJSKB": 287.72,
+    "entryGzipKB": 89.47,
+    "cssKB": 533.26,
+    "cssGzipKB": 81.53
+  },
+  "initialJSReductionPercent": 91.29,
+  "largestDeferredVite": [
+    {
+      "name": "Roadmap",
+      "jsKB": 2465.97,
+      "gzipKB": 809.05
+    },
+    {
+      "name": "Documents",
+      "jsKB": 180.39,
+      "gzipKB": 52.46
+    },
+    {
+      "name": "Activities",
+      "jsKB": 64.72,
+      "gzipKB": 22.58
+    },
+    {
+      "name": "Interview",
+      "jsKB": 63.58,
+      "gzipKB": 15.55
+    },
+    {
+      "name": "Resume",
+      "jsKB": 35.95,
+      "gzipKB": 9.07
+    }
+  ],
+  "staticChunkCycles": [],
+  "emittedAssets": [
+    {
+      "file": "assets/index-6L9zXRZY.js",
+      "bytes": 287723,
+      "gzipBytes": 88602,
+      "entry": true,
+      "imports": [],
+      "dynamicImports": [
+        "assets/Settings-CAmJt_pm.js",
+        "assets/ManageUsers-5BpPLN9B.js",
+        "assets/SkillEvidenceReview-DSZNw248.js",
+        "assets/AdminDataCenter-CHwFM83B.js",
+        "assets/ForgotPassword-Bu_JnIi1.js",
+        "assets/ResetPassword-O3yN26Vi.js",
+        "assets/Login-CiJtAscZ.js",
+        "assets/Register-N629QTCW.js",
+        "assets/Dashboard-CZNkxGQ6.js",
+        "assets/Profile-unlbN1qo.js",
+        "assets/Projects-DLMsZxSv.js",
+        "assets/Resume-DD8iAIt5.js",
+        "assets/Roadmap-BLxpIE3n.js",
+        "assets/Skills-CVVGqZEy.js",
+        "assets/DSA-B9p8dpgh.js",
+        "assets/Interview-COXTowo_.js",
+        "assets/Jobs-Cbplw09F.js",
+        "assets/Notifications-3T__shDS.js",
+        "assets/GitHub-BDDqNOAy.js",
+        "assets/KnowledgeBase-DdPo5rf1.js",
+        "assets/Progress-FuCAcfN2.js",
+        "assets/Activities-BDq7n8pc.js",
+        "assets/Documents-CNyLnrwO.js"
+      ],
+      "modules": [
+        {
+          "id": "../\u0000rolldown/runtime.js",
+          "renderedBytes": 1426
+        },
+        {
+          "id": "../\u0000vite/modulepreload-polyfill.js",
+          "renderedBytes": 1205
+        },
+        {
+          "id": "node_modules/react/cjs/react.production.js",
+          "renderedBytes": 16006
+        },
+        {
+          "id": "node_modules/react/index.js",
+          "renderedBytes": 183
+        },
+        {
+          "id": "node_modules/scheduler/cjs/scheduler.production.js",
+          "renderedBytes": 9071
+        },
+        {
+          "id": "node_modules/scheduler/index.js",
+          "renderedBytes": 195
+        },
+        {
+          "id": "node_modules/react-dom/cjs/react-dom.production.js",
+          "renderedBytes": 6277
+        },
+        {
+          "id": "node_modules/react-dom/index.js",
+          "renderedBytes": 475
+        },
+        {
+          "id": "node_modules/react-dom/cjs/react-dom-client.production.js",
+          "renderedBytes": 529563
+        },
+        {
+          "id": "node_modules/react-dom/client.js",
+          "renderedBytes": 480
+        },
+        {
+          "id": "src/index.css",
+          "renderedBytes": 174
+        },
+        {
+          "id": "src/styles/theme.css",
+          "renderedBytes": 0
+        },
+        {
+          "id": "src/pages/Landing/Landing.css",
+          "renderedBytes": 0
+        },
+        {
+          "id": "src/pages/Settings/Settings.css",
+          "renderedBytes": 0
+        },
+        {
+          "id": "src/pages/Admin/ManageUsers.css",
+          "renderedBytes": 0
+        },
+        {
+          "id": "src/pages/Admin/SkillEvidenceReview.css",
+          "renderedBytes": 0
+        },
+        {
+          "id": "src/pages/Admin/AdminDataCenter.css",
+          "renderedBytes": 0
+        },
+        {
+          "id": "src/pages/Auth/Login.css",
+          "renderedBytes": 0
+        },
+        {
+          "id": "src/pages/Auth/Register.css",
+          "renderedBytes": 0
+        },
+        {
+          "id": "src/pages/Dashboard/Dashboard.css",
+          "renderedBytes": 0
+        },
+        {
+          "id": "src/pages/Profile/Profile.css",
+          "renderedBytes": 0
+        },
+        {
+          "id": "src/pages/Projects/Projects.css",
+          "renderedBytes": 0
+        },
+        {
+          "id": "src/pages/Resume/Resume.css",
+          "renderedBytes": 0
+        },
+        {
+          "id": "src/pages/Roadmap/Roadmap.css",
+          "renderedBytes": 0
+        },
+        {
+          "id": "src/pages/Skills/Skills.css",
+          "renderedBytes": 0
+        },
+        {
+          "id": "src/pages/DSA/DSA.css",
+          "renderedBytes": 0
+        },
+        {
+          "id": "src/pages/Interview/Interview.css",
+          "renderedBytes": 0
+        },
+        {
+          "id": "src/pages/Jobs/Jobs.css",
+          "renderedBytes": 0
+        },
+        {
+          "id": "src/pages/Notifications/Notifications.css",
+          "renderedBytes": 0
+        },
+        {
+          "id": "src/pages/GitHub/GitHub.css",
+          "renderedBytes": 0
+        },
+        {
+          "id": "src/pages/KnowledgeBase/KnowledgeBase.css",
+          "renderedBytes": 0
+        },
+        {
+          "id": "src/pages/Progress/Progress.css",
+          "renderedBytes": 0
+        },
+        {
+          "id": "src/pages/Activities/Activities.css",
+          "renderedBytes": 0
+        },
+        {
+          "id": "src/pages/Documents/Documents.css",
+          "renderedBytes": 0
+        },
+        {
+          "id": "src/components/layout/Sidebar.css",
+          "renderedBytes": 0
+        },
+        {
+          "id": "src/styles/navigation.css",
+          "renderedBytes": 0
+        },
+        {
+          "id": "src/styles/routeStyles.js",
+          "renderedBytes": 0
+        },
+        {
+          "id": "../\u0000vite/preload-helper.js",
+          "renderedBytes": 2170
+        },
+        {
+          "id": "node_modules/react-router/dist/development/chunk-OB3PAWPO.mjs",
+          "renderedBytes": 93047
+        },
+        {
+          "id": "src/styles/routeContent.css",
+          "renderedBytes": 0
+        },
+        {
+          "id": "node_modules/react/cjs/react-jsx-runtime.production.js",
+          "renderedBytes": 878
+        },
+        {
+          "id": "node_modules/react/jsx-runtime.js",
+          "renderedBytes": 207
+        },
+        {
+          "id": "src/components/common/RouteContent.jsx",
+          "renderedBytes": 1557
+        },
+        {
+          "id": "src/pages/Landing/Landing.jsx",
+          "renderedBytes": 27671
+        },
+        {
+          "id": "src/context/AuthContext.jsx",
+          "renderedBytes": 2498
+        },
+        {
+          "id": "src/components/common/ProtectedRoute.jsx",
+          "renderedBytes": 367
+        },
+        {
+          "id": "src/components/layout/Sidebar.jsx",
+          "renderedBytes": 5020
+        },
+        {
+          "id": "src/services/api.js",
+          "renderedBytes": 850
+        },
+        {
+          "id": "src/services/notificationService.js",
+          "renderedBytes": 258
+        },
+        {
+          "id": "src/components/common/Layout.jsx",
+          "renderedBytes": 5864
+        },
+        {
+          "id": "src/App.jsx",
+          "renderedBytes": 8520
+        },
+        {
+          "id": "src/main.jsx",
+          "renderedBytes": 1016
+        },
+        {
+          "id": "index.html",
+          "renderedBytes": 0
+        }
+      ]
+    },
+    {
+      "file": "assets/Activities-BDq7n8pc.js",
+      "bytes": 64721,
+      "gzipBytes": 22409,
+      "entry": false,
+      "imports": [
+        "assets/index-6L9zXRZY.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        {
+          "id": "../node_modules/axios/lib/helpers/bind.js",
+          "renderedBytes": 162
+        },
+        {
+          "id": "../node_modules/axios/lib/utils.js",
+          "renderedBytes": 14988
+        },
+        {
+          "id": "../node_modules/axios/lib/helpers/parseHeaders.js",
+          "renderedBytes": 987
+        },
+        {
+          "id": "../node_modules/axios/lib/helpers/sanitizeHeaderValue.js",
+          "renderedBytes": 1367
+        },
+        {
+          "id": "../node_modules/axios/lib/core/AxiosHeaders.js",
+          "renderedBytes": 8906
+        },
+        {
+          "id": "../node_modules/axios/lib/core/AxiosError.js",
+          "renderedBytes": 4419
+        },
+        {
+          "id": "../node_modules/axios/lib/helpers/toFormData.js",
+          "renderedBytes": 4734
+        },
+        {
+          "id": "../node_modules/axios/lib/helpers/AxiosURLSearchParams.js",
+          "renderedBytes": 831
+        },
+        {
+          "id": "../node_modules/axios/lib/helpers/buildURL.js",
+          "renderedBytes": 984
+        },
+        {
+          "id": "../node_modules/axios/lib/core/InterceptorManager.js",
+          "renderedBytes": 2650
+        },
+        {
+          "id": "../node_modules/axios/lib/defaults/transitional.js",
+          "renderedBytes": 300
+        },
+        {
+          "id": "../node_modules/axios/lib/platform/browser/classes/URLSearchParams.js",
+          "renderedBytes": 201
+        },
+        {
+          "id": "../node_modules/axios/lib/platform/browser/classes/FormData.js",
+          "renderedBytes": 157
+        },
+        {
+          "id": "../node_modules/axios/lib/platform/browser/classes/Blob.js",
+          "renderedBytes": 141
+        },
+        {
+          "id": "../node_modules/axios/lib/platform/browser/index.js",
+          "renderedBytes": 304
+        },
+        {
+          "id": "../node_modules/axios/lib/platform/common/utils.js",
+          "renderedBytes": 890
+        },
+        {
+          "id": "../node_modules/axios/lib/platform/index.js",
+          "renderedBytes": 131
+        },
+        {
+          "id": "../node_modules/axios/lib/helpers/toURLEncodedForm.js",
+          "renderedBytes": 461
+        },
+        {
+          "id": "../node_modules/axios/lib/helpers/formDataToJSON.js",
+          "renderedBytes": 1881
+        },
+        {
+          "id": "../node_modules/axios/lib/core/methodList.js",
+          "renderedBytes": 208
+        },
+        {
+          "id": "../node_modules/axios/lib/defaults/index.js",
+          "renderedBytes": 3496
+        },
+        {
+          "id": "../node_modules/axios/lib/core/transformData.js",
+          "renderedBytes": 444
+        },
+        {
+          "id": "../node_modules/axios/lib/cancel/isCancel.js",
+          "renderedBytes": 133
+        },
+        {
+          "id": "../node_modules/axios/lib/cancel/CanceledError.js",
+          "renderedBytes": 312
+        },
+        {
+          "id": "../node_modules/axios/lib/core/settle.js",
+          "renderedBytes": 497
+        },
+        {
+          "id": "../node_modules/axios/lib/helpers/normalizeURLForProtocolCheck.js",
+          "renderedBytes": 371
+        },
+        {
+          "id": "../node_modules/axios/lib/helpers/parseProtocol.js",
+          "renderedBytes": 190
+        },
+        {
+          "id": "../node_modules/axios/lib/helpers/speedometer.js",
+          "renderedBytes": 886
+        },
+        {
+          "id": "../node_modules/axios/lib/helpers/throttle.js",
+          "renderedBytes": 768
+        },
+        {
+          "id": "../node_modules/axios/lib/helpers/progressEventReducer.js",
+          "renderedBytes": 1241
+        },
+        {
+          "id": "../node_modules/axios/lib/helpers/isURLSameOrigin.js",
+          "renderedBytes": 475
+        },
+        {
+          "id": "../node_modules/axios/lib/helpers/cookies.js",
+          "renderedBytes": 1260
+        },
+        {
+          "id": "../node_modules/axios/lib/helpers/isAbsoluteURL.js",
+          "renderedBytes": 196
+        },
+        {
+          "id": "../node_modules/axios/lib/helpers/combineURLs.js",
+          "renderedBytes": 311
+        },
+        {
+          "id": "../node_modules/axios/lib/core/buildFullPath.js",
+          "renderedBytes": 1551
+        },
+        {
+          "id": "../node_modules/axios/lib/core/mergeConfig.js",
+          "renderedBytes": 4514
+        },
+        {
+          "id": "../node_modules/axios/lib/core/setFormDataHeaders.js",
+          "renderedBytes": 428
+        },
+        {
+          "id": "../node_modules/axios/lib/helpers/resolveConfig.js",
+          "renderedBytes": 2074
+        },
+        {
+          "id": "../node_modules/axios/lib/adapters/xhr.js",
+          "renderedBytes": 5087
+        },
+        {
+          "id": "../node_modules/axios/lib/helpers/composeSignals.js",
+          "renderedBytes": 1268
+        },
+        {
+          "id": "../node_modules/axios/lib/helpers/trackStream.js",
+          "renderedBytes": 1498
+        },
+        {
+          "id": "../node_modules/axios/lib/helpers/estimateDataURLDecodedBytes.js",
+          "renderedBytes": 3036
+        },
+        {
+          "id": "../node_modules/axios/lib/env/data.js",
+          "renderedBytes": 82
+        },
+        {
+          "id": "../node_modules/axios/lib/adapters/fetch.js",
+          "renderedBytes": 14330
+        },
+        {
+          "id": "../node_modules/axios/lib/adapters/adapters.js",
+          "renderedBytes": 1760
+        },
+        {
+          "id": "../node_modules/axios/lib/core/dispatchRequest.js",
+          "renderedBytes": 1581
+        },
+        {
+          "id": "../node_modules/axios/lib/helpers/validator.js",
+          "renderedBytes": 2034
+        },
+        {
+          "id": "../node_modules/axios/lib/core/Axios.js",
+          "renderedBytes": 6453
+        },
+        {
+          "id": "../node_modules/axios/lib/cancel/CancelToken.js",
+          "renderedBytes": 1814
+        },
+        {
+          "id": "../node_modules/axios/lib/helpers/spread.js",
+          "renderedBytes": 163
+        },
+        {
+          "id": "../node_modules/axios/lib/helpers/isAxiosError.js",
+          "renderedBytes": 179
+        },
+        {
+          "id": "../node_modules/axios/lib/helpers/HttpStatusCode.js",
+          "renderedBytes": 1853
+        },
+        {
+          "id": "../node_modules/axios/lib/axios.js",
+          "renderedBytes": 1189
+        },
+        {
+          "id": "src/services/activityService.js",
+          "renderedBytes": 1342
+        },
+        {
+          "id": "src/pages/Activities/Activities.jsx",
+          "renderedBytes": 27155
+        }
+      ]
+    },
+    {
+      "file": "assets/AdminDataCenter-CHwFM83B.js",
+      "bytes": 7726,
+      "gzipBytes": 2516,
+      "entry": false,
+      "imports": [
+        "assets/index-6L9zXRZY.js",
+        "assets/adminUserService-Bzx5Ffu2.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        {
+          "id": "src/services/adminDataService.js",
+          "renderedBytes": 576
+        },
+        {
+          "id": "src/pages/Admin/AdminDataCenter.jsx",
+          "renderedBytes": 14579
+        }
+      ]
+    },
+    {
+      "file": "assets/DSA-B9p8dpgh.js",
+      "bytes": 7116,
+      "gzipBytes": 2041,
+      "entry": false,
+      "imports": [
+        "assets/index-6L9zXRZY.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        {
+          "id": "src/services/dsaService.js",
+          "renderedBytes": 310
+        },
+        {
+          "id": "src/pages/DSA/DSA.jsx",
+          "renderedBytes": 14097
+        }
+      ]
+    },
+    {
+      "file": "assets/Dashboard-CZNkxGQ6.js",
+      "bytes": 13287,
+      "gzipBytes": 3402,
+      "entry": false,
+      "imports": [
+        "assets/index-6L9zXRZY.js",
+        "assets/progressService-h6j5sJAK.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        {
+          "id": "src/pages/Dashboard/Dashboard.jsx",
+          "renderedBytes": 25243
+        }
+      ]
+    },
+    {
+      "file": "assets/Documents-CNyLnrwO.js",
+      "bytes": 180390,
+      "gzipBytes": 52063,
+      "entry": false,
+      "imports": [
+        "assets/index-6L9zXRZY.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        {
+          "id": "node_modules/devlop/lib/default.js",
+          "renderedBytes": 110
+        },
+        {
+          "id": "node_modules/comma-separated-tokens/index.js",
+          "renderedBytes": 313
+        },
+        {
+          "id": "node_modules/estree-util-is-identifier-name/lib/index.js",
+          "renderedBytes": 368
+        },
+        {
+          "id": "node_modules/hast-util-whitespace/lib/index.js",
+          "renderedBytes": 306
+        },
+        {
+          "id": "node_modules/property-information/lib/util/schema.js",
+          "renderedBytes": 330
+        },
+        {
+          "id": "node_modules/property-information/lib/util/merge.js",
+          "renderedBytes": 344
+        },
+        {
+          "id": "node_modules/property-information/lib/normalize.js",
+          "renderedBytes": 142
+        },
+        {
+          "id": "node_modules/property-information/lib/util/info.js",
+          "renderedBytes": 628
+        },
+        {
+          "id": "node_modules/property-information/lib/util/types.js",
+          "renderedBytes": 683
+        },
+        {
+          "id": "node_modules/property-information/lib/util/defined-info.js",
+          "renderedBytes": 599
+        },
+        {
+          "id": "node_modules/property-information/lib/util/create.js",
+          "renderedBytes": 663
+        },
+        {
+          "id": "node_modules/property-information/lib/aria.js",
+          "renderedBytes": 1489
+        },
+        {
+          "id": "node_modules/property-information/lib/util/case-sensitive-transform.js",
+          "renderedBytes": 229
+        },
+        {
+          "id": "node_modules/property-information/lib/util/case-insensitive-transform.js",
+          "renderedBytes": 231
+        },
+        {
+          "id": "node_modules/property-information/lib/html.js",
+          "renderedBytes": 6412
+        },
+        {
+          "id": "node_modules/property-information/lib/svg.js",
+          "renderedBytes": 12996
+        },
+        {
+          "id": "node_modules/property-information/lib/xlink.js",
+          "renderedBytes": 359
+        },
+        {
+          "id": "node_modules/property-information/lib/xmlns.js",
+          "renderedBytes": 253
+        },
+        {
+          "id": "node_modules/property-information/lib/xml.js",
+          "renderedBytes": 263
+        },
+        {
+          "id": "node_modules/property-information/lib/hast-to-react.js",
+          "renderedBytes": 588
+        },
+        {
+          "id": "node_modules/property-information/lib/find.js",
+          "renderedBytes": 965
+        },
+        {
+          "id": "node_modules/property-information/index.js",
+          "renderedBytes": 208
+        },
+        {
+          "id": "node_modules/space-separated-tokens/index.js",
+          "renderedBytes": 139
+        },
+        {
+          "id": "node_modules/inline-style-parser/cjs/index.js",
+          "renderedBytes": 3494
+        },
+        {
+          "id": "node_modules/style-to-object/cjs/index.js",
+          "renderedBytes": 1022
+        },
+        {
+          "id": "node_modules/style-to-js/cjs/utilities.js",
+          "renderedBytes": 1184
+        },
+        {
+          "id": "node_modules/style-to-js/cjs/index.js",
+          "renderedBytes": 705
+        },
+        {
+          "id": "node_modules/unist-util-position/lib/index.js",
+          "renderedBytes": 679
+        },
+        {
+          "id": "node_modules/unist-util-stringify-position/lib/index.js",
+          "renderedBytes": 675
+        },
+        {
+          "id": "node_modules/vfile-message/lib/index.js",
+          "renderedBytes": 2782
+        },
+        {
+          "id": "node_modules/hast-util-to-jsx-runtime/lib/index.js",
+          "renderedBytes": 11086
+        },
+        {
+          "id": "node_modules/html-url-attributes/lib/index.js",
+          "renderedBytes": 484
+        },
+        {
+          "id": "node_modules/mdast-util-to-string/lib/index.js",
+          "renderedBytes": 1066
+        },
+        {
+          "id": "node_modules/decode-named-character-reference/index.dom.js",
+          "renderedBytes": 462
+        },
+        {
+          "id": "node_modules/micromark-util-chunked/index.js",
+          "renderedBytes": 833
+        },
+        {
+          "id": "node_modules/micromark-util-combine-extensions/index.js",
+          "renderedBytes": 932
+        },
+        {
+          "id": "node_modules/micromark-util-decode-numeric-character-reference/index.js",
+          "renderedBytes": 474
+        },
+        {
+          "id": "node_modules/micromark-util-normalize-identifier/index.js",
+          "renderedBytes": 221
+        },
+        {
+          "id": "node_modules/micromark-util-character/index.js",
+          "renderedBytes": 941
+        },
+        {
+          "id": "node_modules/micromark-util-sanitize-uri/index.js",
+          "renderedBytes": 1041
+        },
+        {
+          "id": "node_modules/micromark-factory-space/index.js",
+          "renderedBytes": 971
+        },
+        {
+          "id": "node_modules/micromark/lib/initialize/content.js",
+          "renderedBytes": 1184
+        },
+        {
+          "id": "node_modules/micromark-util-edit-map/index.js",
+          "renderedBytes": 1334
+        },
+        {
+          "id": "node_modules/micromark/lib/initialize/document.js",
+          "renderedBytes": 5207
+        },
+        {
+          "id": "node_modules/micromark-util-classify-character/index.js",
+          "renderedBytes": 256
+        },
+        {
+          "id": "node_modules/micromark-util-resolve-all/index.js",
+          "renderedBytes": 388
+        },
+        {
+          "id": "node_modules/micromark-core-commonmark/lib/attention.js",
+          "renderedBytes": 4413
+        },
+        {
+          "id": "node_modules/micromark-core-commonmark/lib/autolink.js",
+          "renderedBytes": 2418
+        },
+        {
+          "id": "node_modules/micromark-core-commonmark/lib/blank-line.js",
+          "renderedBytes": 441
+        },
+        {
+          "id": "node_modules/micromark-core-commonmark/lib/block-quote.js",
+          "renderedBytes": 1456
+        },
+        {
+          "id": "node_modules/micromark-core-commonmark/lib/character-escape.js",
+          "renderedBytes": 664
+        },
+        {
+          "id": "node_modules/micromark-core-commonmark/lib/character-reference.js",
+          "renderedBytes": 1736
+        },
+        {
+          "id": "node_modules/micromark-core-commonmark/lib/partial-non-lazy-continuation.js",
+          "renderedBytes": 548
+        },
+        {
+          "id": "node_modules/micromark-core-commonmark/lib/code-fenced.js",
+          "renderedBytes": 4571
+        },
+        {
+          "id": "node_modules/micromark-core-commonmark/lib/code-indented.js",
+          "renderedBytes": 1459
+        },
+        {
+          "id": "node_modules/micromark-core-commonmark/lib/code-text.js",
+          "renderedBytes": 2895
+        },
+        {
+          "id": "node_modules/micromark-util-subtokenize/lib/splice-buffer.js",
+          "renderedBytes": 2507
+        },
+        {
+          "id": "node_modules/micromark-util-subtokenize/index.js",
+          "renderedBytes": 4167
+        },
+        {
+          "id": "node_modules/micromark-core-commonmark/lib/content.js",
+          "renderedBytes": 1842
+        },
+        {
+          "id": "node_modules/micromark-factory-destination/index.js",
+          "renderedBytes": 2292
+        },
+        {
+          "id": "node_modules/micromark-factory-label/index.js",
+          "renderedBytes": 1510
+        },
+        {
+          "id": "node_modules/micromark-factory-title/index.js",
+          "renderedBytes": 1453
+        },
+        {
+          "id": "node_modules/micromark-factory-whitespace/index.js",
+          "renderedBytes": 463
+        },
+        {
+          "id": "node_modules/micromark-core-commonmark/lib/definition.js",
+          "renderedBytes": 2411
+        },
+        {
+          "id": "node_modules/micromark-core-commonmark/lib/hard-break-escape.js",
+          "renderedBytes": 497
+        },
+        {
+          "id": "node_modules/micromark-core-commonmark/lib/heading-atx.js",
+          "renderedBytes": 2564
+        },
+        {
+          "id": "node_modules/micromark-util-html-tag-name/index.js",
+          "renderedBytes": 775
+        },
+        {
+          "id": "node_modules/micromark-core-commonmark/lib/html-flow.js",
+          "renderedBytes": 9183
+        },
+        {
+          "id": "node_modules/micromark-core-commonmark/lib/html-text.js",
+          "renderedBytes": 7071
+        },
+        {
+          "id": "node_modules/micromark-core-commonmark/lib/label-end.js",
+          "renderedBytes": 6613
+        },
+        {
+          "id": "node_modules/micromark-core-commonmark/lib/label-start-image.js",
+          "renderedBytes": 964
+        },
+        {
+          "id": "node_modules/micromark-core-commonmark/lib/label-start-link.js",
+          "renderedBytes": 765
+        },
+        {
+          "id": "node_modules/micromark-core-commonmark/lib/line-ending.js",
+          "renderedBytes": 384
+        },
+        {
+          "id": "node_modules/micromark-core-commonmark/lib/thematic-break.js",
+          "renderedBytes": 951
+        },
+        {
+          "id": "node_modules/micromark-core-commonmark/lib/list.js",
+          "renderedBytes": 4580
+        },
+        {
+          "id": "node_modules/micromark-core-commonmark/lib/setext-underline.js",
+          "renderedBytes": 2396
+        },
+        {
+          "id": "node_modules/micromark/lib/initialize/flow.js",
+          "renderedBytes": 948
+        },
+        {
+          "id": "node_modules/micromark/lib/initialize/text.js",
+          "renderedBytes": 3487
+        },
+        {
+          "id": "node_modules/micromark/lib/constructs.js",
+          "renderedBytes": 1447
+        },
+        {
+          "id": "node_modules/micromark/lib/create-tokenizer.js",
+          "renderedBytes": 7021
+        },
+        {
+          "id": "node_modules/micromark/lib/parse.js",
+          "renderedBytes": 518
+        },
+        {
+          "id": "node_modules/micromark/lib/postprocess.js",
+          "renderedBytes": 152
+        },
+        {
+          "id": "node_modules/micromark/lib/preprocess.js",
+          "renderedBytes": 1798
+        },
+        {
+          "id": "node_modules/micromark-util-decode-string/index.js",
+          "renderedBytes": 567
+        },
+        {
+          "id": "node_modules/mdast-util-from-markdown/lib/index.js",
+          "renderedBytes": 19869
+        },
+        {
+          "id": "node_modules/remark-parse/lib/index.js",
+          "renderedBytes": 369
+        },
+        {
+          "id": "node_modules/mdast-util-to-hast/lib/handlers/blockquote.js",
+          "renderedBytes": 325
+        },
+        {
+          "id": "node_modules/mdast-util-to-hast/lib/handlers/break.js",
+          "renderedBytes": 318
+        },
+        {
+          "id": "node_modules/mdast-util-to-hast/lib/handlers/code.js",
+          "renderedBytes": 703
+        },
+        {
+          "id": "node_modules/mdast-util-to-hast/lib/handlers/delete.js",
+          "renderedBytes": 297
+        },
+        {
+          "id": "node_modules/mdast-util-to-hast/lib/handlers/emphasis.js",
+          "renderedBytes": 295
+        },
+        {
+          "id": "node_modules/mdast-util-to-hast/lib/handlers/footnote-reference.js",
+          "renderedBytes": 1212
+        },
+        {
+          "id": "node_modules/mdast-util-to-hast/lib/handlers/heading.js",
+          "renderedBytes": 305
+        },
+        {
+          "id": "node_modules/mdast-util-to-hast/lib/handlers/html.js",
+          "renderedBytes": 290
+        },
+        {
+          "id": "node_modules/mdast-util-to-hast/lib/revert.js",
+          "renderedBytes": 764
+        },
+        {
+          "id": "node_modules/mdast-util-to-hast/lib/handlers/image-reference.js",
+          "renderedBytes": 624
+        },
+        {
+          "id": "node_modules/mdast-util-to-hast/lib/handlers/image.js",
+          "renderedBytes": 482
+        },
+        {
+          "id": "node_modules/mdast-util-to-hast/lib/handlers/inline-code.js",
+          "renderedBytes": 401
+        },
+        {
+          "id": "node_modules/mdast-util-to-hast/lib/handlers/link-reference.js",
+          "renderedBytes": 614
+        },
+        {
+          "id": "node_modules/mdast-util-to-hast/lib/handlers/link.js",
+          "renderedBytes": 418
+        },
+        {
+          "id": "node_modules/mdast-util-to-hast/lib/handlers/list-item.js",
+          "renderedBytes": 2004
+        },
+        {
+          "id": "node_modules/mdast-util-to-hast/lib/handlers/list.js",
+          "renderedBytes": 795
+        },
+        {
+          "id": "node_modules/mdast-util-to-hast/lib/handlers/paragraph.js",
+          "renderedBytes": 296
+        },
+        {
+          "id": "node_modules/mdast-util-to-hast/lib/handlers/root.js",
+          "renderedBytes": 261
+        },
+        {
+          "id": "node_modules/mdast-util-to-hast/lib/handlers/strong.js",
+          "renderedBytes": 295
+        },
+        {
+          "id": "node_modules/mdast-util-to-hast/lib/handlers/table.js",
+          "renderedBytes": 947
+        },
+        {
+          "id": "node_modules/mdast-util-to-hast/lib/handlers/table-row.js",
+          "renderedBytes": 1058
+        },
+        {
+          "id": "node_modules/mdast-util-to-hast/lib/handlers/table-cell.js",
+          "renderedBytes": 296
+        },
+        {
+          "id": "node_modules/trim-lines/index.js",
+          "renderedBytes": 1004
+        },
+        {
+          "id": "node_modules/mdast-util-to-hast/lib/handlers/text.js",
+          "renderedBytes": 260
+        },
+        {
+          "id": "node_modules/mdast-util-to-hast/lib/handlers/thematic-break.js",
+          "renderedBytes": 293
+        },
+        {
+          "id": "node_modules/mdast-util-to-hast/lib/handlers/index.js",
+          "renderedBytes": 694
+        },
+        {
+          "id": "node_modules/@ungap/structured-clone/esm/deserialize.js",
+          "renderedBytes": 2248
+        },
+        {
+          "id": "node_modules/@ungap/structured-clone/esm/serialize.js",
+          "renderedBytes": 3387
+        },
+        {
+          "id": "node_modules/@ungap/structured-clone/esm/index.js",
+          "renderedBytes": 356
+        },
+        {
+          "id": "node_modules/mdast-util-to-hast/lib/footer.js",
+          "renderedBytes": 3694
+        },
+        {
+          "id": "node_modules/unist-util-is/lib/index.js",
+          "renderedBytes": 1516
+        },
+        {
+          "id": "node_modules/unist-util-visit-parents/lib/color.js",
+          "renderedBytes": 114
+        },
+        {
+          "id": "node_modules/unist-util-visit-parents/lib/index.js",
+          "renderedBytes": 1906
+        },
+        {
+          "id": "node_modules/unist-util-visit/lib/index.js",
+          "renderedBytes": 672
+        },
+        {
+          "id": "node_modules/mdast-util-to-hast/lib/state.js",
+          "renderedBytes": 3882
+        },
+        {
+          "id": "node_modules/mdast-util-to-hast/lib/index.js",
+          "renderedBytes": 491
+        },
+        {
+          "id": "node_modules/remark-rehype/lib/index.js",
+          "renderedBytes": 407
+        },
+        {
+          "id": "node_modules/bail/index.js",
+          "renderedBytes": 107
+        },
+        {
+          "id": "node_modules/extend/index.js",
+          "renderedBytes": 2529
+        },
+        {
+          "id": "node_modules/is-plain-obj/index.js",
+          "renderedBytes": 386
+        },
+        {
+          "id": "node_modules/trough/lib/index.js",
+          "renderedBytes": 1727
+        },
+        {
+          "id": "node_modules/vfile/lib/minpath.browser.js",
+          "renderedBytes": 4880
+        },
+        {
+          "id": "node_modules/vfile/lib/minproc.browser.js",
+          "renderedBytes": 127
+        },
+        {
+          "id": "node_modules/vfile/lib/minurl.shared.js",
+          "renderedBytes": 321
+        },
+        {
+          "id": "node_modules/vfile/lib/minurl.browser.js",
+          "renderedBytes": 1285
+        },
+        {
+          "id": "node_modules/vfile/lib/index.js",
+          "renderedBytes": 3735
+        },
+        {
+          "id": "node_modules/unified/lib/callable-instance.js",
+          "renderedBytes": 325
+        },
+        {
+          "id": "node_modules/unified/lib/index.js",
+          "renderedBytes": 8044
+        },
+        {
+          "id": "node_modules/react-markdown/lib/index.js",
+          "renderedBytes": 5305
+        },
+        {
+          "id": "node_modules/ccount/index.js",
+          "renderedBytes": 379
+        },
+        {
+          "id": "node_modules/escape-string-regexp/index.js",
+          "renderedBytes": 266
+        },
+        {
+          "id": "node_modules/mdast-util-find-and-replace/lib/index.js",
+          "renderedBytes": 2804
+        },
+        {
+          "id": "node_modules/mdast-util-gfm-autolink-literal/lib/index.js",
+          "renderedBytes": 3983
+        },
+        {
+          "id": "node_modules/mdast-util-gfm-footnote/lib/index.js",
+          "renderedBytes": 3294
+        },
+        {
+          "id": "node_modules/mdast-util-gfm-strikethrough/lib/index.js",
+          "renderedBytes": 1419
+        },
+        {
+          "id": "node_modules/markdown-table/index.js",
+          "renderedBytes": 3954
+        },
+        {
+          "id": "node_modules/mdast-util-phrasing/lib/index.js",
+          "renderedBytes": 341
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/handle/blockquote.js",
+          "renderedBytes": 449
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/util/pattern-in-scope.js",
+          "renderedBytes": 493
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/handle/break.js",
+          "renderedBytes": 401
+        },
+        {
+          "id": "node_modules/longest-streak/index.js",
+          "renderedBytes": 524
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/util/format-code-as-indented.js",
+          "renderedBytes": 320
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/util/check-fence.js",
+          "renderedBytes": 329
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/handle/code.js",
+          "renderedBytes": 1303
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/util/check-quote.js",
+          "renderedBytes": 330
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/handle/definition.js",
+          "renderedBytes": 1303
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/util/check-emphasis.js",
+          "renderedBytes": 342
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/handle/emphasis.js",
+          "renderedBytes": 568
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/util/encode-character-reference.js",
+          "renderedBytes": 204
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/util/format-heading-as-setext.js",
+          "renderedBytes": 463
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/handle/heading.js",
+          "renderedBytes": 1158
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/handle/html.js",
+          "renderedBytes": 194
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/handle/image.js",
+          "renderedBytes": 1375
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/handle/image-reference.js",
+          "renderedBytes": 1070
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/handle/inline-code.js",
+          "renderedBytes": 962
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/util/format-link-as-autolink.js",
+          "renderedBytes": 465
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/handle/link.js",
+          "renderedBytes": 1857
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/handle/link-reference.js",
+          "renderedBytes": 1076
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/util/check-bullet.js",
+          "renderedBytes": 354
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/util/check-bullet-other.js",
+          "renderedBytes": 632
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/util/check-bullet-ordered.js",
+          "renderedBytes": 359
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/util/check-rule.js",
+          "renderedBytes": 346
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/handle/list.js",
+          "renderedBytes": 1647
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/util/check-list-item-indent.js",
+          "renderedBytes": 400
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/handle/list-item.js",
+          "renderedBytes": 1126
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/handle/paragraph.js",
+          "renderedBytes": 305
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/handle/root.js",
+          "renderedBytes": 346
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/util/check-strong.js",
+          "renderedBytes": 332
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/handle/strong.js",
+          "renderedBytes": 546
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/handle/text.js",
+          "renderedBytes": 383
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/util/check-rule-repetition.js",
+          "renderedBytes": 367
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/handle/thematic-break.js",
+          "renderedBytes": 309
+        },
+        {
+          "id": "node_modules/mdast-util-to-markdown/lib/handle/index.js",
+          "renderedBytes": 341
+        },
+        {
+          "id": "node_modules/mdast-util-gfm-table/lib/index.js",
+          "renderedBytes": 3600
+        },
+        {
+          "id": "node_modules/mdast-util-gfm-task-list-item/lib/index.js",
+          "renderedBytes": 2221
+        },
+        {
+          "id": "node_modules/mdast-util-gfm/lib/index.js",
+          "renderedBytes": 500
+        },
+        {
+          "id": "node_modules/micromark-extension-gfm-autolink-literal/lib/syntax.js",
+          "renderedBytes": 8897
+        },
+        {
+          "id": "node_modules/micromark-extension-gfm-footnote/lib/syntax.js",
+          "renderedBytes": 7385
+        },
+        {
+          "id": "node_modules/micromark-extension-gfm-strikethrough/lib/syntax.js",
+          "renderedBytes": 3338
+        },
+        {
+          "id": "node_modules/micromark-extension-gfm-table/lib/edit-map.js",
+          "renderedBytes": 1336
+        },
+        {
+          "id": "node_modules/micromark-extension-gfm-table/lib/infer.js",
+          "renderedBytes": 850
+        },
+        {
+          "id": "node_modules/micromark-extension-gfm-table/lib/syntax.js",
+          "renderedBytes": 11175
+        },
+        {
+          "id": "node_modules/micromark-extension-gfm-task-list-item/lib/syntax.js",
+          "renderedBytes": 1620
+        },
+        {
+          "id": "node_modules/micromark-extension-gfm/index.js",
+          "renderedBytes": 239
+        },
+        {
+          "id": "node_modules/remark-gfm/lib/index.js",
+          "renderedBytes": 638
+        },
+        {
+          "id": "src/services/documentService.js",
+          "renderedBytes": 2237
+        },
+        {
+          "id": "src/pages/Documents/Documents.jsx",
+          "renderedBytes": 48838
+        }
+      ]
+    },
+    {
+      "file": "assets/ForgotPassword-Bu_JnIi1.js",
+      "bytes": 4468,
+      "gzipBytes": 1506,
+      "entry": false,
+      "imports": [
+        "assets/index-6L9zXRZY.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        {
+          "id": "src/pages/Auth/ForgotPassword.jsx",
+          "renderedBytes": 8667
+        }
+      ]
+    },
+    {
+      "file": "assets/GitHub-BDDqNOAy.js",
+      "bytes": 22043,
+      "gzipBytes": 5002,
+      "entry": false,
+      "imports": [
+        "assets/index-6L9zXRZY.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        {
+          "id": "src/pages/GitHub/GitHub.jsx",
+          "renderedBytes": 42953
+        }
+      ]
+    },
+    {
+      "file": "assets/Interview-COXTowo_.js",
+      "bytes": 63588,
+      "gzipBytes": 15510,
+      "entry": false,
+      "imports": [
+        "assets/index-6L9zXRZY.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        {
+          "id": "src/pages/Interview/Interview.jsx",
+          "renderedBytes": 94846
+        }
+      ]
+    },
+    {
+      "file": "assets/Jobs-Cbplw09F.js",
+      "bytes": 28243,
+      "gzipBytes": 8769,
+      "entry": false,
+      "imports": [
+        "assets/index-6L9zXRZY.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        {
+          "id": "src/services/jobService.js",
+          "renderedBytes": 1745
+        },
+        {
+          "id": "src/pages/Jobs/Jobs.jsx",
+          "renderedBytes": 52115
+        }
+      ]
+    },
+    {
+      "file": "assets/KnowledgeBase-DdPo5rf1.js",
+      "bytes": 20780,
+      "gzipBytes": 5244,
+      "entry": false,
+      "imports": [
+        "assets/index-6L9zXRZY.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        {
+          "id": "src/pages/KnowledgeBase/KnowledgeBase.jsx",
+          "renderedBytes": 34981
+        }
+      ]
+    },
+    {
+      "file": "assets/Login-CiJtAscZ.js",
+      "bytes": 11738,
+      "gzipBytes": 3253,
+      "entry": false,
+      "imports": [
+        "assets/index-6L9zXRZY.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        {
+          "id": "src/pages/Auth/Login.jsx",
+          "renderedBytes": 23919
+        }
+      ]
+    },
+    {
+      "file": "assets/ManageUsers-5BpPLN9B.js",
+      "bytes": 5449,
+      "gzipBytes": 1775,
+      "entry": false,
+      "imports": [
+        "assets/index-6L9zXRZY.js",
+        "assets/adminUserService-Bzx5Ffu2.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        {
+          "id": "src/pages/Admin/ManageUsers.jsx",
+          "renderedBytes": 10611
+        }
+      ]
+    },
+    {
+      "file": "assets/Notifications-3T__shDS.js",
+      "bytes": 10628,
+      "gzipBytes": 3444,
+      "entry": false,
+      "imports": [
+        "assets/index-6L9zXRZY.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        {
+          "id": "src/pages/Notifications/Notifications.jsx",
+          "renderedBytes": 22259
+        }
+      ]
+    },
+    {
+      "file": "assets/Profile-unlbN1qo.js",
+      "bytes": 6700,
+      "gzipBytes": 1866,
+      "entry": false,
+      "imports": [
+        "assets/index-6L9zXRZY.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        {
+          "id": "src/services/profileService.js",
+          "renderedBytes": 467
+        },
+        {
+          "id": "src/pages/Profile/Profile.jsx",
+          "renderedBytes": 12874
+        }
+      ]
+    },
+    {
+      "file": "assets/Progress-FuCAcfN2.js",
+      "bytes": 12284,
+      "gzipBytes": 3359,
+      "entry": false,
+      "imports": [
+        "assets/index-6L9zXRZY.js",
+        "assets/progressService-h6j5sJAK.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        {
+          "id": "src/pages/Progress/Progress.jsx",
+          "renderedBytes": 23692
+        }
+      ]
+    },
+    {
+      "file": "assets/Projects-DLMsZxSv.js",
+      "bytes": 6863,
+      "gzipBytes": 1978,
+      "entry": false,
+      "imports": [
+        "assets/index-6L9zXRZY.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        {
+          "id": "src/services/projectService.js",
+          "renderedBytes": 580
+        },
+        {
+          "id": "src/pages/Projects/Projects.jsx",
+          "renderedBytes": 12929
+        }
+      ]
+    },
+    {
+      "file": "assets/Register-N629QTCW.js",
+      "bytes": 3473,
+      "gzipBytes": 1121,
+      "entry": false,
+      "imports": [
+        "assets/index-6L9zXRZY.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        {
+          "id": "src/services/authService.js",
+          "renderedBytes": 260
+        },
+        {
+          "id": "src/pages/Auth/Register.jsx",
+          "renderedBytes": 6746
+        }
+      ]
+    },
+    {
+      "file": "assets/ResetPassword-O3yN26Vi.js",
+      "bytes": 4164,
+      "gzipBytes": 1472,
+      "entry": false,
+      "imports": [
+        "assets/index-6L9zXRZY.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        {
+          "id": "src/pages/Auth/ResetPassword.jsx",
+          "renderedBytes": 8746
+        }
+      ]
+    },
+    {
+      "file": "assets/Resume-DD8iAIt5.js",
+      "bytes": 35953,
+      "gzipBytes": 9038,
+      "entry": false,
+      "imports": [
+        "assets/index-6L9zXRZY.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        {
+          "id": "src/services/resumeService.js",
+          "renderedBytes": 286
+        },
+        {
+          "id": "src/data/careers/careerCatalog.js",
+          "renderedBytes": 18697
+        },
+        {
+          "id": "src/pages/Resume/Resume.jsx",
+          "renderedBytes": 44755
+        }
+      ]
+    },
+    {
+      "file": "assets/Roadmap-BLxpIE3n.js",
+      "bytes": 2465978,
+      "gzipBytes": 802643,
+      "entry": false,
+      "imports": [
+        "assets/index-6L9zXRZY.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        {
+          "id": "src/data/careerRoadmaps/careerRoadmapData.js",
+          "renderedBytes": 32619
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeAIApplications.js",
+          "renderedBytes": 122005
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeAIAgents.js",
+          "renderedBytes": 113944
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeAIRAG.js",
+          "renderedBytes": 78196
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeAILLMEngineering.js",
+          "renderedBytes": 106242
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeAIDeepLearning.js",
+          "renderedBytes": 98110
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeAIMachineLearning.js",
+          "renderedBytes": 101228
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeAIPython.js",
+          "renderedBytes": 95843
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeBackendDeployment.js",
+          "renderedBytes": 101142
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeBackendAuthSecurity.js",
+          "renderedBytes": 104914
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeBackendDatabases.js",
+          "renderedBytes": 97127
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeBackendExpress.js",
+          "renderedBytes": 76927
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeBackendNode.js",
+          "renderedBytes": 82537
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeWeb.js",
+          "renderedBytes": 40295
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeDatabases.js",
+          "renderedBytes": 52878
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeSecurity.js",
+          "renderedBytes": 44602
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeTesting.js",
+          "renderedBytes": 33231
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeDevOps.js",
+          "renderedBytes": 46590
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeWebSecurity.js",
+          "renderedBytes": 39047
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeSystemDesign.js",
+          "renderedBytes": 43227
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeWebFundamentalsMore.js",
+          "renderedBytes": 25684
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeHTMLCSSMore.js",
+          "renderedBytes": 28565
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeJavaScriptMore.js",
+          "renderedBytes": 89699
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeReactMore.js",
+          "renderedBytes": 62652
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeBackendMore.js",
+          "renderedBytes": 81934
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeProjectsMore.js",
+          "renderedBytes": 69939
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeDSA.js",
+          "renderedBytes": 82293
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeDSAFinal.js",
+          "renderedBytes": 26344
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeInterview.js",
+          "renderedBytes": 67508
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeJobPreparation.js",
+          "renderedBytes": 58888
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeFrontendWeb.js",
+          "renderedBytes": 31485
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeFrontendHTMLCSS.js",
+          "renderedBytes": 44935
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeFrontendJavaScript.js",
+          "renderedBytes": 23648
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeFrontendReact.js",
+          "renderedBytes": 10826
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeFrontendAdvanced.js",
+          "renderedBytes": 56767
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeFrontendProjects.js",
+          "renderedBytes": 13829
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeBackendProgramming.js",
+          "renderedBytes": 18026
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeBatches.js",
+          "renderedBytes": 128380
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapSupplementalLessons.js",
+          "renderedBytes": 33706
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapLessonCatalog.js",
+          "renderedBytes": 4076
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapLearningContent.js",
+          "renderedBytes": 95993
+        },
+        {
+          "id": "src/data/careerRoadmaps/roadmapPracticeUtils.js",
+          "renderedBytes": 3230
+        },
+        {
+          "id": "src/services/roadmapService.js",
+          "renderedBytes": 491
+        },
+        {
+          "id": "src/pages/Roadmap/Roadmap.jsx",
+          "renderedBytes": 62336
+        }
+      ]
+    },
+    {
+      "file": "assets/Settings-CAmJt_pm.js",
+      "bytes": 20784,
+      "gzipBytes": 4543,
+      "entry": false,
+      "imports": [
+        "assets/index-6L9zXRZY.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        {
+          "id": "src/pages/Settings/Settings.jsx",
+          "renderedBytes": 41071
+        }
+      ]
+    },
+    {
+      "file": "assets/SkillEvidenceReview-DSZNw248.js",
+      "bytes": 7539,
+      "gzipBytes": 2431,
+      "entry": false,
+      "imports": [
+        "assets/index-6L9zXRZY.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        {
+          "id": "src/services/skillEvidenceReviewService.js",
+          "renderedBytes": 520
+        },
+        {
+          "id": "src/pages/Admin/SkillEvidenceReview.jsx",
+          "renderedBytes": 13986
+        }
+      ]
+    },
+    {
+      "file": "assets/Skills-CVVGqZEy.js",
+      "bytes": 14447,
+      "gzipBytes": 3778,
+      "entry": false,
+      "imports": [
+        "assets/index-6L9zXRZY.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        {
+          "id": "src/services/skillService.js",
+          "renderedBytes": 554
+        },
+        {
+          "id": "src/services/skillEvidenceService.js",
+          "renderedBytes": 687
+        },
+        {
+          "id": "src/pages/Skills/Skills.jsx",
+          "renderedBytes": 29408
+        }
+      ]
+    },
+    {
+      "file": "assets/adminUserService-Bzx5Ffu2.js",
+      "bytes": 326,
+      "gzipBytes": 254,
+      "entry": false,
+      "imports": [
+        "assets/index-6L9zXRZY.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        {
+          "id": "src/services/adminUserService.js",
+          "renderedBytes": 459
+        }
+      ]
+    },
+    {
+      "file": "assets/progressService-h6j5sJAK.js",
+      "bytes": 169,
+      "gzipBytes": 157,
+      "entry": false,
+      "imports": [
+        "assets/index-6L9zXRZY.js"
+      ],
+      "dynamicImports": [],
+      "modules": [
+        {
+          "id": "src/services/progressService.js",
+          "renderedBytes": 272
+        }
+      ]
+    },
+    {
+      "file": "assets/index-BuBY2gLA.css",
+      "bytes": 533260,
+      "gzipBytes": 81479
+    },
+    {
+      "file": "index.html",
+      "bytes": 808,
+      "gzipBytes": 438
+    }
+  ],
+  "note": "Vite display gzip and Node zlib gzipBytes may differ by compressor; both are explicitly distinguished."
+}

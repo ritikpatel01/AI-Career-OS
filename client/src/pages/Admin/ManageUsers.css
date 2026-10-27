@@ -1,0 +1,646 @@
+
+/* =========================================================
+   AI CAREER OS — MANAGE USERS
+   Complete responsive Light + Dark theme
+========================================================= */
+
+.manage-users-page {
+    --mu-bg: var(--app-bg, #f5f7fc);
+    --mu-surface: var(--surface, #ffffff);
+    --mu-muted-bg: var(--surface-muted, #edf2fa);
+    --mu-hover-bg: var(--surface-hover, #e4ebf7);
+    --mu-text: var(--text-primary, #172033);
+    --mu-secondary: var(--text-secondary, #52627a);
+    --mu-muted: var(--text-muted, #718198);
+    --mu-border: var(--border-color, #dce4f0);
+    --mu-input-bg: var(--input-bg, #ffffff);
+    --mu-primary: var(--primary-color, #5146e5);
+    min-height: 100%;
+    background: var(--mu-bg);
+    color: var(--mu-text);
+    transition: background-color 180ms ease, color 180ms ease;
+    width: 100%;
+    min-width: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 8px 0 24px;
+    box-sizing: border-box;
+    container: manage-users / inline-size;
+    --mu-action-bg: var(--comfort-button-bg, var(--mu-primary));
+    --mu-action-text: var(--comfort-button-text, #ffffff);
+}
+
+/* Preserve theme tokens while keeping dark primary actions readable. */
+html[data-theme="dark"] .manage-users-page,
+body[data-theme="dark"] .manage-users-page {
+    --mu-action-text: var(--comfort-button-text, #0b1120);
+}
+
+/* Header */
+.manage-users-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 22px;
+    align-items: flex-start;
+}
+
+.manage-users-eyebrow {
+    display: inline-block;
+    color: var(--mu-primary);
+    font-size: var(--type-meta);
+    font-weight: 650;
+    letter-spacing: .12em;
+    margin-bottom: 8px;
+}
+
+.manage-users-header h1 {
+    color: var(--mu-text);
+    line-height: var(--line-heading);
+    letter-spacing: -0.5px;
+    font-size: var(--type-page-title);
+    margin: 0 0 8px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.manage-users-header p,
+.manage-users-panel-heading p {
+    margin: 0;
+    color: var(--mu-secondary);
+    font-size: var(--type-control);
+    line-height: 1.6;
+    max-width: 70ch;
+}
+
+/* Statistic cards and main panel */
+.manage-users-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.manage-users-stat,
+.manage-users-panel {
+    min-width: 0;
+    background: var(--mu-surface);
+    color: var(--mu-text);
+    border: 1px solid var(--mu-border);
+    border-radius: 12px;
+    box-shadow: none;
+}
+
+.manage-users-stat {
+    padding: 16px 18px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 4px 16px;
+    transition: none;
+}
+
+.manage-users-stat span {
+    color: var(--mu-secondary);
+    font-size: var(--type-control);
+    font-weight: 600;
+    min-width: 0;
+}
+
+.manage-users-stat strong {
+    line-height: 1.2;
+    color: var(--mu-text);
+    font-size: 26px;
+    font-weight: 700;
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    overflow-wrap: break-word;
+    min-width: 0;
+}
+
+.manage-users-stat small {
+    font-size: var(--type-caption);
+    line-height: 1.5;
+    grid-column: 1;
+    color: var(--mu-secondary);
+}
+
+.manage-users-panel {
+    padding: 20px;
+}
+
+.manage-users-panel-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.manage-users-panel-heading h2 {
+    color: var(--mu-text);
+    font-size: var(--type-section-title);
+    font-weight: 650;
+    margin: 0 0 5px;
+}
+
+/* Refresh and pagination buttons */
+.manage-users-refresh,
+.manage-users-search button,
+.manage-users-pagination button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--mu-border);
+    border-radius: 9px;
+    background: var(--mu-muted-bg);
+    color: var(--mu-text);
+    padding: 10px 15px;
+    font-size: var(--type-control);
+    cursor: pointer;
+    transition: background-color 180ms ease, border-color 180ms ease;
+    min-height: 44px;
+    font-weight: 600;
+    max-width: 100%;
+    white-space: normal;
+    margin: 0;
+}
+
+.manage-users-refresh:hover:not(:disabled),
+.manage-users-pagination button:hover:not(:disabled) {
+    background: var(--mu-hover-bg);
+    border-color: var(--mu-primary);
+}
+
+/* Search */
+.manage-users-search {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    margin: 0 0 18px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.manage-users-search input {
+    min-width: 0;
+    min-height: 44px;
+    background: var(--mu-input-bg);
+    color: var(--mu-text);
+    border: 1px solid var(--mu-border);
+    border-radius: 9px;
+    font: inherit;
+    outline: none;
+    flex: 1 1 260px;
+    max-width: 100%;
+    padding: 10px 12px;
+}
+
+.manage-users-search input::placeholder {
+    color: var(--mu-muted);
+    opacity: 1;
+}
+
+.manage-users-search input:focus {
+    border-color: var(--mu-primary);
+    box-shadow: 0 0 0 3px
+        color-mix(in srgb, var(--mu-primary) 22%, transparent);
+}
+
+/* Table */
+.manage-users-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--mu-border);
+    min-width: 0;
+    max-width: 100%;
+    border-radius: 10px;
+    scroll-padding-inline: 12px;
+    overscroll-behavior-inline: contain;
+    overflow-anchor: none;
+}
+
+.manage-users-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--mu-surface);
+    color: var(--mu-text);
+    width: 100%;
+    text-align: left;
+    font-size: var(--type-control);
+    min-width: 760px;
+    table-layout: fixed;
+}
+
+.manage-users-table th {
+    color: var(--mu-secondary);
+    font-size: var(--type-meta);
+    text-transform: uppercase;
+    background: var(--mu-muted-bg);
+    border-bottom: 1px solid var(--mu-border);
+    white-space: nowrap;
+    padding: 12px;
+    font-weight: 650;
+    letter-spacing: .04em;
+}
+
+.manage-users-table td {
+    color: var(--mu-text);
+    background: var(--mu-surface);
+    border-bottom: 1px solid var(--mu-border);
+    white-space: nowrap;
+    vertical-align: middle;
+    padding: 14px 12px;
+    line-height: 1.5;
+}
+
+.manage-users-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.manage-users-table tbody tr:hover td {
+    background: var(--mu-hover-bg);
+}
+
+.manage-users-user {
+    display: flex;
+    gap: 10px;
+    min-width: 0;
+    align-items: flex-start;
+}
+
+.manage-users-avatar {
+    width: 35px;
+    height: 35px;
+    flex-shrink: 0;
+    border: 1px solid var(--mu-border);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--mu-muted-bg);
+    color: var(--mu-primary);
+    font-weight: 800;
+}
+
+.manage-users-email {
+    color: var(--mu-secondary);
+}
+
+/* Role badges */
+.manage-users-role {
+    display: inline-flex;
+    align-items: center;
+    font-size: var(--type-meta);
+    white-space: nowrap;
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-weight: 600;
+}
+
+.manage-users-role-admin {
+    background: var(--success-bg);
+    color: var(--success-color);
+}
+
+.manage-users-role-user {
+    background: var(--mu-muted-bg);
+    color: var(--mu-secondary);
+    border: 1px solid var(--mu-border);
+}
+
+/* Promote and demote actions */
+.manage-users-promote,
+.manage-users-demote {
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-size: var(--type-caption);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: filter 180ms ease, border-color 180ms ease;
+    min-height: 40px;
+    font-weight: 600;
+    font-family: inherit;
+}
+
+.manage-users-demote {
+    background: var(--warning-bg);
+    color: var(--warning-color);
+    border-color: color-mix(in srgb, var(--warning-color) 30%, transparent);
+}
+
+/* Disabled actions */
+.manage-users-promote:disabled,
+.manage-users-demote:disabled,
+.manage-users-refresh:disabled,
+.manage-users-search button:disabled,
+.manage-users-pagination button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+/* Alerts */
+.manage-users-alert {
+    padding: 13px 16px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+    font-size: var(--type-body-sm);
+    line-height: 1.6;
+}
+
+.manage-users-alert-error {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.manage-users-alert-success {
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+html[data-theme="dark"] .manage-users-alert-error,
+body[data-theme="dark"] .manage-users-alert-error {
+    background: #351b2a;
+    color: #fecdd3;
+    border-color: #743449;
+}
+
+html[data-theme="dark"] .manage-users-alert-success,
+body[data-theme="dark"] .manage-users-alert-success {
+    background: #123b2a;
+    color: #bbf7d0;
+    border-color: #246344;
+}
+
+/* Loading and empty states */
+.manage-users-state {
+    padding: 46px 15px;
+    text-align: center;
+    color: var(--mu-secondary);
+}
+
+.manage-users-state h3 {
+    margin: 12px 0 7px;
+    color: var(--mu-text);
+    font-size: var(--type-section-title);
+}
+
+.manage-users-state p {
+    margin: 0;
+    color: var(--mu-secondary);
+    font-size: var(--type-control);
+    line-height: 1.7;
+}
+
+.manage-users-empty-icon {
+    font-size: 35px;
+}
+
+.manage-users-spinner {
+    width: 28px;
+    height: 28px;
+    margin: 0 auto 14px;
+    border: 3px solid var(--mu-border);
+    border-top-color: var(--mu-primary);
+    border-radius: 50%;
+    animation: manage-users-spin 0.8s linear infinite;
+}
+
+.manage-users-header > div {
+    min-width: 0;
+}
+
+.manage-users-page .manage-users-search button[type="submit"],
+.manage-users-page .manage-users-promote {
+    background: var(--mu-action-bg);
+    color: var(--mu-action-text) !important;
+    border-color: var(--mu-action-bg);
+}
+
+.manage-users-page .manage-users-search button[type="submit"]:hover:not(:disabled),
+.manage-users-page .manage-users-promote:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--mu-action-bg) 92%, #000000);
+    filter: none;
+}
+
+.manage-users-table :is(th, td):nth-child(1) {
+    width: 24%;
+}
+
+.manage-users-table :is(th, td):nth-child(2) {
+    width: 30%;
+}
+
+.manage-users-table :is(th, td):nth-child(3) {
+    width: 14%;
+}
+
+.manage-users-table :is(th, td):nth-child(4) {
+    width: 15%;
+}
+
+.manage-users-table :is(th, td):nth-child(5) {
+    width: 17%;
+}
+
+.manage-users-table td:nth-child(-n + 2) {
+    white-space: normal;
+    overflow-wrap: break-word;
+}
+
+.manage-users-user strong {
+    min-width: 0;
+    font-weight: 600;
+    overflow-wrap: break-word;
+}
+
+.manage-users-table .manage-users-email {
+    color: var(--mu-secondary);
+}
+
+@keyframes manage-users-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Pagination */
+.manage-users-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+    color: var(--mu-secondary);
+    font-size: var(--type-control);
+    border-top: 1px solid var(--mu-border);
+    padding-top: 16px;
+    margin-top: 18px;
+}
+
+.manage-users-pagination div {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* Security note */
+.manage-users-security-note {
+    font-size: var(--type-caption);
+    line-height: 1.7;
+    margin-top: 18px;
+    color: var(--mu-secondary);
+    max-width: 90ch;
+}
+
+/* Keyboard accessibility */
+.manage-users-page button:focus-visible,
+.manage-users-page input:focus-visible,
+.manage-users-table-wrapper:focus-visible {
+    outline: 2px solid var(--mu-primary);
+    outline-offset: 3px;
+}
+
+/* Responsive layout */
+.manage-users-table-hint {
+    display: none;
+    margin: 0 0 10px;
+    color: var(--mu-secondary);
+    font-size: var(--type-caption);
+    line-height: 1.5;
+}
+
+@container manage-users (max-width: 800px) {
+    .manage-users-table-hint { display: block; }
+}
+
+/* At very narrow effective widths the identity column must itself fit the
+   scroller. Email takes the remaining table width; every column stays in flow. */
+@container manage-users (max-width: 240px) {
+    .manage-users-table :is(th, td):first-child { width: calc(100cqi - 34px); }
+    .manage-users-table :is(th, td):nth-child(2) { width: auto; }
+}
+
+@container manage-users (max-width: 560px) {.manage-users-panel { padding: 14px; }
+.manage-users-search input { flex-basis: 100%; }
+.manage-users-search button { flex: 1 1 auto; }
+.manage-users-pagination { align-items: flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .manage-users-page *,
+    .manage-users-page *::before,
+    .manage-users-page *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Desktop content canvas. Navigation remains in the shared viewport shell. */
+.manage-users-desktop-scroll {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    overflow: auto;
+    scroll-padding-inline: 8px;
+}
+.manage-users-desktop-scroll:focus-visible {
+    outline: 2px solid var(--primary-color, #315ff4);
+    outline-offset: -2px;
+}
+.manage-users-desktop-scroll > .manage-users-desktop-canvas {
+    width: 100%;
+    min-width: 1101px;
+    container: app-content / inline-size;
+}
+
+/* Keep horizontal scrolling local to the account table on phones and tablets. */
+@media (max-width: 1023px) {
+    .manage-users-desktop-scroll > .manage-users-desktop-canvas { min-width: 0; }
+}
+
+@container manage-users (max-width: 650px) {
+    .manage-users-header { margin-bottom: 18px; }
+    .manage-users-eyebrow { font-size: 10px; letter-spacing: 1px; margin-bottom: 8px; }
+    .manage-users-header h1 { font-size: 28px; line-height: 1.2; margin-bottom: 10px; }
+    .manage-users-header p { font-size: 14px; line-height: 1.6; }
+
+    .manage-users-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-bottom: 16px; }
+    .manage-users-stat { padding: 12px; grid-template-columns: minmax(0, 1fr); gap: 6px; align-content: start; }
+    .manage-users-stat span { font-size: 12px; line-height: 1.5; overflow-wrap: anywhere; }
+    .manage-users-stat strong { grid-column: 1; grid-row: 2; font-size: 24px; }
+    .manage-users-stat small { font-size: 11px; line-height: 1.5; overflow-wrap: anywhere; }
+
+    .manage-users-panel { padding: 14px; border-radius: 14px; }
+    .manage-users-panel-heading { margin-bottom: 16px; gap: 10px; }
+    .manage-users-panel-heading h2 { font-size: 20px; line-height: 1.4; }
+    .manage-users-panel-heading p { font-size: 13px; line-height: 1.6; }
+    .manage-users-search { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-bottom: 14px; }
+    .manage-users-search input { grid-column: 1 / -1; box-sizing: border-box; width: 100%; min-height: 48px; font-size: 16px; }
+    .manage-users-search button { min-width: 0; min-height: 44px; padding: 10px 12px; font-size: 13px; }
+    .manage-users-table-hint { display: none; }
+    .manage-users-table-wrapper { border: 0; border-radius: 0; overflow: visible; }
+    .manage-users-table { display: block; width: 100%; min-width: 0; font-size: 13px; background: transparent; }
+    /* Keep column headings available to assistive technology. */
+    .manage-users-table thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+    }
+    .manage-users-table tbody { display: grid; gap: 10px; width: 100%; }
+    .manage-users-table tbody tr {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, auto);
+        gap: 8px 12px;
+        min-width: 0;
+        padding: 14px;
+        border: 1px solid var(--mu-border);
+        border-radius: 12px;
+        background: var(--mu-surface);
+    }
+    .manage-users-table tbody td:nth-child(n),
+    .manage-users-table tbody tr:last-child td {
+        display: block;
+        width: auto;
+        min-width: 0;
+        padding: 0;
+        border: 0;
+        white-space: normal;
+        overflow-wrap: anywhere;
+        background: transparent;
+    }
+    .manage-users-table tbody td:nth-child(1) { grid-column: 1 / -1; grid-row: 1; }
+    .manage-users-table tbody td:nth-child(2) { grid-column: 1 / -1; grid-row: 2; padding-bottom: 10px; border-bottom: 1px solid var(--mu-border); }
+    .manage-users-table tbody td:nth-child(3) { grid-column: 1; grid-row: 3; align-self: end; }
+    .manage-users-table tbody td:nth-child(4) { grid-column: 1; grid-row: 4; font-size: 11px; color: var(--mu-secondary); }
+    .manage-users-table tbody td:nth-child(4)::before { content: "Registered "; }
+    .manage-users-table tbody td:nth-child(5) { grid-column: 2; grid-row: 3 / 5; align-self: center; }
+    .manage-users-table th { padding: 11px 10px; font-size: 10px; }
+    .manage-users-table td { padding: 10px; line-height: 1.5; }
+    .manage-users-user { align-items: center; gap: 8px; }
+    .manage-users-avatar { width: 30px; height: 30px; font-size: 12px; }
+    .manage-users-user strong { font-size: 13px; }
+    .manage-users-promote,
+    .manage-users-demote { min-height: 44px; padding: 10px; font-size: 12px; }
+    .manage-users-pagination { align-items: center; gap: 12px; margin-top: 14px; padding-top: 14px; font-size: 12px; }
+    .manage-users-pagination button { min-height: 44px; padding: 10px 12px; font-size: 13px; }
+    .manage-users-security-note { margin-top: 14px; font-size: 12px; line-height: 1.6; overflow-wrap: anywhere; }
+    .manage-users-state { padding: 24px 12px; }
+    .manage-users-state h3 { font-size: 19px; }
+    .manage-users-state p { font-size: 13px; line-height: 1.6; }
+    .manage-users-alert { padding: 12px; font-size: 13px; overflow-wrap: anywhere; }
+}

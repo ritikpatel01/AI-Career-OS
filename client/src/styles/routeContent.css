@@ -1,0 +1,34 @@
+.route-feedback {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
+    padding: 24px;
+    color: var(--text-primary);
+    background: var(--surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--card-radius);
+    line-height: 1.6;
+}
+
+.route-feedback button {
+    min-height: var(--control-height, 44px);
+    max-width: 100%;
+    padding: 10px 16px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.route-feedback button:focus-visible {
+    outline: 2px solid var(--focus-color, #6688ff);
+    outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+    .route-feedback { padding: 16px; }
+}
+
+.route-feedback h2,
+.route-feedback p {
+    margin-bottom: 12px;
+}

@@ -1,0 +1,150 @@
+{
+  "backendTests": {
+    "total": 13,
+    "passed": 13,
+    "failed": 0,
+    "skipped": 0,
+    "realHTTP": true,
+    "database": "disposable loopback MongoDB replica set",
+    "mailTransport": "stubbed; no SMTP connection"
+  },
+  "roadmapTests": {
+    "total": 95,
+    "passed": 93,
+    "failed": 0,
+    "skipped": 2,
+    "skipReason": "PyTorch and TensorFlow unavailable"
+  },
+  "builds": {
+    "existingEnvironment": "rejected non-loopback HTTP API configuration as designed",
+    "explicitHTTPSFixture": "passed; reserved .test domain, compilation only",
+    "explicitLoopbackPreview": "passed",
+    "entryKB": 287.72,
+    "roadmapKB": 2465.97,
+    "remainingWarning": "Roadmap chunk >500 kB"
+  },
+  "browser": {
+    "mockedAPI": true,
+    "observations": [
+      {
+        "width": 1440,
+        "path": "/dashboard",
+        "overflow": false,
+        "main": true,
+        "unlabelled": 0,
+        "theme": "dark"
+      },
+      {
+        "width": 1440,
+        "path": "/roadmap",
+        "overflow": false,
+        "main": true,
+        "unlabelled": 0,
+        "theme": "dark"
+      },
+      {
+        "width": 1440,
+        "path": "/settings",
+        "overflow": false,
+        "main": true,
+        "unlabelled": 0,
+        "theme": "dark"
+      },
+      {
+        "width": 1440,
+        "path": "/profile",
+        "overflow": false,
+        "main": true,
+        "unlabelled": 0,
+        "theme": "dark"
+      },
+      {
+        "width": 768,
+        "path": "/dashboard",
+        "overflow": false,
+        "main": true,
+        "unlabelled": 0,
+        "theme": "dark"
+      },
+      {
+        "width": 768,
+        "path": "/roadmap",
+        "overflow": false,
+        "main": true,
+        "unlabelled": 0,
+        "theme": "dark"
+      },
+      {
+        "width": 768,
+        "path": "/settings",
+        "overflow": false,
+        "main": true,
+        "unlabelled": 0,
+        "theme": "dark"
+      },
+      {
+        "width": 768,
+        "path": "/profile",
+        "overflow": false,
+        "main": true,
+        "unlabelled": 0,
+        "theme": "dark"
+      },
+      {
+        "width": 390,
+        "path": "/dashboard",
+        "overflow": false,
+        "main": true,
+        "unlabelled": 0,
+        "theme": "dark"
+      },
+      {
+        "width": 390,
+        "path": "/roadmap",
+        "overflow": false,
+        "main": true,
+        "unlabelled": 0,
+        "theme": "dark"
+      },
+      {
+        "width": 390,
+        "path": "/settings",
+        "overflow": false,
+        "main": true,
+        "unlabelled": 0,
+        "theme": "dark"
+      },
+      {
+        "width": 390,
+        "path": "/profile",
+        "overflow": false,
+        "main": true,
+        "unlabelled": 0,
+        "theme": "dark"
+      }
+    ],
+    "routesChecked": 16,
+    "mobileKeyboardContainment": true,
+    "escapeFocusRestoration": true,
+    "menuClosesAfterNavigation": true,
+    "settingsLabelsAndTheme": true,
+    "storageFailureAndRecovery": true,
+    "passwordRecoveryURLs": true,
+    "notesResourcesPractice": true,
+    "savedLightThemePreserved": true,
+    "expectedConsoleErrors": 1,
+    "unexpectedViteErrors": [],
+    "browserExceptions": []
+  },
+  "secrets": {
+    "gitMetadataAvailable": false,
+    "trackedSecretStatus": "unverifiable without actual Git repository/history",
+    "ignorePatternsVerified": "isolated Git fixture",
+    "actualEnvironmentFilesChanged": false
+  },
+  "configuredDatabaseAccessed": false,
+  "realUserDataModified": false,
+  "realEmailsSent": false,
+  "deployed": false,
+  "migrationsExecuted": false
+}

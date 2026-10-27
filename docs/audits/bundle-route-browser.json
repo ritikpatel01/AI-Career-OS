@@ -1,0 +1,24 @@
+{
+  "productionPreview": true,
+  "mockedAPI": true,
+  "initialScripts": [
+    "http://127.0.0.1:5197/assets/index-C02RKSrQ.js"
+  ],
+  "routesIncludingLanding": 24,
+  "directNavigationAndRefresh": true,
+  "unauthenticatedRedirect": true,
+  "delayedChunkKeepsShell": true,
+  "directLoadShowsSuspense": true,
+  "failedChunkShowsError": true,
+  "navigationAfterError": true,
+  "reloadRecovers": true,
+  "expectedFailedChunks": [
+    {
+      "url": "http://127.0.0.1:5197/assets/Documents-D8fReCRF.js",
+      "reason": "net::ERR_FAILED"
+    }
+  ],
+  "unexpectedHTTPErrors": [],
+  "expectedReactErrors": 8,
+  "unexpectedRuntimeExceptions": []
+}

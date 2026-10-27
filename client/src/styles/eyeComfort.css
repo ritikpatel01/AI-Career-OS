@@ -1,0 +1,75 @@
+/* Opt-in token compatibility for legacy palettes. Defaults leave existing CSS intact. */
+html[data-eye-comfort="on"][data-theme] body :is(.ac-page, .jobs-page, .settings-page, .admin-data-page, .manage-users-page, .evidence-review-page, .kb-page, .github-page) {
+    --ac-bg: var(--app-bg); --ac-bg-secondary: var(--surface-muted);
+    --ac-surface: var(--surface); --ac-surface-raised: var(--surface-raised); --ac-surface-hover: var(--surface-hover);
+    --ac-text: var(--text-primary); --ac-text-secondary: var(--text-secondary); --ac-muted: var(--text-muted);
+    --ac-border: var(--border-color); --ac-border-strong: var(--input-border);
+    --jobs-bg: var(--app-bg); --jobs-surface: var(--surface); --jobs-surface-raised: var(--surface-raised);
+    --jobs-surface-soft: var(--surface-muted); --jobs-text: var(--text-primary);
+    --jobs-secondary: var(--text-secondary); --jobs-muted: var(--text-muted); --jobs-border: var(--border-color);
+    --jobs-blue: var(--primary-color); --jobs-blue-bright: var(--comfort-button-bg); --jobs-blue-soft: var(--surface-muted);
+    --settings-bg: var(--app-bg); --settings-card: var(--surface); --settings-text: var(--text-primary);
+    --settings-muted: var(--text-secondary); --settings-border: var(--border-color); --settings-input-bg: var(--input-bg);
+    --admin-bg: var(--app-bg); --admin-surface: var(--surface); --admin-text: var(--text-primary);
+    --admin-muted: var(--text-muted); --admin-border: var(--border-color);
+    --mu-bg: var(--app-bg); --mu-surface: var(--surface); --mu-text: var(--text-primary); --mu-muted: var(--text-muted);
+    --mu-border: var(--border-color);
+    --mu-secondary: var(--text-secondary); --mu-muted-bg: var(--surface-muted); --mu-hover-bg: var(--surface-hover); --mu-input-bg: var(--input-bg);
+    --admin-secondary: var(--text-secondary); --admin-input: var(--input-bg); --admin-surface-muted: var(--surface-muted); --admin-surface-hover: var(--surface-hover);
+    --er-bg: var(--app-bg); --er-surface: var(--surface); --er-text: var(--text-primary); --er-secondary: var(--text-secondary);
+    --er-muted: var(--text-muted); --er-border: var(--border-color); --er-input-bg: var(--input-bg); --er-muted-bg: var(--surface-muted); --er-hover-bg: var(--surface-hover);
+    --kb-bg: var(--app-bg); --kb-surface: var(--surface); --kb-text: var(--text-primary); --kb-secondary: var(--text-secondary);
+    --kb-muted-text: var(--text-muted); --kb-muted: var(--surface-muted); --kb-border: var(--border-color); --kb-hover: var(--surface-hover);
+    --gh-bg: var(--app-bg); --gh-surface: var(--surface); --gh-text: var(--text-primary); --gh-secondary: var(--text-secondary);
+    --gh-muted-text: var(--text-muted); --gh-muted: var(--surface-muted); --gh-border: var(--border-color); --gh-hover: var(--surface-hover);
+    color-scheme: inherit;
+}
+
+/* Change only paint, never layout, opacity, filters, or media content. */
+html[data-eye-comfort="on"] body :is(
+    .ac-page, .dashboard-page, .roadmap-page, .documents-page, .profile-page,
+    .jobs-page, .settings-page, .skills-page, .dsa-page, .interview-page,
+    .github-page, .kb-page, .projects-page, .resume-page, .progress-page,
+    .activities-page, .notifications-page, .login-page, .auth-page,
+    .admin-data-page, .manage-users-page, .evidence-review-page
+) {
+    background-color: var(--app-bg) !important;
+    color: var(--text-primary) !important;
+}
+html[data-eye-comfort="on"] body :is(
+    [class$="-card"], [class$="-panel"], [class$="-modal"], [class$="-dialog"],
+    .job-filter-sidebar, .job-details-column, .jobs-hero, .auth-container, .login-form-panel
+):not(button):not(a) {
+    background-color: var(--surface) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-primary) !important;
+}
+html[data-eye-comfort="on"] body :is(h1, h2, h3, h4, h5, h6) {
+    color: var(--text-primary) !important;
+}
+html[data-eye-comfort="on"] body :is(input:not([type="range"]):not([type="checkbox"]):not([type="radio"]), select, textarea) {
+    background-color: var(--input-bg) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--input-border) !important;
+    caret-color: var(--text-primary);
+}
+html[data-eye-comfort="on"] body :is(input, textarea)::placeholder { color: var(--text-secondary) !important; opacity: 1; }
+html[data-eye-comfort="on"] body :is(.btn-primary, .primary-button, .settings-primary-button, .apply-button, .login-submit-button) {
+    background: var(--comfort-button-bg) !important;
+    color: var(--comfort-button-text) !important;
+    border-color: var(--comfort-button-bg) !important;
+}
+html[data-eye-comfort="on"] body :focus-visible {
+    outline: 2px solid var(--focus-color) !important;
+    outline-offset: 3px;
+}
+/* Immediate color updates avoid flashes or long page-wide color animations. */
+html[data-eye-comfort="on"] body,
+html[data-eye-comfort="on"] :is(#root, .app-layout, .app-main) { transition: none; }
+html[data-comfort-effects="reduced"] body :is(
+    [class$="-card"], [class$="-panel"], [class$="-modal"], [class$="-dialog"],
+    .jobs-hero, .ac-hero, .ac-page, .settings-page
+) { box-shadow: none !important; text-shadow: none !important; background-image: none !important; }
+@media (forced-colors: active) {
+    html[data-eye-comfort="on"] body :focus-visible { outline-color: Highlight !important; }
+}

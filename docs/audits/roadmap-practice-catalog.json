@@ -1,0 +1,366 @@
+{
+  "totals": {
+    "careers": 4,
+    "phases": 34,
+    "topics": 285,
+    "topicsWithUsableExercises": 285,
+    "topicsWithoutUsableExercises": 0,
+    "topicsMeetingThreeExerciseTarget": 285,
+    "topicsMeetingFullDifficultyTarget": 285,
+    "publishedExercises": 2571,
+    "incompleteExercises": 0,
+    "duplicateExerciseIds": []
+  },
+  "careers": [
+    {
+      "career": "Full Stack Developer",
+      "phases": 15,
+      "topics": 161,
+      "exercises": 1455,
+      "Easy": 484,
+      "Medium": 485,
+      "Hard": 486
+    },
+    {
+      "career": "Frontend Developer",
+      "phases": 6,
+      "topics": 43,
+      "exercises": 387,
+      "Easy": 129,
+      "Medium": 129,
+      "Hard": 129
+    },
+    {
+      "career": "Backend Developer",
+      "phases": 6,
+      "topics": 39,
+      "exercises": 351,
+      "Easy": 117,
+      "Medium": 117,
+      "Hard": 117
+    },
+    {
+      "career": "AI Engineer",
+      "phases": 7,
+      "topics": 42,
+      "exercises": 378,
+      "Easy": 126,
+      "Medium": 126,
+      "Hard": 126
+    }
+  ],
+  "completionKeys": {
+    "scopedCount": 2571,
+    "rawKeyCollisions": [],
+    "legacyAliasCount": 6
+  },
+  "referenceChecksAttached": 316,
+  "phases": [
+    {
+      "career": "Full Stack Developer",
+      "phase": "Web Fundamentals",
+      "topics": 8,
+      "exercises": 75,
+      "Easy": 24,
+      "Medium": 25,
+      "Hard": 26
+    },
+    {
+      "career": "Full Stack Developer",
+      "phase": "HTML & CSS",
+      "topics": 10,
+      "exercises": 90,
+      "Easy": 30,
+      "Medium": 30,
+      "Hard": 30
+    },
+    {
+      "career": "Full Stack Developer",
+      "phase": "JavaScript",
+      "topics": 15,
+      "exercises": 137,
+      "Easy": 46,
+      "Medium": 46,
+      "Hard": 45
+    },
+    {
+      "career": "Full Stack Developer",
+      "phase": "React.js",
+      "topics": 12,
+      "exercises": 108,
+      "Easy": 36,
+      "Medium": 36,
+      "Hard": 36
+    },
+    {
+      "career": "Full Stack Developer",
+      "phase": "Backend Development",
+      "topics": 14,
+      "exercises": 126,
+      "Easy": 42,
+      "Medium": 42,
+      "Hard": 42
+    },
+    {
+      "career": "Full Stack Developer",
+      "phase": "Databases",
+      "topics": 12,
+      "exercises": 108,
+      "Easy": 36,
+      "Medium": 36,
+      "Hard": 36
+    },
+    {
+      "career": "Full Stack Developer",
+      "phase": "Authentication & Security",
+      "topics": 10,
+      "exercises": 90,
+      "Easy": 30,
+      "Medium": 30,
+      "Hard": 30
+    },
+    {
+      "career": "Full Stack Developer",
+      "phase": "Testing",
+      "topics": 8,
+      "exercises": 72,
+      "Easy": 24,
+      "Medium": 24,
+      "Hard": 24
+    },
+    {
+      "career": "Full Stack Developer",
+      "phase": "DevOps & Deployment",
+      "topics": 11,
+      "exercises": 99,
+      "Easy": 33,
+      "Medium": 33,
+      "Hard": 33
+    },
+    {
+      "career": "Full Stack Developer",
+      "phase": "Web Security",
+      "topics": 9,
+      "exercises": 81,
+      "Easy": 27,
+      "Medium": 27,
+      "Hard": 27
+    },
+    {
+      "career": "Full Stack Developer",
+      "phase": "System Design",
+      "topics": 10,
+      "exercises": 90,
+      "Easy": 30,
+      "Medium": 30,
+      "Hard": 30
+    },
+    {
+      "career": "Full Stack Developer",
+      "phase": "Real-World Projects",
+      "topics": 9,
+      "exercises": 82,
+      "Easy": 27,
+      "Medium": 27,
+      "Hard": 28
+    },
+    {
+      "career": "Full Stack Developer",
+      "phase": "DSA",
+      "topics": 13,
+      "exercises": 117,
+      "Easy": 39,
+      "Medium": 39,
+      "Hard": 39
+    },
+    {
+      "career": "Full Stack Developer",
+      "phase": "Interview Preparation",
+      "topics": 10,
+      "exercises": 90,
+      "Easy": 30,
+      "Medium": 30,
+      "Hard": 30
+    },
+    {
+      "career": "Full Stack Developer",
+      "phase": "Job Preparation",
+      "topics": 10,
+      "exercises": 90,
+      "Easy": 30,
+      "Medium": 30,
+      "Hard": 30
+    },
+    {
+      "career": "Frontend Developer",
+      "phase": "Web Fundamentals",
+      "topics": 5,
+      "exercises": 45,
+      "Easy": 15,
+      "Medium": 15,
+      "Hard": 15
+    },
+    {
+      "career": "Frontend Developer",
+      "phase": "HTML & CSS",
+      "topics": 8,
+      "exercises": 72,
+      "Easy": 24,
+      "Medium": 24,
+      "Hard": 24
+    },
+    {
+      "career": "Frontend Developer",
+      "phase": "JavaScript",
+      "topics": 9,
+      "exercises": 81,
+      "Easy": 27,
+      "Medium": 27,
+      "Hard": 27
+    },
+    {
+      "career": "Frontend Developer",
+      "phase": "React",
+      "topics": 8,
+      "exercises": 72,
+      "Easy": 24,
+      "Medium": 24,
+      "Hard": 24
+    },
+    {
+      "career": "Frontend Developer",
+      "phase": "Advanced Frontend",
+      "topics": 7,
+      "exercises": 63,
+      "Easy": 21,
+      "Medium": 21,
+      "Hard": 21
+    },
+    {
+      "career": "Frontend Developer",
+      "phase": "Projects & Interview",
+      "topics": 6,
+      "exercises": 54,
+      "Easy": 18,
+      "Medium": 18,
+      "Hard": 18
+    },
+    {
+      "career": "Backend Developer",
+      "phase": "Programming",
+      "topics": 5,
+      "exercises": 45,
+      "Easy": 15,
+      "Medium": 15,
+      "Hard": 15
+    },
+    {
+      "career": "Backend Developer",
+      "phase": "Node.js",
+      "topics": 6,
+      "exercises": 54,
+      "Easy": 18,
+      "Medium": 18,
+      "Hard": 18
+    },
+    {
+      "career": "Backend Developer",
+      "phase": "Express.js",
+      "topics": 7,
+      "exercises": 63,
+      "Easy": 21,
+      "Medium": 21,
+      "Hard": 21
+    },
+    {
+      "career": "Backend Developer",
+      "phase": "Databases",
+      "topics": 7,
+      "exercises": 63,
+      "Easy": 21,
+      "Medium": 21,
+      "Hard": 21
+    },
+    {
+      "career": "Backend Developer",
+      "phase": "Authentication & Security",
+      "topics": 7,
+      "exercises": 63,
+      "Easy": 21,
+      "Medium": 21,
+      "Hard": 21
+    },
+    {
+      "career": "Backend Developer",
+      "phase": "Deployment & System Design",
+      "topics": 7,
+      "exercises": 63,
+      "Easy": 21,
+      "Medium": 21,
+      "Hard": 21
+    },
+    {
+      "career": "AI Engineer",
+      "phase": "Python",
+      "topics": 6,
+      "exercises": 54,
+      "Easy": 18,
+      "Medium": 18,
+      "Hard": 18
+    },
+    {
+      "career": "AI Engineer",
+      "phase": "Machine Learning",
+      "topics": 6,
+      "exercises": 54,
+      "Easy": 18,
+      "Medium": 18,
+      "Hard": 18
+    },
+    {
+      "career": "AI Engineer",
+      "phase": "Deep Learning",
+      "topics": 6,
+      "exercises": 54,
+      "Easy": 18,
+      "Medium": 18,
+      "Hard": 18
+    },
+    {
+      "career": "AI Engineer",
+      "phase": "LLM Engineering",
+      "topics": 6,
+      "exercises": 54,
+      "Easy": 18,
+      "Medium": 18,
+      "Hard": 18
+    },
+    {
+      "career": "AI Engineer",
+      "phase": "RAG",
+      "topics": 6,
+      "exercises": 54,
+      "Easy": 18,
+      "Medium": 18,
+      "Hard": 18
+    },
+    {
+      "career": "AI Engineer",
+      "phase": "AI Agents",
+      "topics": 6,
+      "exercises": 54,
+      "Easy": 18,
+      "Medium": 18,
+      "Hard": 18
+    },
+    {
+      "career": "AI Engineer",
+      "phase": "AI Applications",
+      "topics": 6,
+      "exercises": 54,
+      "Easy": 18,
+      "Medium": 18,
+      "Hard": 18
+    }
+  ]
+}

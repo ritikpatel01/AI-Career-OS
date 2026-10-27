@@ -1,0 +1,673 @@
+{
+  "staging": {
+    "targetIdentified": false,
+    "databaseIdentityConfirmed": false,
+    "databaseTransactionVerified": false,
+    "emailsSent": false,
+    "deployed": false,
+    "acceptanceStatus": "NOT RUN; awaiting owner target details and authorization"
+  },
+  "configuration": {
+    "serverEnvFilePresence": {
+      "NODE_ENV": false,
+      "PORT": true,
+      "MONGO_URI": true,
+      "JWT_SECRET": true,
+      "CORS_ORIGINS": false,
+      "MAIL_HOST": true,
+      "MAIL_PORT": true,
+      "MAIL_SECURE": true,
+      "MAIL_USER": true,
+      "MAIL_PASS": true,
+      "MAIL_FROM": true
+    },
+    "clientEnvFilePresence": {
+      "VITE_API_URL": true
+    },
+    "stagingIdentityConfirmed": false,
+    "clientAPISafety": {
+      "https": false,
+      "loopback": false,
+      "endsInApi": true
+    }
+  },
+  "authenticationRouteInspection": {
+    "modules": 19,
+    "protectedRouteCount": 63,
+    "unprotectedUnexpected": [],
+    "registrations": [
+      {
+        "file": "activityRoutes.js",
+        "publicByDesign": false,
+        "routes": [
+          {
+            "methods": [
+              "get"
+            ],
+            "path": "/",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "post"
+            ],
+            "path": "/",
+            "versionMiddleware": true
+          }
+        ]
+      },
+      {
+        "file": "adminDataRoutes.js",
+        "publicByDesign": false,
+        "routes": [
+          {
+            "methods": [
+              "get"
+            ],
+            "path": "/summary",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "get"
+            ],
+            "path": "/:resource",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "get"
+            ],
+            "path": "/:resource/:recordId",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "patch"
+            ],
+            "path": "/:resource/:recordId",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "delete"
+            ],
+            "path": "/:resource/:recordId",
+            "versionMiddleware": true
+          }
+        ]
+      },
+      {
+        "file": "adminUserRoutes.js",
+        "publicByDesign": false,
+        "routes": [
+          {
+            "methods": [
+              "get"
+            ],
+            "path": "/",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "patch"
+            ],
+            "path": "/:userId/role",
+            "versionMiddleware": true
+          }
+        ]
+      },
+      {
+        "file": "authRoutes.js",
+        "publicByDesign": true,
+        "routes": [
+          {
+            "methods": [
+              "post"
+            ],
+            "path": "/register",
+            "versionMiddleware": false
+          },
+          {
+            "methods": [
+              "post"
+            ],
+            "path": "/login",
+            "versionMiddleware": false
+          }
+        ]
+      },
+      {
+        "file": "documentRoutes.js",
+        "publicByDesign": false,
+        "routes": [
+          {
+            "methods": [
+              "get"
+            ],
+            "path": "/",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "post"
+            ],
+            "path": "/",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "post"
+            ],
+            "path": "/:id/ask",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "get"
+            ],
+            "path": "/:id/download",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "get"
+            ],
+            "path": "/:id",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "delete"
+            ],
+            "path": "/:id",
+            "versionMiddleware": true
+          }
+        ]
+      },
+      {
+        "file": "dsaRoutes.js",
+        "publicByDesign": false,
+        "routes": [
+          {
+            "methods": [
+              "get"
+            ],
+            "path": "/",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "post"
+            ],
+            "path": "/",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "put"
+            ],
+            "path": "/:id",
+            "versionMiddleware": true
+          }
+        ]
+      },
+      {
+        "file": "githubRoutes.js",
+        "publicByDesign": false,
+        "routes": [
+          {
+            "methods": [
+              "post"
+            ],
+            "path": "/analyze",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "get"
+            ],
+            "path": "/:username/repositories",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "get"
+            ],
+            "path": "/:username",
+            "versionMiddleware": true
+          }
+        ]
+      },
+      {
+        "file": "interviewRoutes.js",
+        "publicByDesign": false,
+        "routes": [
+          {
+            "methods": [
+              "get"
+            ],
+            "path": "/",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "post"
+            ],
+            "path": "/answer",
+            "versionMiddleware": true
+          }
+        ]
+      },
+      {
+        "file": "jobRoutes.js",
+        "publicByDesign": false,
+        "routes": [
+          {
+            "methods": [
+              "get"
+            ],
+            "path": "/",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "post"
+            ],
+            "path": "/",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "get"
+            ],
+            "path": "/:id",
+            "versionMiddleware": true
+          }
+        ]
+      },
+      {
+        "file": "knowledgeRoutes.js",
+        "publicByDesign": false,
+        "routes": [
+          {
+            "methods": [
+              "get"
+            ],
+            "path": "/",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "get"
+            ],
+            "path": "/:id",
+            "versionMiddleware": true
+          }
+        ]
+      },
+      {
+        "file": "notificationRoutes.js",
+        "publicByDesign": false,
+        "routes": [
+          {
+            "methods": [
+              "get"
+            ],
+            "path": "/",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "post"
+            ],
+            "path": "/",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "put"
+            ],
+            "path": "/:id/read",
+            "versionMiddleware": true
+          }
+        ]
+      },
+      {
+        "file": "passwordResetRoutes.js",
+        "publicByDesign": true,
+        "routes": [
+          {
+            "methods": [
+              "post"
+            ],
+            "path": "/forgot-password",
+            "versionMiddleware": false
+          },
+          {
+            "methods": [
+              "post"
+            ],
+            "path": "/verify-reset-code",
+            "versionMiddleware": false
+          },
+          {
+            "methods": [
+              "post"
+            ],
+            "path": "/reset-password",
+            "versionMiddleware": false
+          }
+        ]
+      },
+      {
+        "file": "profileRoutes.js",
+        "publicByDesign": false,
+        "routes": [
+          {
+            "methods": [
+              "get"
+            ],
+            "path": "/",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "post"
+            ],
+            "path": "/",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "put"
+            ],
+            "path": "/",
+            "versionMiddleware": true
+          }
+        ]
+      },
+      {
+        "file": "progressRoutes.js",
+        "publicByDesign": false,
+        "routes": [
+          {
+            "methods": [
+              "get"
+            ],
+            "path": "/",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "post"
+            ],
+            "path": "/",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "put"
+            ],
+            "path": "/:id",
+            "versionMiddleware": true
+          }
+        ]
+      },
+      {
+        "file": "projectRoutes.js",
+        "publicByDesign": false,
+        "routes": [
+          {
+            "methods": [
+              "get"
+            ],
+            "path": "/",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "post"
+            ],
+            "path": "/",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "get"
+            ],
+            "path": "/:id",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "put"
+            ],
+            "path": "/:id",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "delete"
+            ],
+            "path": "/:id",
+            "versionMiddleware": true
+          }
+        ]
+      },
+      {
+        "file": "resumeRoutes.js",
+        "publicByDesign": false,
+        "routes": [
+          {
+            "methods": [
+              "post"
+            ],
+            "path": "/analyze",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "get"
+            ],
+            "path": "/",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "post"
+            ],
+            "path": "/",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "get"
+            ],
+            "path": "/:id",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "put"
+            ],
+            "path": "/:id",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "delete"
+            ],
+            "path": "/:id",
+            "versionMiddleware": true
+          }
+        ]
+      },
+      {
+        "file": "roadmapRoutes.js",
+        "publicByDesign": false,
+        "routes": [
+          {
+            "methods": [
+              "get"
+            ],
+            "path": "/",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "post"
+            ],
+            "path": "/",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "get"
+            ],
+            "path": "/:id",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "put"
+            ],
+            "path": "/:id",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "delete"
+            ],
+            "path": "/:id",
+            "versionMiddleware": true
+          }
+        ]
+      },
+      {
+        "file": "skillEvidenceReviewRoutes.js",
+        "publicByDesign": false,
+        "routes": [
+          {
+            "methods": [
+              "get"
+            ],
+            "path": "/",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "patch"
+            ],
+            "path": "/:evidenceId",
+            "versionMiddleware": true
+          }
+        ]
+      },
+      {
+        "file": "skillRoutes.js",
+        "publicByDesign": false,
+        "routes": [
+          {
+            "methods": [
+              "get"
+            ],
+            "path": "/",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "post"
+            ],
+            "path": "/",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "put"
+            ],
+            "path": "/:id",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "delete"
+            ],
+            "path": "/:id",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "get"
+            ],
+            "path": "/:skillId/evidence",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "post"
+            ],
+            "path": "/:skillId/evidence",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "put"
+            ],
+            "path": "/:skillId/evidence/:evidenceId",
+            "versionMiddleware": true
+          },
+          {
+            "methods": [
+              "delete"
+            ],
+            "path": "/:skillId/evidence/:evidenceId",
+            "versionMiddleware": true
+          }
+        ]
+      }
+    ]
+  },
+  "localServing": {
+    "localOnly": true,
+    "apiRequestsMade": false,
+    "developmentHTML": 200,
+    "developmentModule": 200,
+    "loopbackDeepLink": 200,
+    "hashedAsset": 200,
+    "assetIsJS": true
+  },
+  "tests": {
+    "backend": {
+      "total": 13,
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0,
+      "scope": "real HTTP plus disposable loopback replica set; SMTP stubbed"
+    },
+    "roadmap": {
+      "total": 95,
+      "passed": 93,
+      "failed": 0,
+      "skipped": 2,
+      "reason": "PyTorch/TensorFlow unavailable"
+    }
+  },
+  "builds": {
+    "unchangedEnvironment": "blocked as expected: non-loopback HTTP API URL",
+    "httpsFixture": "passed; reserved .test origin; no server contacted",
+    "loopbackPreview": "passed",
+    "entryKB": 287.72,
+    "roadmapKB": 2465.97,
+    "remainingWarning": "Roadmap chunk >500 kB"
+  },
+  "git": {
+    "metadataAvailable": false,
+    "trackedSecrets": "unverified",
+    "historicalExposure": "unverified",
+    "exclusions": "source inspected and isolated Git fixture test passed"
+  },
+  "runtimeCodeChanged": false,
+  "realUserDataAccessed": false,
+  "productionConfigurationChanged": false
+}

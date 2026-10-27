@@ -1,0 +1,19 @@
+{
+  "realAPI": true,
+  "configuredDatabase": true,
+  "loginUI": true,
+  "saveUI": true,
+  "reload": true,
+  "navigateAwayAndBack": true,
+  "logoutLogin": true,
+  "foreignRead": 404,
+  "foreignWrite": 404,
+  "foreignListIsolated": true,
+  "anonymousWrite": 401,
+  "repeatedUpdates": 3,
+  "recordCount": 1,
+  "failedSaveRollback": true,
+  "completionKey": "ai-applications::ai-apps-chat-submission-v1",
+  "browserExceptions": [],
+  "productionPreview": true
+}

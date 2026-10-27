@@ -1,0 +1,2191 @@
+/* =========================================================
+   AI CAREER OS — DASHBOARD
+   Responsive Layout + Light/Dark Theme Support
+========================================================= */
+
+.dashboard-page {
+    --dashboard-bg: var(--app-bg, #f6f8fc);
+    --dashboard-surface: var(--surface, #ffffff);
+    --dashboard-muted: var(--surface-muted, #f1f5fb);
+    --dashboard-hover: var(--surface-hover, #e9eff8);
+    --dashboard-text: var(--text-primary, #172033);
+    --dashboard-secondary: var(--text-secondary, #64748b);
+    --dashboard-muted-text: var(--text-muted, #94a3b8);
+    --dashboard-border: var(--border-color, #e2e8f0);
+    --dashboard-input: var(--input-bg, #ffffff);
+    --dashboard-primary: var(--primary-color, #315ff4);
+
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    color: var(--dashboard-text);
+    background:
+        radial-gradient(
+            circle at 85% 0%,
+            rgba(37, 99, 235, 0.06),
+            transparent 28%
+        ),
+        var(--dashboard-bg);
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    transition: background-color 180ms ease, color 180ms ease;
+    container: dashboard / inline-size;
+    padding: 8px 0 32px;
+}
+
+.dashboard-page *,
+.dashboard-page *::before,
+.dashboard-page *::after {
+    box-sizing: border-box;
+}
+
+.dashboard-page h1,
+.dashboard-page h2,
+.dashboard-page h3,
+.dashboard-page h4,
+.dashboard-page strong {
+    color: var(--dashboard-text);
+    overflow-wrap: anywhere;
+}
+
+.dashboard-page p,
+.dashboard-page small {
+    color: var(--dashboard-secondary);
+}
+
+.dashboard-page button,
+.dashboard-page input,
+.dashboard-page select,
+.dashboard-page textarea {
+    font: inherit;
+}
+
+.dashboard-page button {
+    cursor: pointer;
+}
+
+.dashboard-page button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+.dashboard-page img,
+.dashboard-page video,
+.dashboard-page svg,
+.dashboard-page canvas {
+    max-width: 100%;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.dashboard-header {
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 20px;
+}
+
+.dashboard-header-left {
+    min-width: 0;
+}
+
+.dashboard-eyebrow,
+.dashboard-page .section-eyebrow {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--dashboard-primary);
+    font-size: var(--type-meta);
+    line-height: 1.2;
+    font-weight: 800;
+    letter-spacing: 0.11em;
+}
+
+.dashboard-header h1 {
+    margin: 0 0 8px;
+    color: var(--dashboard-text);
+    font-size: var(--type-page-title);
+    line-height: var(--line-heading);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    overflow-wrap: break-word;
+}
+
+.dashboard-header-left p {
+    margin: 0;
+    color: var(--dashboard-secondary);
+    font-size: var(--type-body);
+    line-height: 1.6;
+    max-width: 65ch;
+}
+
+.dashboard-header-actions {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    max-width: 100%;
+    width: auto;
+    padding-top: 0;
+    gap: 10px;
+}
+
+.dashboard-header-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    background: var(--dashboard-primary);
+    color: #ffffff;
+    font-size: var(--type-control);
+    font-weight: 700;
+    box-shadow: 0 7px 18px rgba(37, 99, 235, 0.16);
+    transition: transform 180ms ease, background-color 180ms ease;
+    flex: 0 1 auto;
+    min-width: 0;
+    max-width: 100%;
+    white-space: normal;
+    height: auto;
+    min-height: 44px;
+    padding: 10px 14px;
+}
+
+.dashboard-header-button:hover {
+    background: var(--primary-hover, #244bd1);
+    transform: translateY(-1px);
+}
+
+.dashboard-header-button span {
+    font-size: var(--type-body-sm);
+}
+
+.dashboard-outline-button {
+    background: var(--dashboard-surface);
+    color: var(--dashboard-text);
+    border-color: var(--dashboard-border);
+    box-shadow: none;
+}
+
+.dashboard-outline-button:hover {
+    background: var(--dashboard-hover);
+    color: var(--dashboard-primary);
+}
+
+/* =========================================================
+   ERROR MESSAGE
+========================================================= */
+
+.dashboard-error {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 14px 16px;
+    border: 1px solid #fecdca;
+    border-radius: 11px;
+    background: #fef3f2;
+    color: #b42318;
+}
+
+.dashboard-error > span {
+    font-size: var(--type-section-title);
+}
+
+.dashboard-error div {
+    flex: 1;
+    min-width: 0;
+}
+
+.dashboard-error strong {
+    display: block;
+    margin-bottom: 2px;
+    color: #b42318;
+    font-size: var(--type-control);
+}
+
+.dashboard-error p {
+    margin: 0;
+    color: #b42318;
+    font-size: var(--type-caption);
+    overflow-wrap: break-word;
+}
+
+.dashboard-error button {
+    min-height: 34px;
+    padding: 0 12px;
+    border: 1px solid #fda29b;
+    border-radius: 7px;
+    background: #ffffff;
+    color: #b42318;
+    font-size: var(--type-caption);
+    font-weight: 700;
+}
+
+/* =========================================================
+   CAREER READINESS
+========================================================= */
+
+.career-readiness-card {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    margin-bottom: 22px;
+    padding: 25px;
+    overflow: hidden;
+    border: 1px solid #25477d;
+    border-radius: 18px;
+    background: linear-gradient(
+        135deg,
+        #102a56 0%,
+        #183d78 58%,
+        #1e40af 100%
+    );
+    color: #ffffff;
+    box-shadow: 0 15px 35px rgba(30, 64, 175, 0.13);
+}
+
+.career-readiness-card::after {
+    content: "";
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    right: -80px;
+    top: -110px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.07);
+    pointer-events: none;
+}
+
+.career-readiness-card h2,
+.career-readiness-card h3,
+.career-readiness-card strong {
+    color: #ffffff;
+}
+
+.career-readiness-card p {
+    color: #dbeafe;
+}
+
+.career-readiness-main {
+    position: relative;
+    z-index: 1;
+    justify-content: space-between;
+    margin-bottom: 26px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 20px;
+    align-items: center;
+}
+
+.career-readiness-copy {
+    min-width: 0;
+}
+
+.career-readiness-card .section-eyebrow {
+    color: #93c5fd;
+}
+
+.career-readiness-copy h2 {
+    margin: 0 0 8px;
+    color: #ffffff;
+    font-size: 25px;
+    line-height: 1.2;
+}
+
+.career-readiness-copy p {
+    margin: 0;
+    font-size: var(--type-control);
+    line-height: 1.6;
+    max-width: 65ch;
+}
+
+.readiness-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 15px;
+    padding: 7px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #dbeafe;
+    font-size: var(--type-meta);
+    font-weight: 700;
+}
+
+.readiness-status-dot {
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #60a5fa;
+    box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.12);
+}
+
+.readiness-score {
+    flex-shrink: 0;
+    flex: 0 0 auto;
+    max-width: 100%;
+}
+
+.readiness-ring {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: conic-gradient(
+        #60a5fa var(--progress),
+        rgba(255, 255, 255, 0.12) 0
+    );
+    width: 100px;
+    height: 100px;
+}
+
+.readiness-ring-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #153568;
+    width: 78px;
+    height: 78px;
+}
+
+.readiness-ring-inner strong {
+    color: #ffffff;
+    line-height: 1;
+    font-weight: 800;
+    font-size: 23px;
+}
+
+.readiness-ring-inner span {
+    margin-top: 5px;
+    color: #bfdbfe;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.career-readiness-areas {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+    min-width: 0;
+}
+
+.readiness-area {
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.055);
+}
+
+.readiness-area-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 9px;
+}
+
+.readiness-area-top span {
+    min-width: 0;
+    color: #dbeafe;
+    font-size: var(--type-meta);
+    font-weight: 600;
+    overflow-wrap: anywhere;
+    white-space: normal;
+}
+
+.readiness-area-top strong {
+    flex-shrink: 0;
+    color: #ffffff;
+    font-size: var(--type-meta);
+}
+
+.readiness-bar {
+    width: 100%;
+    height: 5px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.13);
+}
+
+.readiness-bar div {
+    height: 100%;
+    border-radius: inherit;
+    background: #60a5fa;
+    transition: width 400ms ease;
+}
+
+/* =========================================================
+   SUMMARY CARDS
+========================================================= */
+
+.dashboard-summary-grid {
+    width: 100%;
+    gap: 15px;
+    margin-bottom: 26px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: stretch;
+}
+
+.dashboard-stat-card {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    min-width: 0;
+    padding: 17px;
+    border: 1px solid var(--dashboard-border);
+    border-radius: 13px;
+    background: var(--dashboard-surface);
+    box-shadow: 0 4px 14px var(
+        --shadow-color,
+        rgba(16, 24, 40, 0.035)
+    );
+    transition: transform 180ms ease, box-shadow 180ms ease;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.dashboard-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 9px 22px var(
+        --shadow-color,
+        rgba(16, 24, 40, 0.07)
+    );
+}
+
+.dashboard-stat-icon {
+    width: 43px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 11px;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.dashboard-stat-icon.blue {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.dashboard-stat-icon.green {
+    background: #ecfdf3;
+    color: #039855;
+}
+
+.dashboard-stat-icon.purple {
+    background: #f4f3ff;
+    color: #6941c6;
+}
+
+.dashboard-stat-icon.orange {
+    background: #fff6ed;
+    color: #e04f16;
+}
+
+.dashboard-stat-card > div:last-child {
+    min-width: 0;
+}
+
+.dashboard-stat-card span {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--dashboard-secondary);
+    font-size: var(--type-meta);
+    font-weight: 600;
+}
+
+.dashboard-stat-card strong {
+    display: block;
+    color: var(--dashboard-text);
+    font-size: 23px;
+    line-height: 1;
+    font-weight: 800;
+}
+
+.dashboard-stat-card small {
+    display: block;
+    margin-top: 5px;
+    color: var(--dashboard-muted-text);
+    font-size: 10px;
+}
+
+/* =========================================================
+   MAIN GRID AND PANELS
+========================================================= */
+
+.dashboard-main-grid {
+    width: 100%;
+    gap: 20px;
+    margin-bottom: 28px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+}
+
+.dashboard-panel {
+    min-width: 0;
+    padding: 22px;
+    border: 1px solid var(--dashboard-border);
+    border-radius: 15px;
+    background: var(--dashboard-surface);
+    box-shadow: 0 4px 16px var(
+        --shadow-color,
+        rgba(16, 24, 40, 0.035)
+    );
+}
+
+.dashboard-panel-header {
+    margin-bottom: 17px;
+}
+
+.dashboard-panel-header h2 {
+    margin: 0 0 4px;
+    color: var(--dashboard-text);
+    font-size: 21px;
+    overflow-wrap: break-word;
+}
+
+.dashboard-panel-header p {
+    margin: 0;
+    color: var(--dashboard-secondary);
+    font-size: var(--type-caption);
+    line-height: 1.5;
+}
+
+/* =========================================================
+   PROGRESS ROWS
+========================================================= */
+
+.dashboard-progress-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.career-progress-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 9px;
+    border: 0;
+    border-bottom: 1px solid var(--dashboard-border);
+    background: transparent;
+    color: var(--dashboard-text);
+    text-align: left;
+    transition: background-color 180ms ease, padding 180ms ease;
+}
+
+.career-progress-row:last-child {
+    border-bottom: 0;
+}
+
+.career-progress-row:hover {
+    padding-right: 12px;
+    padding-left: 12px;
+    border-radius: 9px;
+    background: var(--dashboard-hover);
+}
+
+.career-progress-icon {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: var(--dashboard-muted);
+    font-size: 17px;
+}
+
+.career-progress-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.career-progress-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.career-progress-heading > div {
+    min-width: 0;
+}
+
+.career-progress-heading strong {
+    display: block;
+    margin-bottom: 2px;
+    color: var(--dashboard-text);
+    font-size: var(--type-control);
+    overflow-wrap: break-word;
+}
+
+.career-progress-heading span {
+    display: block;
+    overflow: hidden;
+    color: var(--dashboard-muted-text);
+    font-size: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.career-progress-heading b {
+    flex-shrink: 0;
+    color: var(--dashboard-primary);
+    font-size: var(--type-caption);
+}
+
+.career-progress-track {
+    width: 100%;
+    height: 6px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: var(--dashboard-muted);
+}
+
+.career-progress-track div {
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #2563eb, #60a5fa);
+    transition: width 400ms ease;
+}
+
+.career-progress-content small {
+    display: block;
+    margin-top: 5px;
+    color: var(--dashboard-muted-text);
+    font-size: 10px;
+}
+
+.career-progress-arrow {
+    flex-shrink: 0;
+    color: var(--dashboard-muted-text);
+    font-size: var(--type-body-lg);
+    transition: transform 180ms ease, color 180ms ease;
+}
+
+.career-progress-row:hover .career-progress-arrow {
+    color: var(--dashboard-primary);
+    transform: translateX(3px);
+}
+
+/* =========================================================
+   RIGHT COLUMN
+========================================================= */
+
+.dashboard-right-column {
+    flex-direction: column;
+    gap: 18px;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+}
+
+/* =========================================================
+   NEXT ACTION
+========================================================= */
+
+.next-action-card {
+    position: relative;
+    overflow: hidden;
+    padding: 22px;
+    border-radius: 15px;
+    background: linear-gradient(145deg, #172554, #1e3a8a);
+    color: #ffffff;
+    box-shadow: 0 12px 28px rgba(30, 64, 175, 0.15);
+}
+
+.next-action-card::after {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    right: -65px;
+    bottom: -70px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.07);
+    pointer-events: none;
+}
+
+.next-action-card h2,
+.next-action-card h3,
+.next-action-card strong {
+    color: #ffffff;
+}
+
+.next-action-card .section-eyebrow {
+    color: #93c5fd;
+}
+
+.next-action-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 13px;
+    border-radius: 11px;
+    background: rgba(255, 255, 255, 0.1);
+    font-size: 19px;
+}
+
+.next-action-card h2 {
+    margin: 0 0 8px;
+    font-size: 19px;
+    line-height: 1.35;
+}
+
+.next-action-card > p {
+    margin: 0 0 16px;
+    color: #bfdbfe;
+    font-size: var(--type-caption);
+    line-height: 1.55;
+}
+
+.focus-area {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    padding: 11px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.focus-area-icon {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.1);
+    font-size: 17px;
+}
+
+.focus-area > div:last-child {
+    min-width: 0;
+}
+
+.focus-area span,
+.focus-area strong,
+.focus-area small {
+    display: block;
+}
+
+.focus-area span {
+    color: #93c5fd;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.focus-area strong {
+    margin-top: 2px;
+    color: #ffffff;
+    font-size: var(--type-control);
+    overflow-wrap: break-word;
+}
+
+.focus-area small {
+    margin-top: 2px;
+    color: #bfdbfe;
+    font-size: 11px;
+}
+
+.next-action-button {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 0 13px;
+    border: 0;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #1d4ed8;
+    font-size: var(--type-caption);
+    font-weight: 800;
+}
+
+.next-action-button:hover {
+    background: #eff6ff;
+}
+
+/* =========================================================
+   STRONGEST AREA
+========================================================= */
+
+.highlight-card {
+    padding: 20px;
+    border: 1px solid var(--dashboard-border);
+    border-radius: 15px;
+    background: var(--dashboard-surface);
+    box-shadow: 0 4px 16px var(
+        --shadow-color,
+        rgba(16, 24, 40, 0.035)
+    );
+}
+
+.highlight-top {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 13px;
+}
+
+.highlight-icon {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 9px;
+    background: #fffaeb;
+    font-size: 16px;
+}
+
+.highlight-top span {
+    color: var(--dashboard-muted-text);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+.highlight-card h3 {
+    margin: 0 0 6px;
+    color: var(--dashboard-text);
+    font-size: 17px;
+    overflow-wrap: break-word;
+}
+
+.highlight-card p {
+    margin: 0 0 15px;
+    color: var(--dashboard-secondary);
+    font-size: var(--type-meta);
+    line-height: 1.55;
+}
+
+.highlight-progress > div:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 7px;
+}
+
+.highlight-progress span {
+    color: var(--dashboard-muted-text);
+    font-size: 10px;
+}
+
+.highlight-progress strong {
+    color: var(--dashboard-text);
+    font-size: var(--type-meta);
+}
+
+.highlight-track {
+    width: 100%;
+    height: 6px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: var(--dashboard-muted);
+}
+
+.highlight-track div {
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #f59e0b, #fbbf24);
+}
+
+/* =========================================================
+   QUICK ACTIONS
+========================================================= */
+
+.dashboard-section-block {
+    margin-bottom: 28px;
+}
+
+.dashboard-section-title {
+    margin-bottom: 15px;
+}
+
+.dashboard-section-title h2 {
+    margin: 0 0 4px;
+    color: var(--dashboard-text);
+    font-size: 21px;
+}
+
+.dashboard-section-title p {
+    margin: 0;
+    color: var(--dashboard-secondary);
+    font-size: var(--type-caption);
+    line-height: 1.5;
+}
+
+.quick-actions-grid {
+    gap: 13px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: 1fr;
+}
+
+.quick-action-card {
+    min-width: 0;
+    display: grid;
+    align-items: center;
+    gap: 11px;
+    padding: 15px;
+    border: 1px solid var(--dashboard-border);
+    border-radius: 12px;
+    background: var(--dashboard-surface);
+    color: var(--dashboard-text);
+    text-align: left;
+    box-shadow: 0 3px 12px var(
+        --shadow-color,
+        rgba(16, 24, 40, 0.025)
+    );
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+}
+
+.quick-action-card:hover {
+    transform: translateY(-2px);
+    border-color: #bfdbfe;
+    box-shadow: 0 9px 20px var(
+        --shadow-color,
+        rgba(16, 24, 40, 0.06)
+    );
+}
+
+.quick-action-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #eff6ff;
+    font-size: 18px;
+}
+
+.quick-action-card > div:nth-child(2) {
+    min-width: 0;
+    flex: 1;
+}
+
+.quick-action-card strong {
+    display: block;
+    margin-bottom: 3px;
+    color: var(--dashboard-text);
+    font-size: var(--type-caption);
+    overflow-wrap: break-word;
+}
+
+.quick-action-card span {
+    display: block;
+    color: var(--dashboard-secondary);
+    font-size: 10px;
+    line-height: 1.4;
+}
+
+.quick-action-card b {
+    flex-shrink: 0;
+    color: var(--dashboard-muted-text);
+    font-size: var(--type-body-lg);
+    transition: transform 180ms ease, color 180ms ease;
+}
+
+.quick-action-card:hover b {
+    color: var(--dashboard-primary);
+    transform: translateX(3px);
+}
+
+/* =========================================================
+   CAREER LOOP
+========================================================= */
+
+.career-loop-section {
+    margin-bottom: 28px;
+    padding: 25px;
+    border: 1px solid var(--dashboard-border);
+    border-radius: 15px;
+    background: var(--dashboard-surface);
+    box-shadow: 0 4px 16px var(
+        --shadow-color,
+        rgba(16, 24, 40, 0.035)
+    );
+}
+
+.career-loop-heading {
+    margin-bottom: 21px;
+    text-align: center;
+}
+
+.career-loop-heading h2 {
+    margin: 0 0 6px;
+    color: var(--dashboard-text);
+    font-size: 21px;
+}
+
+.career-loop-heading p {
+    max-width: 650px;
+    margin: 0 auto;
+    color: var(--dashboard-secondary);
+    font-size: var(--type-caption);
+    line-height: 1.55;
+}
+
+.career-loop {
+    align-items: stretch;
+    justify-content: center;
+    gap: 16px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    counter-reset: career-step;
+}
+
+.career-loop-step {
+    min-width: 0;
+    padding: 18px 14px;
+    text-align: center;
+    border: 1px solid var(--dashboard-border);
+    border-radius: 12px;
+    background: var(--dashboard-muted);
+    position: relative;
+    counter-increment: career-step;
+}
+
+.career-loop-step::before { content: counter(career-step, decimal-leading-zero); position: absolute; top: 12px; right: 12px; color: var(--dashboard-secondary); font-size: var(--type-meta); font-weight: 600; font-variant-numeric: tabular-nums; }
+
+.career-loop-step > div {
+    width: 39px;
+    height: 39px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 8px;
+    border-radius: 10px;
+    background: var(--dashboard-surface);
+    box-shadow: 0 3px 8px var(
+        --shadow-color,
+        rgba(16, 24, 40, 0.05)
+    );
+    font-size: var(--type-section-title);
+}
+
+.career-loop-step strong {
+    display: block;
+    margin-bottom: 3px;
+    color: var(--dashboard-text);
+    font-size: var(--type-caption);
+    overflow-wrap: break-word;
+}
+
+.career-loop-step span {
+    display: block;
+    color: var(--dashboard-secondary);
+    font-size: 10px;
+    line-height: 1.4;
+}
+
+.career-loop-arrow {
+    display: none;
+}
+
+/* =========================================================
+   BOTTOM BAR
+========================================================= */
+
+.dashboard-bottom-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 17px 20px;
+    border: 1px solid var(--dashboard-border);
+    border-radius: 13px;
+    background: var(--dashboard-muted);
+}
+
+.dashboard-bottom-bar > div:first-child {
+    min-width: 0;
+}
+
+.dashboard-bottom-bar strong {
+    display: block;
+    margin-bottom: 3px;
+    color: var(--dashboard-text);
+    font-size: var(--type-caption);
+}
+
+.dashboard-bottom-bar span {
+    display: block;
+    color: var(--dashboard-secondary);
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+.dashboard-bottom-actions {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex-shrink: 0;
+}
+
+.dashboard-bottom-actions button {
+    min-height: 36px;
+    padding: 0 11px;
+    border: 1px solid var(--dashboard-border);
+    border-radius: 7px;
+    background: var(--dashboard-surface);
+    color: var(--dashboard-text);
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.dashboard-bottom-actions button:hover {
+    background: var(--dashboard-hover);
+}
+
+.dashboard-bottom-actions .dashboard-logout-bottom {
+    color: #dc2626;
+    border-color: #fecaca;
+}
+
+.dashboard-bottom-actions .dashboard-logout-bottom:hover {
+    background: #fef2f2;
+}
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.dashboard-loading-screen {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    text-align: center;
+}
+
+.dashboard-loading-spinner {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    border: 4px solid #dbeafe;
+    border-top-color: #2563eb;
+    border-radius: 50%;
+    color: transparent;
+    font-size: 0;
+    animation: dashboard-spin 800ms linear infinite;
+}
+
+.dashboard-loading-screen h2 {
+    margin: 0 0 6px;
+    color: var(--dashboard-text);
+    font-size: var(--type-section-title);
+}
+
+.dashboard-loading-screen p {
+    margin: 0;
+    color: var(--dashboard-secondary);
+    font-size: var(--type-caption);
+}
+
+@keyframes dashboard-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* =========================================================
+   RESPONSIVE LAYOUT — LAPTOPS
+   Keep the original desktop design where space allows.
+========================================================= */
+
+/* =========================================================
+   CONSOLIDATED RESPONSIVE LAYOUT
+   Desktop styles above remain the source of truth.
+========================================================= */
+@container dashboard (max-width: 1200px) {
+  .dashboard-main-grid { gap: 16px; }
+  .career-readiness-card { padding: 22px; }
+  .readiness-area { padding: 10px; }
+  .dashboard-stat-card { gap: 10px; padding: 14px; }
+}
+
+@container dashboard (max-width: 950px) {
+  .dashboard-right-column { align-items: stretch; }
+  .career-loop { gap: 16px; }
+  .career-loop-arrow {
+        display: none; }
+}
+
+@media (max-width: 768px) {
+  .dashboard-page { min-height: 100%; }
+}
+
+@container dashboard (max-width: 768px) {
+  .dashboard-header { margin-bottom: 22px; }
+  .dashboard-eyebrow { margin-bottom: 8px; font-size: 10px; letter-spacing: .12em; }
+  .dashboard-header h1 { max-width: 100%; margin-bottom: 9px; letter-spacing: -.035em; overflow-wrap: break-word; }
+  .dashboard-header-left p { font-size: var(--type-caption); line-height: 1.55; }
+  .dashboard-header-actions { align-items: stretch; }
+  .dashboard-header-button { width: auto; justify-content: center; gap: 6px; border-radius: 10px; font-size: var(--type-meta); line-height: 1.2; text-align: center; }
+  .dashboard-header-button span { flex: 0 0 auto; font-size: var(--type-caption); }
+  .dashboard-error { align-items: flex-start; gap: 9px; padding: 12px; }
+  .dashboard-error button { flex-shrink: 0; }
+  .career-readiness-card { margin-bottom: 16px; padding: 18px 15px 15px; border-radius: 16px; }
+  .career-readiness-card::after { width: 170px; height: 170px; top: -78px; right: -70px; }
+  .career-readiness-main { margin-bottom: 18px; }
+  .career-readiness-card .section-eyebrow { margin-bottom: 8px; font-size: 9px; }
+  .career-readiness-copy h2 { margin-bottom: 7px; font-size: clamp(17px, 4.5vw, 21px); line-height: 1.25; }
+  .career-readiness-copy p { font-size: var(--type-meta); line-height: 1.5; }
+  .readiness-status { max-width: 100%; margin-top: 11px; padding: 6px 8px; gap: 6px; font-size: 10px; }
+  .readiness-ring-inner span { margin-top: 3px; font-size: 8px; }
+  .readiness-area { min-width: 0; padding: 10px; border-radius: 10px; scroll-snap-align: start; }
+  .readiness-area-top { gap: 6px; margin-bottom: 8px; }
+  .dashboard-summary-grid { gap: 10px; margin-bottom: 18px; }
+  .dashboard-stat-card { min-width: 0; gap: 10px; padding: 13px 11px; border-radius: 12px; }
+  .dashboard-stat-icon { width: 36px; height: 36px; flex: 0 0 36px; border-radius: 10px; font-size: 16px; }
+  .dashboard-stat-card span { margin-bottom: 5px; font-size: 10px; line-height: 1.3; }
+  .dashboard-stat-card strong { font-size: 21px; }
+  .dashboard-stat-card small { margin-top: 5px; font-size: 9px; line-height: 1.35; overflow-wrap: break-word; }
+  .dashboard-main-grid { gap: 14px; margin-bottom: 22px; }
+  .dashboard-panel { padding: 17px 14px; border-radius: 14px; }
+  .dashboard-panel-header h2, .dashboard-section-title h2, .career-loop-heading h2 { font-size: 19px; line-height: 1.25; }
+  .dashboard-panel-header p, .dashboard-section-title p { font-size: var(--type-meta); }
+  .career-progress-row { gap: 9px; padding: 12px 2px; }
+  .career-progress-icon { width: 34px; height: 34px; flex: 0 0 34px; font-size: 15px; }
+  .career-progress-heading { gap: 8px; }
+  .career-progress-heading strong { font-size: var(--type-caption); }
+  .career-progress-heading span { max-width: 100%; font-size: 9px; }
+  .career-progress-heading b { font-size: var(--type-meta); }
+  .career-progress-content small { font-size: 9px; }
+  .dashboard-right-column { gap: 13px; }
+  .next-action-card, .highlight-card { padding: 18px 16px; border-radius: 14px; }
+  .next-action-card h2 { font-size: var(--type-section-title); }
+  .next-action-card > p, .highlight-card p { font-size: var(--type-meta); }
+  .dashboard-section-block { margin-bottom: 22px; }
+  .dashboard-section-title { margin-bottom: 12px; }
+  .quick-actions-grid { gap: 9px; }
+  .quick-action-card { gap: 9px; padding: 12px 10px; border-radius: 11px; }
+  .quick-action-icon { width: 34px; height: 34px; flex: 0 0 34px; border-radius: 9px; font-size: 16px; }
+  .quick-action-card strong { font-size: var(--type-meta); line-height: 1.3; }
+  .quick-action-card span { font-size: 9px; line-height: 1.4; }
+  .quick-action-card b { font-size: var(--type-control); }
+  .career-loop-section { margin-bottom: 20px; padding: 18px 14px; border-radius: 14px; }
+  .career-loop-heading { margin-bottom: 15px; }
+  .career-loop-heading p { font-size: var(--type-meta); }
+  .career-loop { gap: 16px; }
+  .career-loop-step { padding: 18px 14px; border-radius: 10px; }
+  .career-loop-step strong { font-size: var(--type-meta); }
+  .career-loop-step span { font-size: 9px; }
+  .career-loop-arrow {
+        display: none; }
+  .dashboard-bottom-bar { align-items: stretch; flex-direction: column; gap: 13px; padding: 15px; border-radius: 12px; }
+  .dashboard-bottom-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; width: 100%; }
+  .dashboard-bottom-actions button { width: 100%; min-width: 0; min-height: 38px; padding: 8px 7px; font-size: 10px; }
+  .dashboard-page > *, .dashboard-main-grid > *, .dashboard-right-column > * { min-width: 0; max-width: 100%; }.career-loop { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@container dashboard (max-width: 720px) {
+  .dashboard-summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@container dashboard (max-width: 620px) {
+  .dashboard-header { grid-template-columns: minmax(0, 1fr); }
+  .dashboard-header-actions { justify-content: flex-start; flex-wrap: wrap; }
+  .career-readiness-areas { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .readiness-area { grid-column: span 2; }
+  .readiness-area:nth-last-child(-n + 2) { grid-column: span 3; }
+}
+
+@container dashboard (max-width: 420px) {
+  .dashboard-summary-grid { grid-template-columns: minmax(0, 1fr); }
+  .career-readiness-main { grid-template-columns: minmax(0, 1fr); }
+  .readiness-ring { justify-self: end; }
+  .career-readiness-areas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .readiness-area,
+  .readiness-area:nth-last-child(-n + 2) { grid-column: auto; }
+  .readiness-area:last-child { grid-column: 1 / -1; }
+  .dashboard-header-button { font-size: 10px; }
+  .career-readiness-card { padding: 16px 12px 12px; }
+  .readiness-area { flex-basis: 124px; }
+  .dashboard-stat-card { gap: 8px; padding: 11px 9px; }
+  .dashboard-stat-icon { width: 32px; height: 32px; flex-basis: 32px; font-size: 14px; }
+  .dashboard-stat-card strong { font-size: 19px; }.career-loop { grid-template-columns: minmax(0, 1fr); }
+}
+
+@container dashboard (max-width: 350px) {
+  .highlight-top { flex-wrap: wrap; }
+  .highlight-top span { min-width: 0; overflow-wrap: anywhere; }
+  .career-readiness-areas { grid-template-columns: minmax(0, 1fr); }
+  .dashboard-header-button { font-size: 10px; }
+  .dashboard-summary-grid { gap: 8px; }
+  .dashboard-stat-card { align-items: flex-start; gap: 8px; padding: 11px; }
+  .dashboard-stat-card strong { font-size: var(--type-card-title); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-page *, .dashboard-page *::before, .dashboard-page *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+/* =========================================================
+   PREMIUM POLISH LAYER
+   Refined visual hierarchy, touch feedback, and small-screen fit.
+========================================================= */
+.dashboard-page {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dashboard-header-button,
+.dashboard-error button,
+.career-progress-row,
+.next-action-button,
+.quick-action-card,
+.dashboard-bottom-actions button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.dashboard-header-button:focus-visible,
+.dashboard-error button:focus-visible,
+.career-progress-row:focus-visible,
+.next-action-button:focus-visible,
+.quick-action-card:focus-visible,
+.dashboard-bottom-actions button:focus-visible {
+  outline: 3px solid rgba(96, 165, 250, 0.9);
+  outline-offset: 3px;
+}
+
+.career-readiness-card,
+.dashboard-stat-card,
+.dashboard-panel,
+.next-action-card,
+.highlight-card,
+.quick-action-card,
+.career-loop-section,
+.dashboard-bottom-bar {
+  backface-visibility: hidden;
+}
+
+.career-readiness-card {
+  isolation: isolate;
+}
+
+.readiness-ring {
+  filter: drop-shadow(0 5px 12px rgba(2, 8, 23, 0.14));
+}
+
+.readiness-ring-inner {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.readiness-area,
+.dashboard-stat-card,
+.dashboard-panel,
+.highlight-card,
+.quick-action-card,
+.career-loop-step,
+.dashboard-bottom-bar {
+  transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .dashboard-stat-card:hover,
+  .dashboard-panel:hover,
+  .highlight-card:hover,
+  .career-loop-step:hover {
+    border-color: color-mix(in srgb, var(--dashboard-primary) 24%, var(--dashboard-border));
+  }
+
+  .readiness-area:hover {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+}
+
+@container dashboard (max-width: 768px) {
+
+  .dashboard-header-button {
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12);
+  }
+
+  .dashboard-outline-button {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+  }
+
+  .career-readiness-card {
+    background: linear-gradient(145deg, #0e2448 0%, #153568 58%, #1d438b 100%);
+    border-color: rgba(147, 197, 253, 0.22);
+  }
+
+  .dashboard-stat-card {
+    align-items: center;
+    min-height: 82px;
+    background: linear-gradient(155deg, var(--dashboard-surface), var(--dashboard-muted));
+  }
+
+  .dashboard-panel,
+  .highlight-card {
+    box-shadow: 0 6px 20px rgba(5, 15, 35, 0.055);
+  }
+
+  .career-progress-row {
+    border-radius: 10px;
+  }
+
+  .career-progress-row:active,
+  .quick-action-card:active,
+  .dashboard-header-button:active,
+  .next-action-button:active {
+    transform: scale(0.985);
+  }
+
+  .quick-action-card {
+    min-height: 76px;
+    background: linear-gradient(150deg, var(--dashboard-surface), var(--dashboard-muted));
+  }
+
+  .dashboard-bottom-actions button {
+    min-height: 42px;
+  }
+}
+
+@container dashboard (max-width: 420px) {
+
+  .dashboard-header {
+    margin-bottom: 18px;
+  }
+
+  .dashboard-header h1 {
+    letter-spacing: -0.04em;
+  }
+
+  .dashboard-header-left p {
+    font-size: 11.5px;
+  }
+
+  .dashboard-header-button {
+    border-radius: 9px;
+  }
+
+  .career-readiness-card {
+    box-shadow: 0 8px 22px rgba(4, 16, 40, 0.17);
+  }
+
+  .dashboard-summary-grid {
+    gap: 9px;
+  }
+
+  .dashboard-stat-card {
+    min-height: 78px;
+    padding: 10px 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-page *,
+  .dashboard-page *::before,
+  .dashboard-page *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =========================================================
+   AI CAREER OS — PREMIUM FINISHING LAYER
+   Responsive polish across phones, tablets, laptops and wide displays.
+   This section intentionally refines existing components without changing React logic.
+========================================================= */
+
+.dashboard-page {
+  width: 100%;
+  max-width: 1800px;
+  margin-inline: auto;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+.dashboard-page :where(h1, h2, h3, p) {
+  text-wrap: pretty;
+}
+
+.dashboard-page :where(button, a, input, select, textarea) {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dashboard-page :where(button, a):focus-visible {
+  outline: 3px solid rgba(96, 165, 250, 0.95);
+  outline-offset: 3px;
+}
+
+.dashboard-header-left,
+.dashboard-header-actions,
+.career-readiness-copy,
+.dashboard-stat-card > div:last-child,
+.dashboard-panel,
+.dashboard-right-column,
+.quick-action-card > div:nth-child(2) {
+  min-width: 0;
+}
+
+.dashboard-header-button {
+  border-radius: 10px;
+  letter-spacing: -0.01em;
+}
+
+.dashboard-outline-button {
+  backdrop-filter: blur(10px);
+}
+
+.career-readiness-card {
+  isolation: isolate;
+  background-image:
+    radial-gradient(circle at 100% 0%, rgba(96, 165, 250, 0.18), transparent 38%),
+    linear-gradient(135deg, #10264b 0%, #15366b 54%, #1d438b 100%);
+  box-shadow: 0 14px 34px rgba(10, 31, 70, 0.14);
+}
+
+.career-readiness-card::after {
+  filter: blur(1px);
+}
+
+.readiness-ring {
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.035), 0 8px 22px rgba(4, 16, 40, 0.16);
+}
+
+.readiness-ring-inner {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+.readiness-area {
+  transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.dashboard-stat-card,
+.dashboard-panel,
+.highlight-card,
+.quick-action-card,
+.career-loop-step {
+  border-color: color-mix(in srgb, var(--dashboard-border) 88%, transparent);
+  box-shadow: 0 5px 18px rgba(10, 24, 48, 0.045);
+}
+
+.dashboard-stat-card {
+  min-height: 104px;
+}
+
+.dashboard-stat-icon {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.dashboard-panel,
+.highlight-card,
+.quick-action-card,
+.career-loop-section {
+  background-image: linear-gradient(145deg, rgba(255, 255, 255, 0.018), transparent 55%);
+}
+
+.career-progress-row {
+  border-radius: 10px;
+}
+
+.career-progress-row:focus-visible {
+  outline: 2px solid var(--dashboard-primary);
+  outline-offset: -2px;
+}
+
+.next-action-card {
+  background-image:
+    radial-gradient(circle at 100% 0%, rgba(96, 165, 250, 0.16), transparent 42%),
+    linear-gradient(145deg, #172554, #1e3a8a);
+}
+
+.next-action-button {
+  min-height: 44px;
+  border-radius: 9px;
+}
+
+.quick-action-card {
+  min-height: 82px;
+}
+
+.dashboard-bottom-bar {
+  gap: 18px;
+}
+
+/* Large displays: prevent the dashboard from becoming too stretched. */
+@container dashboard (min-width: 1600px) {
+
+  .dashboard-header {
+    margin-bottom: 32px;
+  }
+
+  .career-readiness-card {
+    padding: 30px;
+    margin-bottom: 26px;
+  }
+
+  .career-readiness-main {
+    margin-bottom: 30px;
+  }
+
+  .dashboard-summary-grid {
+    gap: 18px;
+    margin-bottom: 30px;
+  }
+
+  .dashboard-stat-card {
+    min-height: 112px;
+    padding: 20px;
+  }
+
+  .dashboard-main-grid {
+    gap: 24px;
+  }
+}
+
+/* Smaller laptops and landscape tablets. */
+@container dashboard (min-width: 769px) and (max-width: 1100px) {
+
+  .dashboard-header-actions {
+    justify-content: flex-end;
+  }
+
+  .dashboard-header-button {
+    padding-inline: 12px;
+  }
+
+  .dashboard-right-column {
+    align-items: stretch;
+  }
+}
+
+/* Phones: refined rhythm, safer sizing and better touch usability. */
+@media (max-width: 768px) {
+  .dashboard-page {
+    width: 100%;
+  }
+}
+@container dashboard (max-width: 768px) {
+
+  .dashboard-header {
+    margin-bottom: 20px;
+  }
+
+  .dashboard-header h1 {
+    letter-spacing: -0.035em;
+  }
+
+  .dashboard-header-button {
+    border-radius: 10px;
+    box-shadow: none;
+  }
+
+  .dashboard-header-button:active,
+  .next-action-button:active,
+  .quick-action-card:active {
+    transform: scale(0.985);
+  }
+
+  .career-readiness-card {
+    border-radius: 17px;
+    margin-bottom: 15px;
+  }
+
+  .readiness-status {
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  .dashboard-summary-grid {
+    gap: 9px;
+  }
+
+  .dashboard-stat-card {
+    min-height: 88px;
+    align-items: center;
+    padding: 12px 10px;
+    border-radius: 13px;
+  }
+
+  .dashboard-stat-card small {
+    display: block;
+  }
+
+  .dashboard-panel,
+  .next-action-card,
+  .highlight-card,
+  .career-loop-section {
+    border-radius: 15px;
+  }
+
+  .career-progress-row {
+    min-height: 68px;
+  }
+
+  .quick-action-card {
+    min-height: 76px;
+  }
+
+  .dashboard-bottom-actions button {
+    min-height: 42px;
+  }
+}
+
+/* Very small devices: prioritize legibility and prevent cramped columns. */
+@container dashboard (max-width: 380px) {
+
+  .dashboard-header-left p {
+    font-size: var(--type-meta);
+  }
+
+  .dashboard-header-button {
+    padding-inline: 5px;
+    font-size: 9.5px;
+  }
+
+  .career-readiness-card {
+    padding: 15px 11px 11px;
+  }
+
+  .dashboard-stat-card {
+    gap: 8px;
+    padding: 10px 8px;
+  }
+
+  .dashboard-stat-icon {
+    width: 30px;
+    height: 30px;
+    flex-basis: 30px;
+  }
+
+  .dashboard-stat-card span {
+    font-size: 9px;
+  }
+
+  .dashboard-stat-card strong {
+    font-size: var(--type-section-title);
+  }
+}
+
+@container dashboard (max-width: 330px) {
+
+  .dashboard-header-button {
+    font-size: 10px;
+  }
+
+  .dashboard-summary-grid,
+  .quick-actions-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dashboard-stat-card {
+    align-items: center;
+    padding: 12px;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .dashboard-stat-card:hover,
+  .dashboard-panel:hover,
+  .highlight-card:hover,
+  .quick-action-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(10, 24, 48, 0.08);
+  }
+
+  .readiness-area:hover {
+    border-color: rgba(191, 219, 254, 0.28);
+    background: rgba(255, 255, 255, 0.085);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-page *,
+  .dashboard-page *::before,
+  .dashboard-page *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* ===== AI Career OS: targeted layout repair ===== */
+
+.dashboard-main-grid,
+.dashboard-panel,
+.dashboard-right-column,
+.next-action-card {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.dashboard-main-grid {
+    align-items: start;
+    gap: 20px;
+    width: 100%;
+}
+
+.dashboard-progress-list {
+    width: 100%;
+    min-width: 0;
+}
+
+.career-progress-row {
+    display: grid;
+    grid-template-columns: 38px minmax(0, 1fr) 16px;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+    gap: 10px;
+}
+
+.career-progress-content {
+    min-width: 0;
+    width: 100%;
+}
+
+.career-progress-heading {
+    min-width: 0;
+}
+
+.career-progress-heading > div {
+    min-width: 0;
+}
+
+.next-action-card .next-action-button {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 16px;
+    border: 1px solid #bfdbfe;
+    border-radius: 10px;
+    background: #ffffff !important;
+    color: #1e3a8a !important;
+    font-size: var(--type-body-sm);
+    font-weight: 700;
+    line-height: 1.4;
+    opacity: 1;
+    visibility: visible;
+}
+
+.next-action-card .next-action-button span {
+    color: #1e3a8a !important;
+}
+
+@container dashboard (max-width: 900px) {
+    .dashboard-main-grid {
+        gap: 16px;
+    }
+
+    .dashboard-right-column {
+        gap: 16px;
+    }.quick-actions-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@container dashboard (max-width: 480px) {
+    .dashboard-main-grid {
+        gap: 14px;
+    }
+
+    .dashboard-panel,
+    .next-action-card,
+    .highlight-card {
+        padding: 16px 13px;
+    }
+
+    .career-progress-row {
+        grid-template-columns: 34px minmax(0, 1fr) 12px;
+        gap: 8px;
+        padding: 12px 4px;
+    }
+
+    .career-progress-heading span {
+        max-width: 100%;
+    }.quick-actions-grid { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+}
+
+
+/* Career Readiness contrast only. Its gradient uses light text; reduced
+   decorative effects expose the global surface and need matching theme text. */
+.dashboard-page .career-readiness-card {
+    --readiness-text: #ffffff;
+    --readiness-secondary: #eff6ff;
+    --readiness-label: #dbeafe;
+    --readiness-accent: #dbeafe;
+    --readiness-track: rgba(255, 255, 255, 0.13);
+    --readiness-badge: rgba(255, 255, 255, 0.08);
+    --readiness-area: rgba(255, 255, 255, 0.055);
+}
+html[data-eye-comfort="on"][data-comfort-effects="reduced"] .dashboard-page .career-readiness-card {
+    --readiness-text: var(--text-primary);
+    --readiness-secondary: var(--text-secondary);
+    --readiness-label: var(--primary-color);
+    --readiness-accent: var(--primary-color);
+    --readiness-track: var(--surface-hover);
+    --readiness-badge: var(--surface-muted);
+    --readiness-area: var(--surface-muted);
+}
+.dashboard-page .career-readiness-card :is(h2, h3, strong) {
+    color: var(--readiness-text) !important;
+}
+.dashboard-page .career-readiness-card p,
+.dashboard-page .career-readiness-card .readiness-area-top > span {
+    color: var(--readiness-secondary) !important;
+}
+.dashboard-page .career-readiness-card .section-eyebrow {
+    color: var(--readiness-label) !important;
+}
+.dashboard-page .career-readiness-card .readiness-status {
+    background-color: var(--readiness-badge);
+    color: var(--readiness-secondary) !important;
+}
+.dashboard-page .career-readiness-card .readiness-status-dot,
+.dashboard-page .career-readiness-card .readiness-bar > div {
+    background-color: var(--readiness-accent);
+}
+.dashboard-page .career-readiness-card .readiness-area {
+    background-color: var(--readiness-area);
+}
+.dashboard-page .career-readiness-card .readiness-bar {
+    background-color: var(--readiness-track);
+}
+.dashboard-page .career-readiness-card .readiness-ring {
+    background: conic-gradient(var(--readiness-accent) var(--progress), var(--readiness-track) 0);
+}
+/* The score's center remains intentionally dark in every theme. */
+.dashboard-page .career-readiness-card .readiness-ring-inner strong {
+    color: #ffffff !important;
+}
+.dashboard-page .career-readiness-card .readiness-ring-inner > span {
+    color: #dbeafe !important;
+}
+
+/* Next Best Action: match text to the surface exposed by reduced effects. */
+.dashboard-page .next-action-card {
+    --next-action-text: #ffffff;
+    --next-action-secondary: #eff6ff;
+    --next-action-label: #dbeafe;
+}
+html[data-eye-comfort="on"][data-comfort-effects="reduced"] .dashboard-page .next-action-card {
+    --next-action-text: var(--text-primary);
+    --next-action-secondary: var(--text-secondary);
+    --next-action-label: var(--primary-color);
+}
+.dashboard-page .next-action-card h2,
+.dashboard-page .next-action-card .focus-area strong,
+.dashboard-page .next-action-card .next-action-icon {
+    color: var(--next-action-text) !important;
+}
+.dashboard-page .next-action-card > p,
+.dashboard-page .next-action-card .focus-area small {
+    color: var(--next-action-secondary) !important;
+}
+.dashboard-page .next-action-card .section-eyebrow,
+.dashboard-page .next-action-card .focus-area > div:last-child > span {
+    color: var(--next-action-label) !important;
+}
+
+/* Make readiness-tile hover visible without suggesting a new click action. */
+.dashboard-page .career-readiness-card .readiness-area {
+    transition: background-color 240ms ease, border-color 240ms ease,
+        box-shadow 240ms ease, transform 240ms ease;
+}
+@media (hover: hover) and (pointer: fine) {
+    .dashboard-page .career-readiness-card .readiness-area:hover {
+        background-color: color-mix(in srgb, var(--readiness-area) 94%, #2563eb 6%);
+        border-color: var(--readiness-accent);
+        box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--readiness-accent) 55%, transparent),
+            0 4px 12px rgba(15, 23, 42, 0.08);
+        transform: translateY(-2px);
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .dashboard-page .career-readiness-card .readiness-area {
+        transition: none;
+    }
+    .dashboard-page .career-readiness-card .readiness-area:hover {
+        transform: none;
+    }
+}
+
+/* Dedicated phone composition. Desktop and tablet rules above are unchanged. */
+@media (max-width: 480px) {
+    .dashboard-page .dashboard-header {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+        margin-bottom: 18px;
+    }
+    .dashboard-page .dashboard-header h1 {
+        margin: 0 0 8px;
+        font-size: clamp(24px, 7vw, 30px);
+        line-height: 1.2;
+        overflow-wrap: anywhere;
+    }
+    .dashboard-page .dashboard-eyebrow { font-size: 11px; }
+    .dashboard-page .dashboard-header-left p { font-size: 13px; line-height: 1.55; }
+    .dashboard-page .dashboard-header-actions {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        gap: 6px;
+    }
+    .dashboard-page .dashboard-header-button {
+        flex: 1;
+        min-width: 0;
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 6px;
+        font-size: 12px;
+        white-space: normal;
+        overflow-wrap: break-word;
+    }
+
+    .dashboard-page .career-readiness-card { padding: 16px; margin-bottom: 16px; }
+    .dashboard-page .career-readiness-main {
+        grid-template-columns: minmax(0, 1fr) 80px;
+        align-items: center;
+        gap: 10px 12px;
+        margin-bottom: 16px;
+    }
+    .dashboard-page .career-readiness-copy { display: contents; }
+    .dashboard-page .career-readiness-copy .section-eyebrow {
+        grid-column: 1;
+        grid-row: 1;
+        margin: 0;
+        font-size: 11px;
+    }
+    .dashboard-page .career-readiness-copy h2 {
+        grid-column: 1;
+        grid-row: 2;
+        margin: 0;
+        font-size: 20px;
+        line-height: 1.3;
+    }
+    .dashboard-page .career-readiness-copy p {
+        grid-column: 1 / -1;
+        grid-row: 3;
+        font-size: 13px;
+        line-height: 1.6;
+    }
+    .dashboard-page .readiness-status {
+        grid-column: 1 / -1;
+        grid-row: 4;
+        width: fit-content;
+        margin: 0;
+        font-size: 12px;
+    }
+    .dashboard-page .readiness-score { grid-column: 2; grid-row: 1 / span 2; justify-self: end; }
+    .dashboard-page .readiness-ring { width: 80px; height: 80px; }
+    .dashboard-page .readiness-ring-inner { width: 64px; height: 64px; }
+    .dashboard-page .readiness-ring-inner strong { font-size: 23px; }
+    .dashboard-page .readiness-ring-inner span { font-size: 10px; }
+    .dashboard-page .career-readiness-areas { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .dashboard-page .readiness-area,
+    .dashboard-page .readiness-area:nth-last-child(-n + 2) { grid-column: auto; padding: 10px; }
+    .dashboard-page .readiness-area:last-child { grid-column: 1 / -1; }
+    .dashboard-page .readiness-area-top { flex-wrap: wrap; }
+    .dashboard-page .readiness-area-top :is(span, strong) { font-size: 12px; }
+
+    .dashboard-page .dashboard-summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .dashboard-page .dashboard-stat-card {
+        display: grid;
+        grid-template-columns: 28px minmax(0, 1fr);
+        align-items: start;
+        gap: 10px;
+        padding: 12px;
+    }
+    .dashboard-page .dashboard-stat-icon { width: 28px; height: 28px; font-size: 16px; }
+    .dashboard-page .dashboard-stat-card span { font-size: 13px; line-height: 1.4; }
+    .dashboard-page .dashboard-stat-card strong { font-size: 22px; line-height: 1.2; }
+    .dashboard-page .dashboard-stat-card small { font-size: 12px; line-height: 1.45; }
+
+    .dashboard-page :is(.dashboard-main-grid, .quick-actions-grid, .career-loop) { grid-template-columns: minmax(0, 1fr); }
+    .dashboard-page :is(.dashboard-panel, .next-action-card, .highlight-card, .career-loop-section) { padding: 16px; }
+    .dashboard-page :is(.dashboard-panel-header p, .dashboard-section-title p, .career-loop-heading p, .next-action-card > p, .highlight-card p) { font-size: 13px; line-height: 1.6; }
+    .dashboard-page :is(.career-progress-heading span, .career-progress-content small, .quick-action-card span, .career-loop-step span) { font-size: 12px; line-height: 1.5; }
+    .dashboard-page :is(.career-progress-heading strong, .quick-action-card strong, .career-loop-step strong) { font-size: 14px; }
+    .dashboard-page .quick-action-card { min-height: 64px; padding: 14px; }
+    .dashboard-page :is(.next-action-button, .dashboard-bottom-actions button, .dashboard-error button) {
+        min-height: 44px;
+        font-size: 13px;
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+    @container dashboard (max-width: 300px) {
+        .dashboard-page .dashboard-summary-grid { grid-template-columns: minmax(0, 1fr); }
+    }
+    @container dashboard (max-width: 240px) {
+        .dashboard-page .career-readiness-main { grid-template-columns: minmax(0, 1fr); }
+        .dashboard-page .readiness-score { grid-column: 1; grid-row: 3; justify-self: start; }
+        .dashboard-page .career-readiness-copy p { grid-row: 4; }
+        .dashboard-page .readiness-status { grid-row: 5; }
+        .dashboard-page .career-readiness-areas { grid-template-columns: minmax(0, 1fr); }
+    }
+}
+
+/* Preserve the existing phone layout; extend its action targets to tablets. */
+@container dashboard (max-width: 768px) {
+    .dashboard-page .dashboard-bottom-actions button { min-height: 44px; }
+}

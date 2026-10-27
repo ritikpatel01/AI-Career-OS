@@ -1,0 +1,1030 @@
+/* =========================================================
+   AI CAREER OS — GLOBAL THEME SYSTEM
+   File: client/src/styles/theme.css
+
+   Light and dark themes
+   Global backgrounds, typography, cards, forms, buttons,
+   tables, navigation, dialogs and accessibility
+========================================================= */
+
+/* Stable type sizes respect the browser's default font size and native zoom.
+   No viewport/zoom detection changes these values to compensate for zoom. */
+:root {
+    --type-meta: .6875rem;
+    --type-caption: .75rem;
+    --type-control: .8125rem;
+    --type-body-sm: .875rem;
+    --type-body: .9375rem;
+    --type-body-lg: 1rem;
+    --type-section-title: 1.125rem;
+    --type-card-title: 1.25rem;
+    --type-heading: 1.5rem;
+    --type-page-title: 2rem;
+    --line-heading: 1.25;
+    --line-body: 1.6;
+    --line-control: 1.4;
+    --space-3: .75rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+}
+
+/* =========================================================
+   1. LIGHT THEME
+========================================================= */
+
+:root,
+html[data-theme="light"],
+body[data-theme="light"] {
+    color-scheme: light;
+
+    --app-bg: #f5f7fc;
+    --surface: #ffffff;
+    --surface-muted: #edf2fa;
+    --surface-hover: #e4ebf7;
+    --surface-raised: #ffffff;
+
+    --text-primary: #172033;
+    --text-secondary: #52627a;
+    --text-muted: #718198;
+    --text-on-primary: #ffffff;
+
+    --border-color: #dce4f0;
+    --input-bg: #ffffff;
+    --input-border: #cbd5e1;
+
+    --primary-color: #315ff4;
+    --primary-hover: #244bd1;
+    --primary-soft: #e8eeff;
+
+    /* Shared aliases used by older global rules. */
+    --app-background: var(--app-bg);
+    --surface-secondary: var(--surface-muted);
+    --input-background: var(--input-bg);
+    --primary: var(--primary-color);
+    --accent-color: var(--primary-color);
+
+    --success-color: #15803d;
+    --success-bg: #dcfce7;
+    --warning-color: #a16207;
+    --warning-bg: #fef3c7;
+    --danger-color: #b91c1c;
+    --danger-bg: #fee2e2;
+    --info-color: #0369a1;
+    --info-bg: #e0f2fe;
+
+    --sidebar-bg: #ffffff;
+    --sidebar-text: #334155;
+    --sidebar-muted: #64748b;
+    --sidebar-hover: #edf2fa;
+    --sidebar-active: #315ff4;
+    --sidebar-active-text: #ffffff;
+
+    --table-header-bg: #edf2fa;
+    --table-row-hover: #f3f6fc;
+
+    --shadow-color: rgb(15 23 42 / 7%);
+    --overlay-bg: rgb(15 23 42 / 45%);
+
+    --card-radius: 14px;
+    --control-height: 2.75rem;
+    --control-radius: .5625rem;
+    --shadow-card: 0 4px 16px var(--shadow-color);
+    --focus-color: #315ff4;
+    --transition-speed: 180ms;
+}
+
+/* =========================================================
+   2. DARK THEME
+========================================================= */
+
+html[data-theme="dark"],
+html[data-theme="dark"] body,
+body[data-theme="dark"] {
+    color-scheme: dark;
+
+    --app-bg: #0b1120;
+    --surface: #121d30;
+    --surface-muted: #19273c;
+    --surface-hover: #22334d;
+    --surface-raised: #17243a;
+
+    --text-primary: #f1f5ff;
+    --text-secondary: #c0cce0;
+    --text-muted: #9aabc4;
+    --text-on-primary: #ffffff;
+
+    --border-color: #30415b;
+    --input-bg: #0e192b;
+    --input-border: #3a4c67;
+
+    --primary-color: #6688ff;
+    --primary-hover: #86a0ff;
+    --primary-soft: #1c2d53;
+
+    /* Keep legacy variable names tied to the active theme. */
+    --app-background: var(--app-bg);
+    --surface-secondary: var(--surface-muted);
+    --input-background: var(--input-bg);
+    --primary: var(--primary-color);
+    --accent-color: var(--primary-color);
+
+    --success-color: #6ee7a0;
+    --success-bg: #123b2a;
+    --warning-color: #fcd34d;
+    --warning-bg: #453516;
+    --danger-color: #fca5a5;
+    --danger-bg: #471f2a;
+    --info-color: #7dd3fc;
+    --info-bg: #12364b;
+
+    --sidebar-bg: #101a2b;
+    --sidebar-text: #e1e9f6;
+    --sidebar-muted: #a7b7ce;
+    --sidebar-hover: #1d2b42;
+    --sidebar-active: #315ff4;
+    --sidebar-active-text: #ffffff;
+
+    --table-header-bg: #1b2a40;
+    --table-row-hover: #1b2b42;
+
+    --shadow-color: rgb(0 0 0 / 22%);
+    --overlay-bg: rgb(0 0 0 / 65%);
+    --focus-color: #86a0ff;
+}
+
+/* =========================================================
+   3. RESET AND BASE STYLES
+========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    background: var(--app-bg);
+    color: var(--text-primary);
+    scroll-behavior: smooth;
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+    background: var(--app-bg);
+    color: var(--text-primary);
+    line-height: var(--line-body);
+    font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    transition:
+        background-color var(--transition-speed) ease,
+        color var(--transition-speed) ease;
+}
+
+#root {
+    min-height: 100vh;
+    background: var(--app-bg);
+    color: var(--text-primary);
+}
+
+.app-layout,
+.app-main {
+    min-height: 100vh;
+    background: var(--app-bg);
+    color: var(--text-primary);
+    transition:
+        background-color var(--transition-speed) ease,
+        color var(--transition-speed) ease;
+}
+
+img,
+video,
+svg {
+    max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button,
+input,
+select {
+    line-height: var(--line-control);
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+/* =========================================================
+   4. TYPOGRAPHY
+========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--text-primary);
+    line-height: 1.3;
+}
+
+p,
+li,
+label {
+    color: inherit;
+}
+
+small,
+.muted,
+.description,
+.subtitle,
+.helper-text,
+.form-hint {
+    color: var(--text-secondary);
+}
+
+.app-main {
+    color: var(--text-primary);
+}
+
+.app-main h1,
+.app-main h2,
+.app-main h3,
+.app-main h4,
+.app-main h5,
+.app-main h6,
+.app-main strong,
+.app-main b {
+    color: var(--text-primary);
+}
+
+.app-main p,
+.app-main small,
+.app-main label,
+.app-main li {
+    color: inherit;
+}
+
+.app-main a {
+    color: var(--primary-color);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+.app-main a:hover {
+    color: var(--primary-hover);
+}
+
+/* =========================================================
+   5. GLOBAL PAGE CONTAINERS
+========================================================= */
+
+.app-main [class$="-page"],
+.app-main [class$="-container"],
+.app-main [class$="-wrapper"],
+.app-main [class*="-page "],
+.app-main [class*="-container "] {
+    color: var(--text-primary);
+}
+
+/* =========================================================
+   6. CARDS, PANELS AND SURFACES
+========================================================= */
+
+.card,
+.panel,
+.surface,
+.content-card,
+.settings-card,
+.profile-card,
+.profile-section,
+.profile-overview,
+.profile-form {
+    background: var(--surface);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--card-radius);
+    box-shadow: var(--shadow-card);
+}
+
+.app-main [class*="-card"],
+.app-main [class*="-panel"],
+.app-main [class*="-widget"] {
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+html[data-theme="dark"] .app-main [class*="-card"],
+html[data-theme="dark"] .app-main [class*="-panel"],
+html[data-theme="dark"] .app-main [class*="-widget"],
+html[data-theme="dark"] .app-main .card,
+html[data-theme="dark"] .app-main .panel {
+    background-color: var(--surface);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+html[data-theme="dark"] .app-main [class*="-card"] h1,
+html[data-theme="dark"] .app-main [class*="-card"] h2,
+html[data-theme="dark"] .app-main [class*="-card"] h3,
+html[data-theme="dark"] .app-main [class*="-card"] h4,
+html[data-theme="dark"] .app-main [class*="-card"] strong,
+html[data-theme="dark"] .app-main [class*="-panel"] h1,
+html[data-theme="dark"] .app-main [class*="-panel"] h2,
+html[data-theme="dark"] .app-main [class*="-panel"] h3,
+html[data-theme="dark"] .app-main [class*="-panel"] strong {
+    color: var(--text-primary);
+}
+
+/* =========================================================
+   7. FORMS AND INPUTS
+========================================================= */
+
+input,
+select,
+textarea {
+    max-width: 100%;
+    color: var(--text-primary);
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 9px;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--text-muted);
+    opacity: 1;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--primary-color);
+    outline: 2px solid transparent;
+    box-shadow: 0 0 0 3px
+        color-mix(in srgb, var(--primary-color) 22%, transparent);
+}
+
+/* Consistent sizing for common form controls; page-specific compact controls
+   can still override these defaults in their own stylesheets. */
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]),
+select {
+    min-height: var(--control-height);
+    border-radius: var(--control-radius);
+}
+
+textarea {
+    min-height: 104px;
+    border-radius: var(--control-radius);
+    line-height: 1.5;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--focus-color);
+    outline-offset: 2px;
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+html[data-theme="dark"] .app-main input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]),
+html[data-theme="dark"] .app-main select,
+html[data-theme="dark"] .app-main textarea {
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+    border-color: var(--input-border);
+}
+
+html[data-theme="dark"] .app-main select option {
+    background: var(--surface);
+    color: var(--text-primary);
+}
+
+/* =========================================================
+   8. BUTTONS
+========================================================= */
+
+button {
+    transition:
+        background-color var(--transition-speed) ease,
+        color var(--transition-speed) ease,
+        border-color var(--transition-speed) ease,
+        box-shadow var(--transition-speed) ease;
+}
+
+.btn-primary,
+.primary-button,
+.settings-primary-button,
+button.primary {
+    min-height: 40px;
+    padding: 0 16px;
+    margin-right: 0;
+    border-radius: var(--control-radius);
+    background: var(--primary-color);
+    color: var(--text-on-primary);
+    border: 1px solid var(--primary-color);
+}
+
+.btn-primary:hover,
+.primary-button:hover,
+.settings-primary-button:hover,
+button.primary:hover {
+    background: var(--primary-hover);
+    color: var(--text-on-primary);
+}
+
+.btn-secondary,
+.secondary-button,
+.btn-outline,
+.outline-button {
+    min-height: 40px;
+    padding: 0 16px;
+    margin-right: 0;
+    border-radius: var(--control-radius);
+    background: var(--surface);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover,
+.secondary-button:hover,
+.btn-outline:hover,
+.outline-button:hover {
+    background: var(--surface-hover);
+    color: var(--text-primary);
+}
+
+html[data-theme="dark"] .app-main button:not(.btn-primary):not(.primary-button):not(.settings-primary-button):not([class*="active"]) {
+    border-color: var(--border-color);
+}
+
+html[data-theme="dark"] .app-main button:not(.btn-primary):not(.primary-button):not(.settings-primary-button) {
+    color: var(--text-primary);
+}
+
+html[data-theme="dark"] .app-main button:disabled {
+    background-color: var(--surface-muted);
+    color: var(--text-secondary);
+}
+
+/* =========================================================
+   9. TABLES
+========================================================= */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+thead,
+th {
+    background: var(--table-header-bg);
+    color: var(--text-secondary);
+}
+
+th,
+td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+tbody tr {
+    background: var(--surface);
+    color: var(--text-primary);
+}
+
+tbody tr:hover {
+    background: var(--table-row-hover);
+}
+
+html[data-theme="dark"] .app-main table,
+html[data-theme="dark"] .app-main tbody tr {
+    background-color: var(--surface);
+    color: var(--text-primary);
+}
+
+html[data-theme="dark"] .app-main th,
+html[data-theme="dark"] .app-main thead {
+    background-color: var(--table-header-bg);
+    color: var(--text-secondary);
+}
+
+html[data-theme="dark"] .app-main td {
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+/* =========================================================
+   10. SIDEBAR
+========================================================= */
+
+.sidebar {
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    border-right: 1px solid var(--border-color);
+    transition:
+        background-color var(--transition-speed) ease,
+        color var(--transition-speed) ease,
+        border-color var(--transition-speed) ease;
+}
+
+.sidebar-brand h2 {
+    color: var(--text-primary);
+}
+
+.sidebar-section-label,
+.sidebar-admin-heading {
+    color: var(--sidebar-muted);
+}
+
+.sidebar-link {
+    color: var(--sidebar-text);
+    text-decoration: none;
+    border-radius: 9px;
+    transition:
+        background-color var(--transition-speed) ease,
+        color var(--transition-speed) ease;
+}
+
+.sidebar-link:hover {
+    background: var(--sidebar-hover);
+    color: var(--text-primary);
+}
+
+.sidebar-link.active {
+    background: var(--sidebar-active);
+    color: var(--sidebar-active-text);
+}
+
+.sidebar-link.active *,
+.sidebar-link.active .sidebar-link-label,
+.sidebar-link.active .sidebar-link-icon {
+    color: var(--sidebar-active-text);
+}
+
+.sidebar-footer {
+    background: var(--surface-muted);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+}
+
+.sidebar-footer strong {
+    color: var(--text-primary);
+}
+
+.sidebar-footer p {
+    color: var(--text-secondary);
+}
+
+/* =========================================================
+   11. DASHBOARD
+========================================================= */
+
+html[data-theme="dark"] .app-main .dashboard-page,
+html[data-theme="dark"] .app-main .dashboard-container {
+    background: var(--app-bg);
+    color: var(--text-primary);
+}
+
+html[data-theme="dark"] .app-main .dashboard-page [class*="-card"],
+html[data-theme="dark"] .app-main .dashboard-container [class*="-card"] {
+    background: var(--surface);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+/* Preserve intentional branded gradient panels. */
+.career-readiness,
+.career-readiness-card,
+.dashboard-hero-card,
+.next-best-action {
+    color: #ffffff;
+}
+
+/* =========================================================
+   12. SKILLS
+========================================================= */
+
+html[data-theme="dark"] .app-main .skills-page,
+html[data-theme="dark"] .app-main .skills-container,
+html[data-theme="dark"] .app-main .skills-content {
+    background: var(--app-bg);
+    color: var(--text-primary);
+}
+
+html[data-theme="dark"] .app-main .skill-card,
+html[data-theme="dark"] .app-main .skills-card,
+html[data-theme="dark"] .app-main .skill-item,
+html[data-theme="dark"] .app-main .skill-overview-card,
+html[data-theme="dark"] .app-main .skill-detail-card,
+html[data-theme="dark"] .app-main .skill-evidence-card,
+html[data-theme="dark"] .app-main .skill-progress-card {
+    background: var(--surface);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+html[data-theme="dark"] .app-main .skill-card h1,
+html[data-theme="dark"] .app-main .skill-card h2,
+html[data-theme="dark"] .app-main .skill-card h3,
+html[data-theme="dark"] .app-main .skill-card h4,
+html[data-theme="dark"] .app-main .skills-card h1,
+html[data-theme="dark"] .app-main .skills-card h2,
+html[data-theme="dark"] .app-main .skills-card h3,
+html[data-theme="dark"] .app-main .skills-card h4 {
+    color: var(--text-primary);
+}
+
+html[data-theme="dark"] .app-main .skill-card p,
+html[data-theme="dark"] .app-main .skills-card p,
+html[data-theme="dark"] .app-main .skill-item p {
+    color: var(--text-secondary);
+}
+
+/* =========================================================
+   13. PROFILE AND ROADMAP
+========================================================= */
+
+html[data-theme="dark"] .app-main .profile-page,
+html[data-theme="dark"] .app-main .profile-container,
+html[data-theme="dark"] .app-main .roadmap-page,
+html[data-theme="dark"] .app-main .roadmap-container {
+    background: var(--app-bg);
+    color: var(--text-primary);
+}
+
+html[data-theme="dark"] .app-main .profile-card,
+html[data-theme="dark"] .app-main .profile-section,
+html[data-theme="dark"] .app-main .profile-overview,
+html[data-theme="dark"] .app-main .profile-form,
+html[data-theme="dark"] .app-main .roadmap-content,
+html[data-theme="dark"] .app-main .roadmap-section,
+html[data-theme="dark"] .app-main .roadmap-overview,
+html[data-theme="dark"] .app-main .roadmap-summary,
+html[data-theme="dark"] .app-main .roadmap-details {
+    background: var(--surface);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+/* =========================================================
+   14. RESUME, PROJECTS, DSA AND INTERVIEW
+========================================================= */
+
+html[data-theme="dark"] .app-main .resume-page,
+html[data-theme="dark"] .app-main .projects-page,
+html[data-theme="dark"] .app-main .dsa-page,
+html[data-theme="dark"] .app-main .interview-page {
+    background: var(--app-bg);
+    color: var(--text-primary);
+}
+
+html[data-theme="dark"] .app-main .resume-page [class*="-card"],
+html[data-theme="dark"] .app-main .projects-page [class*="-card"],
+html[data-theme="dark"] .app-main .dsa-page [class*="-card"],
+html[data-theme="dark"] .app-main .interview-page [class*="-card"] {
+    background: var(--surface);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+/* =========================================================
+   15. DOCUMENTS
+========================================================= */
+
+html[data-theme="dark"] .app-main .documents-page,
+html[data-theme="dark"] .app-main [class*="document-card"],
+html[data-theme="dark"] .app-main [class*="document-list"],
+html[data-theme="dark"] .app-main [class*="document-empty"],
+html[data-theme="dark"] .app-main [class*="document-toolbar"],
+html[data-theme="dark"] .app-main [class*="document-filter"],
+html[data-theme="dark"] .app-main [class*="document-upload"] {
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+html[data-theme="dark"] .app-main [class*="document-card"],
+html[data-theme="dark"] .app-main [class*="document-list"],
+html[data-theme="dark"] .app-main [class*="document-empty"],
+html[data-theme="dark"] .app-main [class*="document-toolbar"],
+html[data-theme="dark"] .app-main [class*="document-filter"],
+html[data-theme="dark"] .app-main [class*="document-upload"] {
+    background: var(--surface);
+}
+
+/* =========================================================
+   16. SETTINGS
+========================================================= */
+
+.settings-page {
+    background: var(--app-bg);
+    color: var(--text-primary);
+}
+
+.settings-page .settings-card,
+.settings-page .settings-menu,
+.settings-page .settings-info-note {
+    background: var(--surface);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.settings-page .settings-info-note {
+    background: var(--surface-muted);
+    color: var(--text-secondary);
+}
+
+html[data-theme="dark"] .settings-page input,
+html[data-theme="dark"] .settings-page select,
+html[data-theme="dark"] .settings-page textarea {
+    background: var(--input-bg);
+    color: var(--text-primary);
+    border-color: var(--input-border);
+}
+
+/* =========================================================
+   17. ADMIN DATA CENTER
+========================================================= */
+
+/*
+   These selectors cover common admin naming conventions.
+   The Admin component may need additional selectors if its
+   CSS uses different names or inline background styles.
+*/
+
+html[data-theme="dark"] .app-main .admin-page,
+html[data-theme="dark"] .app-main .admin-data-page,
+html[data-theme="dark"] .app-main .admin-data-center {
+    background: var(--app-bg);
+    color: var(--text-primary);
+}
+
+html[data-theme="dark"] .app-main [class*="admin"] [class*="card"],
+html[data-theme="dark"] .app-main [class*="admin"] [class*="stat"],
+html[data-theme="dark"] .app-main [class*="admin"] [class*="resource"] {
+    background: var(--surface);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+html[data-theme="dark"] .app-main [class*="admin"] h1,
+html[data-theme="dark"] .app-main [class*="admin"] h2,
+html[data-theme="dark"] .app-main [class*="admin"] h3,
+html[data-theme="dark"] .app-main [class*="admin"] h4,
+html[data-theme="dark"] .app-main [class*="admin"] strong,
+html[data-theme="dark"] .app-main [class*="admin"] td {
+    color: var(--text-primary);
+}
+
+html[data-theme="dark"] .app-main [class*="admin"] p,
+html[data-theme="dark"] .app-main [class*="admin"] small,
+html[data-theme="dark"] .app-main [class*="admin"] label {
+    color: var(--text-secondary);
+}
+
+html[data-theme="dark"] .app-main [class*="admin"] input,
+html[data-theme="dark"] .app-main [class*="admin"] select,
+html[data-theme="dark"] .app-main [class*="admin"] textarea {
+    background: var(--input-bg);
+    color: var(--text-primary);
+    border-color: var(--input-border);
+}
+
+html[data-theme="dark"] .app-main [class*="admin"] table,
+html[data-theme="dark"] .app-main [class*="admin"] tbody tr {
+    background: var(--surface);
+    color: var(--text-primary);
+}
+
+html[data-theme="dark"] .app-main [class*="admin"] th {
+    background: var(--table-header-bg);
+    color: var(--text-secondary);
+}
+
+html[data-theme="dark"] .app-main [class*="admin"] td {
+    border-color: var(--border-color);
+}
+
+/* =========================================================
+   18. STATUS BADGES
+========================================================= */
+
+.status-success,
+.badge-success {
+    background: var(--success-bg);
+    color: var(--success-color);
+}
+
+.status-warning,
+.badge-warning {
+    background: var(--warning-bg);
+    color: var(--warning-color);
+}
+
+.status-danger,
+.badge-danger {
+    background: var(--danger-bg);
+    color: var(--danger-color);
+}
+
+.status-info,
+.badge-info {
+    background: var(--info-bg);
+    color: var(--info-color);
+}
+
+/* =========================================================
+   19. MODALS AND OVERLAYS
+========================================================= */
+
+.modal-backdrop,
+.dialog-backdrop,
+.overlay {
+    background: var(--overlay-bg);
+}
+
+.modal,
+.dialog,
+[role="dialog"] {
+    background: var(--surface);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+/* =========================================================
+   20. DIVIDERS AND ACCESSIBILITY
+========================================================= */
+
+hr,
+.divider {
+    border-color: var(--border-color);
+}
+
+:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+::selection {
+    background: var(--primary-color);
+    color: #ffffff;
+}
+
+/* =========================================================
+   21. LOGIN AND AUTHENTICATION FORMS
+   Theme-aware fixes for common login/auth selectors.
+========================================================= */
+
+.login-page,
+.login-container,
+.login-wrapper,
+.login-form,
+.auth-page,
+.auth-container,
+.auth-wrapper,
+.auth-form {
+    color: var(--text-primary);
+}
+
+.login-page h1,
+.login-page h2,
+.login-page h3,
+.login-container h1,
+.login-container h2,
+.login-container h3,
+.login-form h1,
+.login-form h2,
+.login-form h3,
+.auth-page h1,
+.auth-page h2,
+.auth-page h3,
+.auth-form h1,
+.auth-form h2,
+.auth-form h3 {
+    color: var(--text-primary);
+}
+
+.login-page label,
+.login-container label,
+.login-form label,
+.auth-page label,
+.auth-container label,
+.auth-form label {
+    color: var(--text-secondary);
+}
+
+.login-page input,
+.login-container input,
+.login-form input,
+.auth-page input,
+.auth-container input,
+.auth-form input {
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--input-border);
+}
+
+.login-page input::placeholder,
+.login-container input::placeholder,
+.login-form input::placeholder,
+.auth-page input::placeholder,
+.auth-container input::placeholder,
+.auth-form input::placeholder {
+    color: var(--text-muted);
+    opacity: 1;
+}
+
+html[data-theme="dark"] .login-page,
+html[data-theme="dark"] .login-container,
+html[data-theme="dark"] .login-wrapper,
+html[data-theme="dark"] .login-form,
+html[data-theme="dark"] .auth-page,
+html[data-theme="dark"] .auth-container,
+html[data-theme="dark"] .auth-wrapper,
+html[data-theme="dark"] .auth-form {
+    color: var(--text-primary);
+}
+
+html[data-theme="dark"] .login-page input,
+html[data-theme="dark"] .login-container input,
+html[data-theme="dark"] .login-form input,
+html[data-theme="dark"] .auth-page input,
+html[data-theme="dark"] .auth-container input,
+html[data-theme="dark"] .auth-form input {
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+    border-color: var(--input-border);
+    caret-color: var(--text-primary);
+}
+
+html[data-theme="dark"] .login-page input:-webkit-autofill,
+html[data-theme="dark"] .login-container input:-webkit-autofill,
+html[data-theme="dark"] .login-form input:-webkit-autofill,
+html[data-theme="dark"] .auth-page input:-webkit-autofill,
+html[data-theme="dark"] .auth-container input:-webkit-autofill,
+html[data-theme="dark"] .auth-form input:-webkit-autofill {
+    -webkit-text-fill-color: var(--text-primary);
+    caret-color: var(--text-primary);
+    -webkit-box-shadow: 0 0 0 1000px var(--input-bg) inset;
+    box-shadow: 0 0 0 1000px var(--input-bg) inset;
+    border: 1px solid var(--input-border);
+}
+
+html[data-theme="dark"] .login-page input:focus,
+html[data-theme="dark"] .login-container input:focus,
+html[data-theme="dark"] .login-form input:focus,
+html[data-theme="dark"] .auth-page input:focus,
+html[data-theme="dark"] .auth-container input:focus,
+html[data-theme="dark"] .auth-form input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px
+        color-mix(in srgb, var(--primary-color) 22%, transparent);
+}
+
+/* =========================================================
+   22. ACCESSIBILITY AND REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}

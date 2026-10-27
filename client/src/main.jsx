@@ -1,0 +1,81 @@
+
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+import "./index.css";
+import "./styles/theme.css";
+import "./styles/eyeComfort.css";
+import { initializeEyeComfort } from "./utils/eyeComfort.js";
+import "./styles/appZoom.css";
+import { initializeAppZoom } from "./utils/appZoom.js";
+
+import App from "./App";
+import { AuthProvider } from "./context/AuthContext";
+
+/* =========================================
+   AI CAREER OS — GLOBAL THEME INITIALIZATION
+   Dark mode is the default theme.
+   A saved user preference takes priority.
+========================================= */
+
+const SETTINGS_KEY = "ai-career-os-settings";
+
+function applySavedTheme() {
+    let theme = "dark";
+
+    try {
+        const rawSettings = localStorage.getItem(SETTINGS_KEY);
+        const savedSettings = rawSettings
+            ? JSON.parse(rawSettings)
+            : {};
+
+        // Use light only when the user explicitly saved light mode.
+        theme = savedSettings?.theme === "light" ? "light" : "dark";
+    } catch (error) {
+        console.error(
+            "Unable to read saved theme settings:",
+            error
+        );
+    }
+
+    // Apply theme before React renders.
+    document.documentElement.dataset.theme = theme;
+    document.body.dataset.theme = theme;
+
+    document.documentElement.style.colorScheme = theme;
+    document.body.style.colorScheme = theme;
+
+    return theme;
+}
+
+applySavedTheme();
+// Follow the legacy device theme even while Settings is not mounted. Incoming
+// storage events only update the DOM; they never write back to storage.
+window.addEventListener("storage", (event) => {
+    if ((event.key === SETTINGS_KEY || event.key === null)
+        && (!event.storageArea || event.storageArea === window.localStorage)) {
+        applySavedTheme();
+    }
+});
+initializeEyeComfort();
+initializeAppZoom();
+
+/* =========================================
+   RENDER APPLICATION
+========================================= */
+
+const rootElement = document.getElementById("root");
+
+if (!rootElement) {
+    throw new Error(
+        'Root element not found. Check index.html for <div id="root"></div>.'
+    );
+}
+
+ReactDOM.createRoot(rootElement).render(
+    <React.StrictMode>
+        <AuthProvider>
+            <App />
+        </AuthProvider>
+    </React.StrictMode>
+);

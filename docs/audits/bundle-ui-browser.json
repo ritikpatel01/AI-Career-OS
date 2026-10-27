@@ -1,0 +1,113 @@
+{
+  "mockedAPI": true,
+  "observations": [
+    {
+      "width": 1440,
+      "path": "/dashboard",
+      "overflow": false,
+      "main": true,
+      "unlabelled": 0,
+      "theme": "dark"
+    },
+    {
+      "width": 1440,
+      "path": "/roadmap",
+      "overflow": false,
+      "main": true,
+      "unlabelled": 0,
+      "theme": "dark"
+    },
+    {
+      "width": 1440,
+      "path": "/settings",
+      "overflow": false,
+      "main": true,
+      "unlabelled": 0,
+      "theme": "dark"
+    },
+    {
+      "width": 1440,
+      "path": "/profile",
+      "overflow": false,
+      "main": true,
+      "unlabelled": 0,
+      "theme": "dark"
+    },
+    {
+      "width": 768,
+      "path": "/dashboard",
+      "overflow": false,
+      "main": true,
+      "unlabelled": 0,
+      "theme": "dark"
+    },
+    {
+      "width": 768,
+      "path": "/roadmap",
+      "overflow": false,
+      "main": true,
+      "unlabelled": 0,
+      "theme": "dark"
+    },
+    {
+      "width": 768,
+      "path": "/settings",
+      "overflow": false,
+      "main": true,
+      "unlabelled": 0,
+      "theme": "dark"
+    },
+    {
+      "width": 768,
+      "path": "/profile",
+      "overflow": false,
+      "main": true,
+      "unlabelled": 0,
+      "theme": "dark"
+    },
+    {
+      "width": 390,
+      "path": "/dashboard",
+      "overflow": false,
+      "main": true,
+      "unlabelled": 0,
+      "theme": "dark"
+    },
+    {
+      "width": 390,
+      "path": "/roadmap",
+      "overflow": false,
+      "main": true,
+      "unlabelled": 0,
+      "theme": "dark"
+    },
+    {
+      "width": 390,
+      "path": "/settings",
+      "overflow": false,
+      "main": true,
+      "unlabelled": 0,
+      "theme": "dark"
+    },
+    {
+      "width": 390,
+      "path": "/profile",
+      "overflow": false,
+      "main": true,
+      "unlabelled": 0,
+      "theme": "dark"
+    }
+  ],
+  "routesChecked": 16,
+  "mobileKeyboardContainment": true,
+  "escapeFocusRestoration": true,
+  "menuClosesAfterNavigation": true,
+  "settingsLabelsAndTheme": true,
+  "storageFailureAndRecovery": true,
+  "passwordRecoveryURLs": true,
+  "notesResourcesPractice": true,
+  "savedLightThemePreserved": true,
+  "expectedConsoleErrors": 1,
+  "unexpectedViteErrors": [],
+  "browserExceptions": []
+}

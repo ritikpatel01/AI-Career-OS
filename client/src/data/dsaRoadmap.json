@@ -1,0 +1,122 @@
+[
+  {
+    "topic": "Arrays",
+    "category": "Data Structures",
+    "difficulty": "easy",
+    "problemTarget": 30
+  },
+  {
+    "topic": "Strings",
+    "category": "Data Structures",
+    "difficulty": "easy",
+    "problemTarget": 25
+  },
+  {
+    "topic": "Linked List",
+    "category": "Data Structures",
+    "difficulty": "medium",
+    "problemTarget": 25
+  },
+  {
+    "topic": "Stack",
+    "category": "Data Structures",
+    "difficulty": "easy",
+    "problemTarget": 20
+  },
+  {
+    "topic": "Queue",
+    "category": "Data Structures",
+    "difficulty": "easy",
+    "problemTarget": 20
+  },
+  {
+    "topic": "Hashing",
+    "category": "Data Structures",
+    "difficulty": "medium",
+    "problemTarget": 25
+  },
+  {
+    "topic": "Two Pointer",
+    "category": "Algorithms",
+    "difficulty": "medium",
+    "problemTarget": 20
+  },
+  {
+    "topic": "Sliding Window",
+    "category": "Algorithms",
+    "difficulty": "medium",
+    "problemTarget": 20
+  },
+  {
+    "topic": "Sorting",
+    "category": "Algorithms",
+    "difficulty": "medium",
+    "problemTarget": 20
+  },
+  {
+    "topic": "Searching",
+    "category": "Algorithms",
+    "difficulty": "easy",
+    "problemTarget": 20
+  },
+  {
+    "topic": "Binary Search",
+    "category": "Algorithms",
+    "difficulty": "medium",
+    "problemTarget": 25
+  },
+  {
+    "topic": "Fast & Slow Pointer",
+    "category": "Algorithms",
+    "difficulty": "medium",
+    "problemTarget": 15
+  },
+  {
+    "topic": "Greedy",
+    "category": "Algorithms",
+    "difficulty": "medium",
+    "problemTarget": 20
+  },
+  {
+    "topic": "Recursion",
+    "category": "Algorithms",
+    "difficulty": "medium",
+    "problemTarget": 20
+  },
+  {
+    "topic": "Backtracking",
+    "category": "Algorithms",
+    "difficulty": "hard",
+    "problemTarget": 20
+  },
+  {
+    "topic": "Heap / Priority Queue",
+    "category": "Data Structures",
+    "difficulty": "hard",
+    "problemTarget": 20
+  },
+  {
+    "topic": "Trees",
+    "category": "Data Structures",
+    "difficulty": "medium",
+    "problemTarget": 40
+  },
+  {
+    "topic": "Graphs",
+    "category": "Data Structures",
+    "difficulty": "hard",
+    "problemTarget": 40
+  },
+  {
+    "topic": "Dynamic Programming",
+    "category": "Algorithms",
+    "difficulty": "hard",
+    "problemTarget": 40
+  },
+  {
+    "topic": "Bit Manipulation",
+    "category": "Algorithms",
+    "difficulty": "medium",
+    "problemTarget": 20
+  }
+]

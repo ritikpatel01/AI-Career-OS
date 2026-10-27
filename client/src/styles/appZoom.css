@@ -1,0 +1,57 @@
+/* Native zoom scales readable text/controls in normal flow. appZoom.js makes
+   the existing responsive media rules follow the effective viewport, in order. */
+html[data-app-zoom="on"] {
+    --app-zoom-vh: calc(100dvh / var(--app-zoom-scale));
+    --app-zoom-vw: calc(100vw / var(--app-zoom-scale));
+    min-width: 0 !important;
+}
+html[data-app-zoom="on"] :is(body, #root, .app-layout, .app-main) {
+    min-width: 0 !important;
+    min-height: var(--app-zoom-vh);
+}
+html[data-app-zoom="on"] .app-main > [class$="-page"] { min-height: 0; }
+/* Keep navigation readable without letting its outer width grow without bound. */
+html[data-app-zoom="on"] .app-layout > .sidebar {
+    width: var(--app-sidebar-width, 254px);
+    min-width: 0;
+    height: var(--app-zoom-vh);
+}
+html[data-app-zoom="on"] .app-layout > .app-main {
+    width: calc(100% - var(--app-sidebar-width, 254px));
+    margin-left: var(--app-sidebar-width, 254px);
+    padding: var(--app-content-gutter, 32px);
+}
+html[data-app-zoom="on"] .sidebar-link-label { min-width: 0; white-space: normal; overflow-wrap: break-word; }
+html[data-app-zoom-compact="true"] .app-layout > .sidebar {
+    width: min(300px, calc(var(--app-zoom-vw) - 32px));
+    max-width: calc(var(--app-zoom-vw) - 32px);
+}
+html[data-app-zoom-compact="true"] .app-layout > .app-main {
+    width: 100%; margin-left: 0;
+    min-height: 0;
+    padding: 16px max(12px, env(safe-area-inset-right, 0px)) max(24px, env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px));
+}
+html[data-app-zoom-compact="true"] .mobile-menu-toggle { max-width: calc(var(--app-zoom-vw) - 24px); }
+/* Explicit viewport units need compensation even when media queries reflow. */
+html[data-app-zoom="on"] .documents-page .documents-modal-overlay {
+    width: var(--app-zoom-vw) !important;
+    height: var(--app-zoom-vh) !important;
+    padding: 16px;
+}
+html[data-app-zoom="on"] :is([role="dialog"], .documents-modal, .mobile-details-dialog) {
+    max-width: calc(var(--app-zoom-vw) - 32px) !important;
+    max-height: calc(var(--app-zoom-vh) - 32px) !important;
+    overflow: auto;
+}
+html[data-app-zoom="on"] .job-filter-sidebar.is-open {
+    max-width: calc(var(--app-zoom-vw) - 24px);
+    max-height: calc(var(--app-zoom-vh) - 70px);
+}
+/* Keep the existing public header actions reachable at narrow effective widths. */
+html[data-app-zoom-compact="true"] .ac-page .ac-nav {
+    flex-wrap: wrap;
+    row-gap: 10px;
+    padding-block: 10px;
+}
+html[data-app-zoom-compact="true"] .ac-page .ac-brand { flex-basis: 100%; }
+html[data-app-zoom-compact="true"] .ac-page .ac-nav-actions { flex: 1 1 100%; justify-content: space-between; }
