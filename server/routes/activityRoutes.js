@@ -2,7 +2,8 @@ const express = require("express");
 
 const {
     getAllActivities,
-    createNewActivity
+    createNewActivity,
+    removeActivity
 } = require("../controllers/activityController");
 
 const authMiddleware = require("../middleware/authMiddleware");
@@ -24,5 +25,7 @@ router.post(
     validateMiddleware(activitySchema),
     createNewActivity
 );
+
+router.delete("/:id", authMiddleware, removeActivity);
 
 module.exports = router;

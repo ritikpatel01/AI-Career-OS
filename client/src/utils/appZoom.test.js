@@ -77,3 +77,28 @@ test('initialization restores zoom without writes, tracks resize and cross-tab r
 test('all allowed choices leave theme and comfort tokens untouched',()=>{
  const doc=document();for(let zoom=80;zoom<=150;zoom+=5){applyAppZoom({version:1,zoom},doc,window());assert.equal(doc.documentElement.dataset.theme,'dark');assert.equal(doc.documentElement.style.values.get('--surface'),'#121d30');assert.equal(doc.documentElement.dataset.eyeComfort,'on');}
 });
+
+
+test('landing and login retain original scale and media rules while workspace zoom resumes',()=>{
+ const doc=document(),win=window();
+ const media={media:{mediaText:'(max-width: 768px)'}};
+ doc.styleSheets=[{cssRules:[media]}];
+ win.location={pathname:'/settings'};
+ for(const zoom of [125,150]){
+  const prefs={version:1,zoom};
+  applyAppZoom(prefs,doc,win);
+  assert.equal(doc.documentElement.style.values.get('zoom'),String(zoom/100));
+  for(const pathname of ['/', '/login']){
+  win.location.pathname=pathname;
+  const result=applyAppZoom(prefs,doc,win);
+  assert.equal(result.preferences.zoom,zoom);
+  assert.equal(doc.documentElement.style.values.has('zoom'),false);
+  assert.equal(doc.documentElement.dataset.appZoomCompact,'false');
+  assert.equal(media.media.mediaText,'(max-width: 768px)');
+  }
+  win.location.pathname='/dashboard';
+  applyAppZoom(prefs,doc,win);
+  assert.equal(doc.documentElement.style.values.get('zoom'),String(zoom/100));
+  assert.equal(media.media.mediaText,`(max-width: ${768*zoom/100}px)`);
+ }
+});

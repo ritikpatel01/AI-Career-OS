@@ -127,6 +127,29 @@ test('release security on isolated MongoDB and real HTTP routes (mail transport 
             assert.ok(!logs.join(' ').includes('PRIVATE_DB_SENTINEL'));
             assert.equal((await reset(token)).status, 200); assert.equal((await request('/roadmaps', { token: freshJWT })).status, 401);
         });
+        await t.test('competing administrator demotions retain an administrator on a real replica set', async () => {
+            const admins = await User.create([
+                { name: 'Race Fixture A', email: 'race-a@example.test', password: 'fixture-only-unused-password', role: 'admin' },
+                { name: 'Race Fixture B', email: 'race-b@example.test', password: 'fixture-only-unused-password', role: 'admin' }
+            ]);
+            const tokens = admins.map(user => jwt.sign({ userId: String(user._id), ver: user.authVersion || 0 }, process.env.JWT_SECRET, { expiresIn: '5m' }));
+            const results = await Promise.all(admins.map((_user, index) => request(`/admin/users/${admins[1 - index]._id}/role`, {
+                method: 'PATCH', token: tokens[index], body: { role: 'user' }
+            })));
+            assert.equal(results.filter(result => result.status === 200).length, 1);
+            assert.ok(results.some(result => [403, 409].includes(result.status)));
+            assert.equal(await User.countDocuments({ role: 'admin' }), 1);
+
+            const owner = await User.findById(userId);
+            const ownerToken = jwt.sign({ userId, ver: owner.authVersion || 0 }, process.env.JWT_SECRET, { expiresIn: '5m' });
+            const created = await request('/activities', { method: 'POST', token: ownerToken, body: { type: 'other', title: 'Disposable ownership fixture' } });
+            assert.equal(created.status, 201);
+            const activityId = created.data.data._id;
+            assert.equal((await request(`/activities/${activityId}`, { method: 'DELETE', token: tokens[0] })).status, 404);
+            assert.equal((await request('/activities/invalid', { method: 'DELETE', token: ownerToken })).status, 400);
+            assert.equal((await request(`/activities/${activityId}`, { method: 'DELETE', token: ownerToken })).status, 200);
+            assert.equal((await request(`/activities/${activityId}`, { method: 'DELETE', token: ownerToken })).status, 404);
+        });
         await t.test('liveness/readiness and CORS are truthful, fail closed and disclose no details', async () => {
             assert.equal((await request('/health')).status, 200); assert.equal((await request('/ready')).status, 200);
             assert.equal((await request('/health', { origin: 'https://unlisted.example.test' })).status, 403);

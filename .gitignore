@@ -13,3 +13,28 @@ coverage/
 *.log
 .DS_Store
 server/uploads/
+
+# Local project backups and archives
+AI-Career-OS-extracted/
+AI-Career-OS-work/
+*.zip
+
+# Uploaded personal documents and files
+**/server/uploads/
+
+# Private environment files
+.env
+.env.*
+!.env.example
+*.env
+*.env.*
+!*.env.example
+
+# Personal documents and uploads
+**/server/uploads/
+*.pdf
+
+# Local backups and archives
+AI-Career-OS-extracted/
+AI-Career-OS-work/
+*.zip

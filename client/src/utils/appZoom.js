@@ -50,7 +50,10 @@ export function applyAppZoom(value, doc = globalThis.document, win = globalThis.
     const root = doc?.documentElement;
     if (!root) return { preferences, supported: false };
     const supported = !win?.CSS?.supports || win.CSS.supports("zoom", "1.25");
-    const active = supported && preferences.zoom !== 100;
+    // Landing and login keep their original composition; saved zoom still
+    // applies to the workspace. Browser zoom is untouched.
+    const originalScale = ["/", "/login"].includes(win?.location?.pathname);
+    const active = supported && !originalScale && preferences.zoom !== 100;
     const scale = active ? preferences.zoom / 100 : 1;
     synchronizeZoomMedia(doc, scale);
     root.dataset.appZoom = active ? "on" : "off";

@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import "./Login.css";
@@ -84,6 +84,9 @@ export const getLoginDestination = (value, origin) => {
 };
 
 const Login = () => {
+    useLayoutEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    }, []);
     const navigate = useNavigate();
     const location = useLocation();
     const { login, cleanupWarning, retryAuthCleanup } = useAuth();

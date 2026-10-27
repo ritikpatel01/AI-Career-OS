@@ -15,5 +15,9 @@ const createActivity = async (userId, data) => {
 
 module.exports = {
     getActivities,
-    createActivity
+    createActivity,
+    deleteActivity: async (userId, activityId) => Activity.findOneAndDelete({
+        _id: activityId,
+        user: userId
+    })
 };

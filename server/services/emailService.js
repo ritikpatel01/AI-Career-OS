@@ -1,27 +1,34 @@
 const nodemailer = require("nodemailer");
 
-const transporter = nodemailer.createTransport({
-    host:
-        process.env.MAIL_HOST ||
-        "smtp.gmail.com",
-
-    port:
-        Number(process.env.MAIL_PORT) ||
-        465,
-
-    secure:
-        String(
-            process.env.MAIL_SECURE || "true"
-        ) === "true",
-
-    // Require STARTTLS when implicit TLS is disabled; never fall back to plaintext.
-    requireTLS: true,
-
-    auth: {
-        user: process.env.MAIL_USER,
-        pass: process.env.MAIL_PASS
+// Lazy initialization permits startup without mail in development, but delivery
+// always validates explicit settings. Never fall back to another SMTP server.
+let transporter;
+let sender;
+function getTransport() {
+    if (transporter) return transporter;
+    const keys = ['MAIL_HOST', 'MAIL_PORT', 'MAIL_SECURE', 'MAIL_USER', 'MAIL_PASS', 'MAIL_FROM'];
+    const env = process.env;
+    const invalid = keys.filter(key => typeof env[key] !== 'string' || !env[key].trim());
+    if (env.MAIL_HOST && !/^[a-zA-Z0-9.-]+$/.test(env.MAIL_HOST)) invalid.push('MAIL_HOST');
+    if (!/^\d+$/.test(env.MAIL_PORT || '') || Number(env.MAIL_PORT) < 1 || Number(env.MAIL_PORT) > 65535) invalid.push('MAIL_PORT');
+    if (!['true', 'false'].includes(env.MAIL_SECURE)) invalid.push('MAIL_SECURE');
+    if (!/^[^\s<>@]+@[^\s<>@]+\.[^\s<>@]+$/.test(env.MAIL_FROM || '')) invalid.push('MAIL_FROM');
+    if (invalid.length) {
+        const error = new Error('Invalid email configuration; check the named MAIL settings');
+        error.code = 'ECONFIG';
+        error.configurationFields = [...new Set(invalid)];
+        throw error;
     }
-});
+    const transport = nodemailer.createTransport({
+        host: env.MAIL_HOST, port: Number(env.MAIL_PORT), secure: env.MAIL_SECURE === 'true',
+        requireTLS: true,
+        connectionTimeout: 10000, greetingTimeout: 10000, socketTimeout: 20000,
+        auth: { user: env.MAIL_USER, pass: env.MAIL_PASS },
+    });
+    sender = env.MAIL_FROM;
+    transporter = transport;
+    return transporter;
+}
 
 
 const sendPasswordResetCode = async (
@@ -29,15 +36,9 @@ const sendPasswordResetCode = async (
     code
 ) => {
 
-    const from =
-        process.env.MAIL_FROM ||
-        process.env.MAIL_USER;
-
-
-    await transporter.sendMail({
-
-        from: `"AI Career OS" <${from}>`,
-
+    const transport = getTransport();
+    const result = await transport.sendMail({
+        from: { name: "AI Career OS", address: sender },
         to: email,
 
         subject:
@@ -199,6 +200,12 @@ const sendPasswordResetCode = async (
             </html>
         `
     });
+    // SMTP acceptance is not proof of inbox delivery. Explicit rejection is failure.
+    if (result?.rejected?.length || (Array.isArray(result?.accepted) && !result.accepted.length)) {
+        const error = new Error('Email was not accepted by the mail server');
+        error.code = 'EENVELOPE';
+        throw error;
+    }
 };
 
 

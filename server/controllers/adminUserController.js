@@ -101,7 +101,7 @@ const changeUserRole = async (req, res) => {
         }
 
         // Prevent changing your own role through this endpoint.
-        if (req.adminUser._id.toString() === userId) {
+        if (req.adminUser._id.toString().toLowerCase() === String(userId).toLowerCase()) {
             return res.status(400).json({
                 success: false,
                 message: "You cannot change your own role here."

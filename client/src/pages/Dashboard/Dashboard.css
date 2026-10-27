@@ -2189,3 +2189,68 @@ html[data-eye-comfort="on"][data-comfort-effects="reduced"] .dashboard-page .nex
 @container dashboard (max-width: 768px) {
     .dashboard-page .dashboard-bottom-actions button { min-height: 44px; }
 }
+
+/* Keep first name and surname together without forcing the entire heading wide. */
+.dashboard-page .dashboard-greeting-name {
+    display: inline-block;
+    width: max-content;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    font-size: inherit;
+    line-height: inherit;
+    vertical-align: bottom;
+}
+
+@container dashboard (max-width: 650px) {
+    .dashboard-page .dashboard-header h1 {
+        font-size: clamp(16px, 5.7cqi, 34px);
+        white-space: nowrap;
+        letter-spacing: -.035em;
+    }
+    .dashboard-page .dashboard-greeting-name {
+        display: inline;
+        white-space: inherit;
+    }
+}
+
+/* Compact header actions stay grouped against the right edge. */
+.dashboard-page .dashboard-header-actions {
+    justify-content: flex-end;
+    margin-left: auto;
+}
+@container dashboard (max-width: 650px) {
+    .dashboard-page .dashboard-header-actions {
+        width: 100%;
+        gap: 8px;
+    }
+    .dashboard-page .dashboard-header-button {
+        flex: 0 1 auto;
+        width: auto;
+        min-height: 44px;
+        padding: 8px 10px;
+        font-size: 12px;
+        line-height: 1.35;
+        gap: 5px;
+    }
+    .dashboard-page .dashboard-header-button span { font-size: 13px; }
+}
+
+/* Pair the roadmap action's fill with readable text in both themes. */
+.dashboard-page .dashboard-header-button:not(.dashboard-outline-button) {
+    background: var(--comfort-button-bg, #2454d5);
+    color: var(--comfort-button-text, #ffffff);
+    border-color: var(--comfort-button-bg, #2454d5);
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: center;
+}
+.dashboard-page .dashboard-header-button:not(.dashboard-outline-button) span {
+    color: inherit;
+    flex-shrink: 0;
+}
+@media (hover: hover) {
+    .dashboard-page .dashboard-header-button:not(.dashboard-outline-button):hover {
+        filter: brightness(0.95);
+    }
+}

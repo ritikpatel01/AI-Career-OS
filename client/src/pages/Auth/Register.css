@@ -567,3 +567,20 @@
     .auth-page .auth-field { min-width: 0; }
     .auth-page .auth-label-row { flex-wrap: wrap; gap: 6px 12px; }
 }
+
+/* Registration inputs stay white under global theme/comfort overrides. */
+html body .auth-page.auth-page .auth-form-section .auth-field input[type] {
+    background: #ffffff !important;
+    color: #172033 !important;
+    -webkit-text-fill-color: #172033 !important;
+    caret-color: #172033 !important;
+    border-color: #d6deea !important;
+}
+html body .auth-page.auth-page .auth-form-section .auth-field input[type]::placeholder {
+    color: #64748b !important;
+    -webkit-text-fill-color: #64748b !important;
+    opacity: 1;
+}
+html body .auth-page.auth-page .auth-form-section .auth-field input[type]:focus {
+    border-color: #625bf1 !important;
+}

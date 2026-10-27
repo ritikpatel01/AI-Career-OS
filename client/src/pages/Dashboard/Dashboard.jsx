@@ -352,7 +352,7 @@ const Dashboard = () => {
 
                     <h1>
                         {getGreeting()},{" "}
-                        {user?.name || "there"} 👋
+                        <span className="dashboard-greeting-name">{user?.name || "there"}</span>{" "}👋
                     </h1>
 
                     <p>

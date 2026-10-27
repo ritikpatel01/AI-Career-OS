@@ -1,7 +1,25 @@
 const {
     getActivities,
-    createActivity
+    createActivity,
+    deleteActivity
 } = require("../services/activityService");
+const mongoose = require("mongoose");
+
+const removeActivity = async (req, res) => {
+    if (!mongoose.isObjectIdOrHexString(req.params.id)) {
+        return res.status(400).json({ success: false, message: "Invalid activity ID" });
+    }
+    try {
+        const activity = await deleteActivity(req.user.userId, req.params.id);
+        if (!activity) {
+            return res.status(404).json({ success: false, message: "Activity not found" });
+        }
+        return res.status(200).json({ success: true, message: "Activity deleted successfully" });
+    } catch {
+        console.error("Delete activity failed");
+        return res.status(500).json({ success: false, message: "Failed to delete activity" });
+    }
+};
 
 const getAllActivities = async (req, res) => {
     try {
@@ -48,5 +66,6 @@ const createNewActivity = async (req, res) => {
 
 module.exports = {
     getAllActivities,
-    createNewActivity
+    createNewActivity,
+    removeActivity
 };

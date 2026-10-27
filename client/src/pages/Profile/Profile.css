@@ -190,3 +190,129 @@ html[data-theme] .profile-page .profile-save-area button:active:not(:disabled) {
         min-height: 44px;
     }
 }
+
+/* Phone profile rhythm; desktop presentation remains unchanged. */
+@container profile (max-width: 600px) {
+    html[data-theme] .profile-page .profile-page-header { margin-bottom: 20px; gap: 12px; }
+    html[data-theme] .profile-page .profile-page-header h1 { font-size: 30px !important; line-height: 1.2 !important; }
+    html[data-theme] .profile-page .profile-page-header p { font-size: 14px; line-height: 1.6; }
+    html[data-theme] .profile-page .profile-eyebrow { font-size: 10px; margin-bottom: 8px; }
+    html[data-theme] .profile-page .profile-edit-link { font-size: 13px; padding: 9px 12px; }
+    html[data-theme] .profile-page .profile-overview { padding: 18px !important; gap: 14px !important; margin-bottom: 18px !important; }
+    html[data-theme] .profile-page .profile-avatar { flex: 0 0 56px; width: 56px !important; height: 56px !important; min-width: 56px !important; border-radius: 16px !important; font-size: 22px !important; }
+    html[data-theme] .profile-page .profile-overview-content { flex: 0 1 auto; }
+    html[data-theme] .profile-page .profile-overview h2 { font-size: 24px !important; }
+    html[data-theme] .profile-page .profile-overview p { font-size: 14px !important; line-height: 1.65; }
+    html[data-theme] .profile-page .profile-meta { gap: 8px 14px; font-size: 12px; }
+    html[data-theme] .profile-page .profile-introduction { margin-top: 12px; }
+    html[data-theme] .profile-page .profile-social-links { gap: 8px; margin-top: 14px; }
+    html[data-theme] .profile-page .profile-social-links a { flex: 1 1 auto; justify-content: center; min-height: 44px; font-size: 13px; }
+    html[data-theme] .profile-page .profile-preview-label { font-size: 11px; }
+    html[data-theme] .profile-page .profile-section { gap: 18px; border-radius: 14px !important; }
+    html[data-theme] .profile-page .profile-section-header { gap: 10px !important; padding-bottom: 14px !important; }
+    html[data-theme] .profile-page .profile-section-header h2 { font-size: 17px !important; }
+    html[data-theme] .profile-page .profile-section-header p { font-size: 13px; }
+    html[data-theme] .profile-page .profile-field label { font-size: 13px; }
+    html[data-theme] .profile-page .profile-field-hint { font-size: 12px; line-height: 1.6; }
+    html[data-theme] .profile-page .profile-field textarea { height: 160px; min-height: 120px; line-height: 1.6; resize: vertical; }
+    html[data-theme] .profile-page .profile-save-area { padding: 18px !important; gap: 14px; border-radius: 14px; }
+    html[data-theme] .profile-page .profile-save-copy { flex: 0 1 auto; }
+    html[data-theme] .profile-page .profile-save-copy strong { font-size: 14px; line-height: 1.5; }
+    html[data-theme] .profile-page .profile-save-area p { font-size: 12px; }
+    html[data-theme] .profile-page .profile-save-area button { font-size: 14px; min-height: 48px; }
+}
+
+/* Mobile identity composition: name beside avatar, details below. */
+@container profile (max-width: 600px) {
+    html[data-theme] .profile-page .profile-page-header {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 10px 12px;
+        margin-bottom: 20px;
+    }
+    html[data-theme] .profile-page .profile-page-header > div { display: contents; }
+    html[data-theme] .profile-page .profile-eyebrow { grid-column: 1 / -1; margin: 0; }
+    html[data-theme] .profile-page .profile-page-header h1 { grid-column: 1; grid-row: 2; margin: 0 !important; font-size: 28px !important; }
+    html[data-theme] .profile-page .profile-edit-link { grid-column: 2; grid-row: 2; border-radius: 9px; padding: 9px 10px; }
+    html[data-theme] .profile-page .profile-page-header p { grid-column: 1 / -1; grid-row: 3; font-size: 13px; }
+    html[data-theme] .profile-page .profile-overview {
+        display: grid !important;
+        grid-template-columns: 56px minmax(0, 1fr);
+        align-items: center !important;
+        gap: 6px 14px !important;
+        border-radius: 18px !important;
+        border-top: 3px solid var(--primary-color) !important;
+    }
+    html[data-theme] .profile-page .profile-overview-content { display: contents; }
+    html[data-theme] .profile-page .profile-avatar { grid-column: 1; grid-row: 1 / 3; align-self: center; }
+    html[data-theme] .profile-page .profile-identity-kicker { grid-column: 2; grid-row: 1; margin: 0; font-size: 9px; letter-spacing: .08em; align-self: end; }
+    html[data-theme] .profile-page .profile-overview h2 { grid-column: 2; grid-row: 2; margin: 0 !important; font-size: 23px !important; align-self: start; }
+    html[data-theme] .profile-page .profile-meta { grid-column: 1 / -1; grid-row: 3; gap: 6px 14px !important; margin-top: 10px !important; }
+    html[data-theme] .profile-page .profile-meta > span { font-size: 12px !important; }
+    html[data-theme] .profile-page .profile-introduction { grid-column: 1 / -1; grid-row: 4; border-top: 1px solid var(--border-color); padding-top: 14px; margin-top: 10px; }
+    html[data-theme] .profile-page .profile-overview p { line-height: 1.65 !important; }
+    html[data-theme] .profile-page .profile-social-links { grid-column: 1 / -1; grid-row: 5; margin-top: 10px; }
+    html[data-theme] .profile-page .profile-preview-label { grid-column: 1 / -1; grid-row: 6; justify-self: start; margin-top: 8px; }
+}
+
+@container profile (max-width: 600px) {
+    html[data-theme] .profile-page .profile-social-links {
+        justify-content: flex-end;
+    }
+    html[data-theme] .profile-page .profile-social-links a {
+        flex: 0 1 auto;
+        width: auto;
+        min-width: 0;
+        padding-inline: 10px;
+    }
+    html[data-theme] .profile-page .profile-preview-label {
+        justify-self: end;
+        text-align: right;
+    }
+}
+
+/* Laptop/desktop profile: compact identity header and balanced editing panels. */
+@container profile (min-width: 601px) {
+    html[data-theme] .profile-page .profile-page-header { margin-bottom: 24px; gap: 20px; }
+    html[data-theme] .profile-page .profile-page-header h1 { font-size: 32px !important; line-height: 1.2 !important; }
+    html[data-theme] .profile-page .profile-page-header p { font-size: 14px; max-width: 65ch; }
+    html[data-theme] .profile-page .profile-edit-link { min-height: 44px; font-size: 13px; border-radius: 10px; }
+    html[data-theme] .profile-page .profile-overview {
+        display: grid !important;
+        grid-template-columns: 64px minmax(0, 1fr) auto;
+        align-items: center !important;
+        gap: 8px 20px !important;
+        padding: 24px !important;
+        border-radius: 18px !important;
+        border-top: 3px solid var(--primary-color) !important;
+        box-shadow: 0 6px 24px #00000008 !important;
+    }
+    html[data-theme] .profile-page .profile-overview-content { display: contents; }
+    html[data-theme] .profile-page .profile-avatar { grid-column: 1; grid-row: 1 / 3; width: 64px !important; height: 64px !important; min-width: 64px !important; border-radius: 18px !important; font-size: 24px !important; }
+    html[data-theme] .profile-page .profile-identity-kicker { grid-column: 2; grid-row: 1; margin: 0; align-self: end; }
+    html[data-theme] .profile-page .profile-overview h2 { grid-column: 2; grid-row: 2; margin: 0 !important; font-size: 26px !important; align-self: start; }
+    html[data-theme] .profile-page .profile-meta { grid-column: 2 / -1; grid-row: 3; margin: 4px 0 0 !important; }
+    html[data-theme] .profile-page .profile-introduction { grid-column: 1 / -1; grid-row: 4; border-top: 1px solid var(--border-color); padding-top: 16px; margin-top: 8px; max-width: none; }
+    html[data-theme] .profile-page .profile-overview p { font-size: 14px !important; line-height: 1.7 !important; max-width: 80ch; }
+    html[data-theme] .profile-page .profile-social-links { grid-column: 1 / -1; grid-row: 5; justify-content: flex-end; margin-top: 8px; }
+    html[data-theme] .profile-page .profile-social-links a { min-height: 44px; font-size: 13px; }
+    html[data-theme] .profile-page .profile-preview-label { grid-column: 3; grid-row: 1 / 3; justify-self: end; align-self: center; font-size: 10px; }
+    html[data-theme] .profile-page .profile-form { align-items: start; gap: 18px; }
+    html[data-theme] .profile-page .profile-section { gap: 18px; padding: 22px !important; border-radius: 16px !important; }
+    html[data-theme] .profile-page .profile-section-header { padding-bottom: 14px !important; }
+    html[data-theme] .profile-page .profile-section-header h2 { font-size: 18px !important; }
+    html[data-theme] .profile-page .profile-field label { font-size: 13px; }
+    html[data-theme] .profile-page .profile-field :is(input, textarea) { line-height: 1.6; }
+    html[data-theme] .profile-page .profile-field textarea { height: 180px; min-height: 120px; resize: vertical; }
+    html[data-theme] .profile-page .profile-field-hint { font-size: 12px; }
+    html[data-theme] .profile-page .profile-save-area { padding: 20px 24px !important; gap: 18px; border-radius: 14px; }
+    html[data-theme] .profile-page .profile-save-copy strong { font-size: 14px; }
+    html[data-theme] .profile-page .profile-save-area p { font-size: 12px; }
+    html[data-theme] .profile-page .profile-save-area button { min-height: 46px; font-size: 14px; }
+}
+@container profile (min-width: 860px) {
+    html[data-theme] .profile-page .profile-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    html[data-theme] .profile-page .profile-section-links { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    html[data-theme] .profile-page .profile-section-links .profile-section-header { grid-column: 1 / -1; }
+}

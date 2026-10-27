@@ -207,3 +207,121 @@ Actual desktop Chrome ran the fixtures, but these are synthetic static layout te
 Unverified: Dashboard real refresh; Roadmap progress/notes/practice persistence and all lesson/code states; Skills CRUD/evidence saves and permission responses; DSA live saves; Interview session progression/AI evaluation; Resume upload/analysis/results/download/print; Settings real browser-local persistence, resets and account/security actions. Unrendered loading/error/result/dialog states still need route-specific verification. Existing tests and source inspection do not certify authenticated end-to-end behavior.
 
 All route full-workflow checkboxes remain open. No services started/modified, real data written, dependencies/config changed, deployment performed or build guards bypassed. Production build was not rerun; the previously recorded API-URL validation blocker remains unresolved. The application remains not production-ready pending production-build, functional, real-browser/mobile, security and deployment verification.
+
+## Complete local quality / release-readiness audit continuation
+
+See [the detailed audit report](local-quality-release-audit.md) for the exact changed-file manifest, all 24 route implementation statuses, security findings, failures/skips and remaining manual checks. This supplements prior batches; it does not mark full-workflow checkboxes complete.
+
+### Confirmed fixes
+
+- Exception privacy: controller responses/logs no longer expose raw service exception messages/objects in the affected paths. Response envelopes/status codes remain; reviewed parser/provider messages remain unchanged.
+- Admin role race: reproduced concurrent cross-demotions with model doubles; role changes now use a transaction with an actor-role recheck and actor write before target changes/counting. Only emit the response after commit. New tests cover rechecks and rollback; real replica-set conflict/retry behavior still requires integration verification.
+- Activity deletion: frontend DELETE request had no backend route. Added authenticated ID-validated, owner-scoped deletion with safe 400/404/500 outcomes and model-double tests. No real activity was deleted.
+- Six remaining tablet control corrections, reproduced at 768px: Documents banner/sidebar action height; GitHub form text; Knowledge search text; Activities search/filter text and Search target; Notifications search/time text and tab/empty-state targets; Admin Data Center filter text/header action target. Only their page CSS changed.
+
+### Completed checks and honest limits
+
+- 138 backend/resume tests passed, covering redaction, admin guards/transaction doubles, Activity deletion, progress/DSA/Interview preparation, runtime/CORS/mail doubles and resume parsing/analysis. New database integration cases were prepared in releaseReadiness.test.cjs but NOT run because that suite starts disposable services and requires approval.
+- Safe frontend sweep initially had one Linux subprocess EPERM failure; the complete affected file passed on rerun outside the sandbox. Remaining selected cases passed. Python-based reference fixtures passed where dependencies exist; PyTorch/TensorFlow runtime checks were skipped. An earlier interrupted broad invocation is not counted as passed. See detailed report for scopes/counts.
+- 770 synthetic Chrome layout cases cover all 24 routes and selected expanded states, both themes, the nine requested widths (320/360/375/390/430/768/1024/1280/1440), plus two landscape cases. No checked page overflow/control-size failures; 140 before/after desktop measurements unchanged. Fixtures are not physical-device or persistence tests.
+- Actual live unauthenticated Chrome checks against the pre-existing frontend passed 20 public-page viewport cases, all 19 protected-route Login redirects, password reveal and empty-login validation. Zero API mutation requests; no credentials used. Existing local API health/readiness returned 200. Sandbox-only reachability originally hid these listeners; outside-sandbox read-only checks confirmed them.
+- All frontend sources compile, all CSS parses, active imports resolve, and backend/AI/worker syntax checks pass. Git metadata is absent; source hashes plus explicit patch review preserved unrelated work.
+- Production build NOT attempted because the existing API URL uses non-loopback HTTP and fails the preserved guard. Local production preflight also lacks CORS_ORIGINS. No values/secrets were printed and no config/guards/dependencies changed.
+
+### Remaining release blockers
+
+Approve/run the prepared isolated replica-set integration suite; verify authenticated CRUD/session/persistence and real providers; supply an approved HTTPS /api production URL and explicit production CORS origins; then build without overwriting existing output. Physical-mobile, native/browser zoom, assistive-technology, upload persistence/storage/backups, security and deployment checks remain. No deployment performed. Application remains partially verified and NOT production-ready.
+
+## Landing zoom proportions — 2026-10-27
+
+- Changed only `client/src/pages/Landing/Landing.css` for `/`: reduced the hero heading cap from 82px to 60px, bounded the illustrative dashboard to 960px, reduced section/CTA spacing and card minimum heights, and softened the preview shadow. Existing links, content, branding, and application behavior preserved.
+- Inspected current Git status/diff before editing; earlier Dashboard, Projects, server, and documentation changes preserved.
+- Automated headless Chrome against the existing local Vite page: 80 combinations of widths 320, 360, 375, 390, 430, 768, 1024, 1366, 1920 and 844px landscape; light/dark attributes; eye comfort on/off; actual `applyAppZoom` at 100/125%. No horizontal document overflow detected. Hero CTA destinations remained `/register` and `#platform`. Screenshot inspected at 1366px/125%.
+- CSS parsed successfully with Lightning CSS; existing appZoom and eyeComfort test files passed (2/2).
+- This is automated desktop Chrome viewport/app-zoom verification, not physical-device, native browser menu zoom, authenticated workflow, or production-build verification. Native browser 125% zoom remains unverified. Production readiness blockers recorded above remain open; application remains not production-ready.
+
+### Landing follow-up: remaining oversized spacing
+
+- Further updated only Landing.css: 52px hero heading cap, 880px illustrative preview, compact kicker/hero spacing, 40px section padding, reduced feature header spacing, removal of the CTA's inherited 310px minimum height, and removal of stacked footer top padding.
+- Repeated 80 automated local Chrome viewport/app-zoom combinations using the existing local frontend: no horizontal document overflow. At 1366px and 125% app zoom, document height reduced from 4551px to 4166px. CTA destinations preserved; screenshot visually inspected. Theme/comfort attributes exercised by the harness; physical devices and native browser menu zoom remain unverified.
+- Lightning CSS parsing passed. Both existing appZoom/eyeComfort test files passed with 21 individual tests in the escalated runner. No services, settings, stored records, dependencies, or backend files changed in this follow-up. Production readiness remains incomplete.
+
+### Landing feature cards follow-up
+
+- Scoped Landing.css changes reduce the six feature cards' padding, icon size, header/label/title/description gaps and remove their minimum height. Explore links retain at least 44px touch height and align at the bottom of each grid row. Content and destinations unchanged.
+- CSS parsing and focused diff whitespace checks passed. Automated local Chrome: 80 existing viewport/theme-attribute/comfort-attribute/app-zoom combinations passed with no page overflow, no visible direct-child content outside card bounds, and no Explore targets below 44px. Decorative glow overflow excluded from content bounds. Native browser menu zoom and physical devices remain unverified; production readiness remains incomplete.
+
+### Landing section alignment and transition spacing
+
+- Updated Landing.css: shared 1080px maximum width for section shells, CTA, hero bottom and footer content; smaller section/CTA headings; explicit compact section-heading margins; reduced how-it-works heading gap, step-number/rule spacing and CTA text/padding. Preserved mobile stacking, text, links and zoom preferences.
+- Lightning CSS parsing and whitespace diff checks passed. Automated local Chrome section-content checks: 80 viewport/app-zoom/theme-attribute/comfort-attribute combinations, no page overflow, no feature/step/CTA content outside its container and no action target below 44px. Decorative CTA circles excluded. At 1366px/125% app zoom, page height decreased from 4050px to 3850px. Native menu zoom, real devices and production readiness remain unverified/incomplete.
+
+### Landing visual refinement
+
+- Landing.css only: desktop feature introduction uses a two-column heading/description composition; mobile retains the centered stacked layout. Cards use flat theme surfaces, restrained shadows, three subtle icon accents and keyboard focus-within feedback. Removed decorative card glows and hover translation to keep grid rows aligned. Reduced hero-grid intensity and CTA decoration/shadow.
+- Existing content, links, data, app zoom and responsive behavior preserved. Lightning CSS parse and focused whitespace diff checks passed. Local automated Chrome: all 80 existing viewport/app-zoom/theme-attribute/comfort-attribute cases passed without page overflow, clipped visible card/step/CTA children, or action targets below 44px. Native browser-menu zoom and physical-device testing remain unverified. Application remains not production-ready pending previously documented checks.
+
+### Landing layout restoration
+
+- At the user's request, removed the latest split desktop hero, preview-specific changes, section divider and step-card accents. Restored the preceding centered hero while preserving earlier landing refinements and unrelated work. CSS parsing and focused whitespace checks passed; browser verification was not repeated for this restoration.
+
+### Original landing style restored
+
+- User requested the earlier original appearance. Restored Landing.css to its pre-refinement Git baseline; all other page and backend changes preserved. CSS parsing and focused diff checks passed. No browser re-test performed. Earlier landing refinement entries above describe superseded changes.
+
+### Preserve original landing appearance across app display zoom
+
+- Landing.css remains at its original baseline. `utils/appZoom.js` exempts pathname `/` from website display scaling and restores original media queries, without overwriting the saved preference. `components/common/RouteContent.jsx` reapplies display zoom in a layout effect on pathname changes so other routes retain their saved scale.
+- Added appZoom regression coverage for entering/leaving `/` at 125/150%, original media query restoration, preserved preference, and restored scale on login. Both existing zoom/eyeComfort test files passed; RouteContent JSX compiled with Oxc; focused diff whitespace checks passed.
+- This controls the website Settings display zoom only. Chrome/native browser zoom remains user-controlled and is not canceled. Browser dimension comparison was requested separately; do not infer its result from the source/unit checks. Production readiness remains incomplete.
+- Browser comparison did not run: initial automatic approval review timed out; the retry found the temporary harness absent because its creation had been part of the unexecuted command. No browser verification is claimed for this change.
+
+### Login original scale at website zoom
+
+- Extended the existing original-scale exception in appZoom.js to `/login`; its CSS, appearance, form handlers and authentication remain unchanged. Saved display zoom still resumes on workspace routes through the existing route layout effect.
+- Updated regression coverage for both `/` and `/login` at 125/150%, retained preferences, restored media queries, and resuming scaling on `/dashboard`. Both appZoom and eyeComfort test files passed, as did focused whitespace checks. No browser testing performed for this follow-up. Browser-native zoom is unaffected; production readiness remains incomplete.
+
+### Login entry scroll restoration
+
+- Login.jsx now resets window scroll to the top in a mount layout effect. This prevents React navigation from a scrolled landing page retaining the offset and initially hiding the login heading. No form, authentication, style or data changes.
+- Actual automated local Chrome navigation tested at 320, 390, 1366 and 1920px: scrolled landing to 1000px, clicked Sign in, confirmed `/login`, scrollY=0, heading top positive and no horizontal document overflow in all four cases. No form submissions or persistence tests performed. Login JSX compilation and focused whitespace check passed. Native zoom/physical devices and production readiness remain unverified/incomplete.
+
+### Registration white canvas
+
+- Register.css now keeps the outer registration canvas, container and form section white, including under theme/comfort background overrides. Blue brand panel and registration behavior preserved. Lightning CSS parsing and focused whitespace checks passed; no browser testing performed for this paint-only change.
+
+- Registration white-panel follow-up: changed the remaining blue brand panel to white, paired its heading/body text with dark foregrounds, retained blue accents and removed its decorative rings. Register.css parsing and whitespace checks passed; browser verification not performed.
+
+- User requested the previous registration style: removed only the latest white brand-panel overrides, restoring the blue brand panel while retaining the white outer canvas and form area. CSS parsing and whitespace checks passed.
+
+- Restored the original registration background at user request by removing the remaining white-canvas overrides. Register.css now matches its original Git baseline. Other pages unchanged.
+
+### Password recovery visual polish
+
+- ForgotPassword.jsx: added scoped `recovery-page` class, proper outlined/decorative SVG attributes, email and one-time-code autocomplete hints. API URLs, requests, submit handlers, verification state and navigation unchanged.
+- Login.css: scoped recovery-only 460px white card, clear stacked brand lockup with CSS logo, restrained shadow, smaller heading, balanced form spacing, readable controls and narrow-screen padding. Other auth page designs unchanged.
+- Oxc JSX compilation, Lightning CSS parsing and focused whitespace checks passed. Actual automated local Chrome: 36 email-step cases across 320/390/768/1366/1920px and 844px landscape, light/dark theme attributes and 100/125/150% app zoom; no horizontal overflow or negative card top, empty form invalid, email icon fill correct. Desktop screenshot inspected. No requests submitted. Code-step/loading/error appearance, real verification delivery and token persistence remain unverified; no native browser zoom/device verification. Application remains not production-ready.
+
+### Reset-password Show/Hide labels
+
+- Login.css: reset-page-only password reveal controls now have automatic width, 64px minimum width, a 44px touch target and explicit no-wrap text; the inherited 34px icon-button width no longer splits Show/Hide. Other auth controls unchanged.
+- CSS parsing and focused whitespace checks passed. Actual automated local Chrome: 36 cases across 320/390/768/1366/1920px and 844px landscape, light/dark attributes and 100/125/150% app zoom; both labels fit on one line, no page overflow and controls at least 44px high. Show/Hide click check confirmed password → text → password. Used a fake history-state reset session, with API writes blocked; no real token or password reset used. Native browser zoom and real-device verification not performed.
+
+### Recovery verification field white surface
+
+- Login.css: explicitly paired `recovery-page #reset-code` with a white background, dark digits/caret and readable placeholder. This code input has no explicit type and was still affected by global comfort input backgrounds. ID-scoped rules preserve the surrounding error styles, themes on other pages and verification logic. CSS parsing and focused whitespace checks passed; browser verification not performed for this follow-up.
+
+### Mobile profile presentation follow-up
+
+- Profile.css only: scoped to profile containers at most 600px. Balanced header typography, reduced avatar, compact identity text/metadata, aligned social actions, refined section spacing and readable hint text. Biography/experience textareas start at 160px and remain vertically resizable; contents are not changed. Identity flex basis reset for stacked flow; save copy remains content-sized with an explicit 18px inset and 48px action target. Desktop CSS and all profile handlers/API/save behavior unchanged.
+- Lightning CSS parse and focused whitespace checks passed. Existing synthetic Chrome profile/evidence fixture harness: 40 cases across ten portrait/landscape sizes and light/dark attributes; zero document overflow or reported mobile control issues. Includes 20 Profile cases and 20 unchanged Evidence cases; this is static fixture browser layout checking, not authenticated interaction or persistence verification. First automatic approval timed out; retry succeeded. Production readiness remains incomplete.
+
+### Mobile profile identity composition
+
+- Profile.css only: under 600px profile containers, aligned Edit profile beside the title, placed avatar alongside name/kicker, and separated full-width metadata, biography, social actions and preview label into explicit grid rows. Added a restrained top accent and clearer biography divider. Generic layout wrappers use display:contents only within the narrow layout; interactive/semantic controls retain their elements. Desktop, fields, preview disclosure and save/API logic unchanged.
+- CSS parsing and focused whitespace checks passed. Existing synthetic Chrome fixture harness: 40 Profile/Evidence cases passed, zero document overflow/mobile control issues (20 Profile cases). Static fixtures only; authenticated data, saves and physical devices were not tested. Production readiness remains incomplete.
+
+### Laptop profile refinement
+
+- Profile.css only: above 600px profile containers, compact grid identity header with avatar/name/preview grouping; biography separator and right-aligned professional actions; balanced title/control typography, restrained border accent, 180px resizable editors, refined panel gaps and explicitly padded save bar. At 860px content width, restore two editing columns and a three-column professional-link row. Existing phone styles, fields, preview disclosure, saving/API and data unchanged.
+- Lightning CSS parsing and focused whitespace checks passed. Expanded existing static Profile/Evidence Chrome fixture checks to actual appZoom function at 100/125/150%: 120 cases across ten viewport sizes including laptop/desktop and landscape, both theme attributes. No document overflow or reported mobile control issues. Includes 60 Profile cases; remaining 60 verify unchanged Evidence fixtures. These are synthetic browser layout checks, not authenticated account editing, real persistence, physical devices or native browser-menu zoom. Production readiness remains incomplete.

@@ -219,7 +219,7 @@ const ForgotPassword = () => {
 
     return (
 
-        <main className="login-page">
+        <main className="login-page recovery-page">
 
             <section className="login-form-panel">
 
@@ -296,7 +296,7 @@ const ForgotPassword = () => {
 
                             {step === "email"
                                 ? "Enter your account email and we'll send you a verification code."
-                                : `We sent a 6-digit verification code to ${email}.`
+                                : `If an account exists for ${email}, a 6-digit code will arrive by email. Check your inbox and spam folder.`
                             }
 
                         </p>
@@ -341,6 +341,8 @@ const ForgotPassword = () => {
 
                                     <svg
                                         viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" strokeWidth="1.7"
+                                        aria-hidden="true"
                                     >
 
                                         <rect
@@ -360,6 +362,7 @@ const ForgotPassword = () => {
 
                                     <input
                                         id="forgot-email"
+                                        autoComplete="email"
                                         type="email"
                                         value={email}
                                         onChange={(event) =>
@@ -442,6 +445,7 @@ const ForgotPassword = () => {
 
                                     <input
                                         id="reset-code"
+                                        autoComplete="one-time-code"
                                     aria-invalid={error === "Enter the 6-digit verification code." || undefined}
                                     aria-describedby={error === "Enter the 6-digit verification code." ? "recovery-error" : undefined}
                                         value={code}

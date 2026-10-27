@@ -1,6 +1,7 @@
-import { Component, Suspense } from "react";
+import { Component, Suspense, useLayoutEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "../../styles/routeContent.css";
+import { applyAppZoom, getAppZoom } from "../../utils/appZoom.js";
 
 class RouteErrorBoundary extends Component {
     state = { failed: false };
@@ -37,6 +38,9 @@ class RouteErrorBoundary extends Component {
 
 export default function RouteContent({ children }) {
     const { pathname } = useLocation();
+    useLayoutEffect(() => {
+        applyAppZoom(getAppZoom());
+    }, [pathname]);
     return (
         <RouteErrorBoundary path={pathname}>
             <Suspense fallback={<div className="route-feedback" role="status" aria-live="polite">Loading page…</div>}>

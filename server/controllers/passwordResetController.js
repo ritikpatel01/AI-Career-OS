@@ -5,6 +5,8 @@ const User = require("../models/User");
 const PasswordReset = require("../models/PasswordReset");
 const { sendPasswordResetCode } = require("../services/emailService");
 
+const { logMailFailure } = require("../utils/mailDiagnostics");
+
 const hashValue = value => crypto.createHash("sha256").update(value).digest("hex");
 const lifetime = 10 * 60 * 1000;
 const genericSuccess = { success: true, message: "If an account exists for this email, a verification code has been sent." };
@@ -23,11 +25,11 @@ const forgotPassword = async (req, res) => {
         const request = await PasswordReset.create({ user: user._id, email, codeHash: hashValue(code), expiresAt: new Date(Date.now() + lifetime) });
         try {
             await sendPasswordResetCode(email, code);
-        } catch {
+        } catch (error) {
             // Do not expose provider errors, recipients, codes, or account existence.
-            console.error("Password recovery delivery failed");
+            logMailFailure("delivery", error);
             try { await PasswordReset.deleteOne({ _id: request._id }); }
-            catch { console.error("Password recovery cleanup failed"); }
+            catch (error) { logMailFailure("cleanup", error); }
         }
         return res.status(200).json(genericSuccess);
     } catch {

@@ -42,14 +42,16 @@ test('environment and backup exclusions work in an isolated git fixture; example
     } finally { rmSync(directory, { recursive: true, force: true }); }
 });
 
-test('mail transport requires encrypted delivery without contacting SMTP', () => {
+test('mail transport requires encrypted delivery without contacting SMTP', async () => {
     const vm = require('node:vm'), { readFileSync } = require('node:fs');
     for (const secure of ['true', 'false']) {
         let options;
+        const module = { exports: {} };
         vm.runInNewContext(readFileSync(require.resolve('../services/emailService'), 'utf8'), {
-            module: { exports: {} }, process: { env: { MAIL_SECURE: secure } },
+            module, process: { env: { MAIL_SECURE: secure, MAIL_HOST: 'smtp.example.test', MAIL_PORT: secure === 'true' ? '465' : '587', MAIL_USER: 'fixture', MAIL_PASS: 'fixture', MAIL_FROM: 'sender@example.test' } },
             require: id => { assert.equal(id, 'nodemailer'); return { createTransport(config) { options = config; return { sendMail: async () => { throw Error('Not invoked by this test'); } }; } }; },
         });
+        await assert.rejects(module.exports.sendPasswordResetCode('recipient@example.test', '123456'), /Not invoked/);
         assert.equal(options.secure, secure === 'true'); assert.equal(options.requireTLS, true);
     }
 });

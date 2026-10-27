@@ -1918,3 +1918,28 @@ body[data-theme="dark"] .kb-workflow-step > span {
 @container app-content (max-width: 768px) {
     .kb-page .kb-search-box input { font-size: 16px; }
 }
+
+/* Even category rows for narrow workspace layouts. */
+@container app-content (max-width: 600px) {
+    .kb-page .kb-category-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        width: 100%;
+        padding: 0;
+        overflow: visible;
+    }
+    .kb-page .kb-category-button {
+        width: 100%;
+        min-width: 0;
+        min-height: 44px;
+        margin: 0;
+        padding: 10px 8px;
+        justify-content: flex-start;
+        gap: 8px;
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+    .kb-page .kb-category-button > span { flex: 0 0 20px; text-align: center; }
+    .kb-page .kb-category-button:last-child:nth-child(odd) { grid-column: 1 / -1; }
+}

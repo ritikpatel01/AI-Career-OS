@@ -80,9 +80,9 @@
 ================================= */
 
 .projects-section {
-    background: #ffffff;
+    background: var(--surface, #ffffff);
 
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--border-color, #e5e7eb);
 
     border-radius: 16px;
 

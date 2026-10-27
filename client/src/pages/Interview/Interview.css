@@ -1829,3 +1829,48 @@ html[data-theme="dark"] .interview-page textarea:focus-visible {
     .interview-page .role-search input { min-height: 48px; font-size: 16px; }
     .interview-page :is(.start-button, .role-option) { min-height: 44px; }
 }
+
+/* Pair the practice banner's dark surface with readable text in every theme. */
+html body .interview-page .start-card {
+    background: linear-gradient(135deg, #111c2e, #1c315d) !important;
+    color: #ffffff !important;
+}
+html body .interview-page .start-card h2 {
+    color: #ffffff !important;
+    overflow-wrap: anywhere;
+}
+html body .interview-page .start-card p {
+    color: #c2d0e4 !important;
+}
+html body .interview-page .start-card .eyebrow {
+    color: #a9c4ff !important;
+}
+
+/* Keep two-digit instruction numbers intact beside flexible card copy. */
+.interview-page .how-card > span {
+    flex: 0 0 24px;
+    min-width: 24px;
+    white-space: nowrap;
+    overflow-wrap: normal;
+    word-break: normal;
+    font-variant-numeric: tabular-nums;
+}
+.interview-page .how-card > div {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+/* Numeric choices must not break into separate digits on narrow screens. */
+.interview-page .question-count .count-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 48px;
+    min-width: 48px;
+    min-height: 44px;
+    padding: 8px;
+    white-space: nowrap;
+    overflow-wrap: normal;
+    word-break: normal;
+    font-variant-numeric: tabular-nums;
+}
