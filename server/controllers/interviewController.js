@@ -120,7 +120,18 @@ const submitAnswer = async (req, res) => {
 
     } catch (error) {
 
-        console.error("Submit Interview Answer Error:");
+        const failures = {
+            INTERVIEW_AI_CONFIG: [503, "Interview evaluation is not configured on the server. Please contact support."],
+            INTERVIEW_AI_AUTH: [503, "The evaluation provider could not authenticate. Please contact support."],
+            INTERVIEW_AI_MODEL: [503, "The configured evaluation model or request is unavailable. Please contact support."],
+            INTERVIEW_AI_TIMEOUT: [504, "Interview evaluation timed out. Your answer was not saved; please try again."],
+            INTERVIEW_AI_LIMIT: [503, "The evaluation provider is busy or its quota is exhausted. Please try again later."],
+            INTERVIEW_AI_UNAVAILABLE: [503, "The evaluation service is temporarily unreachable. Please try again later."],
+            INTERVIEW_AI_RESPONSE: [502, "The evaluation service returned an incomplete or invalid result. Please try again."],
+        };
+        const failure = Object.hasOwn(failures, error?.code) ? failures[error.code] : null;
+        try { console.error(JSON.stringify({ event: "interview_evaluation_failed", code: failure ? error.code : "INTERVIEW_AI_FAILED" })); } catch { /* Logging cannot change the response. */ }
+        if (failure) return res.status(failure[0]).json({ success: false, message: failure[1], code: error.code });
 
 
         // ---------------------------------------------

@@ -2824,7 +2824,7 @@ const evaluateAnswerWithAI = async (payload) => {
 
     const timeoutId = setTimeout(() => {
         controller.abort();
-    }, 360000);
+    }, 130000);
 
     try {
         const response = await fetch(
@@ -2875,7 +2875,7 @@ const evaluateAnswerWithAI = async (payload) => {
     } catch (error) {
         if (error.name === "AbortError") {
             throw new Error(
-                "AI evaluation timed out. Ollama may need more time to process this answer."
+                "AI evaluation timed out. Please try again; the service may be busy."
             );
         }
 
@@ -3615,11 +3615,11 @@ const Interview = () => {
                             </span>
 
                             <strong>
-                                Qwen3
+                                AI evaluator
                             </strong>
 
                             <p>
-                                <span className="interview-stat-detail">Local AI-powered answer evaluation.</span>
+                                <span className="interview-stat-detail">Rubric-based AI answer evaluation.</span>
                                 <span className="interview-stat-short">AI feedback</span>
                             </p>
                         </div>
@@ -5094,11 +5094,11 @@ const Interview = () => {
                             <div>
 
                                 <strong>
-                                    Local AI evaluator
+                                    AI answer evaluator
                                 </strong>
 
                                 <p>
-                                    Qwen3 evaluates
+                                    AI evaluates
                                     your answer
                                     against the
                                     question-specific

@@ -1,4 +1,4 @@
-const axios = require("axios");
+const { evaluatePrompt, InterviewAIError } = require("./provider");
 
 /*
 ==========================================================
@@ -44,18 +44,6 @@ IMPORTANT
 OLLAMA CONFIG
 ==========================================================
 */
-
-const OLLAMA_URL =
-    process.env.OLLAMA_URL ||
-    "http://127.0.0.1:11434/api/generate";
-
-const MODEL =
-    process.env.OLLAMA_MODEL ||
-    "qwen3:4b";
-
-const OLLAMA_TIMEOUT =
-    Number(process.env.OLLAMA_TIMEOUT_MS) || 90000;
-
 
 /*
 ==========================================================
@@ -1527,149 +1515,7 @@ CALL OLLAMA
 ==========================================================
 */
 
-const callOllama = async (
-    prompt
-) => {
-    const started =
-        Date.now();
-
-    console.log(
-        `Sending evaluation request to ${MODEL}...`
-    );
-
-    try {
-        const response =
-            await axios.post(
-                OLLAMA_URL,
-                {
-                    model: MODEL,
-
-                    prompt,
-
-                    stream: false,
-
-                    /*
-                     * Disable Qwen thinking.
-                     */
-                    think: false,
-
-                    /*
-                     * Structured JSON.
-                     */
-                    format: "json",
-
-                    /*
-                     * Keep model loaded.
-                     */
-                    keep_alive: "10m",
-
-                    options: {
-                        temperature: 0,
-
-                        /*
-                         * Small output.
-                         */
-                        num_predict: 120,
-
-                        /*
-                         * Smaller context for faster CPU inference.
-                         */
-                        num_ctx: 1024,
-
-                        top_k: 20,
-                        top_p: 0.8,
-                    },
-                },
-                {
-                    timeout:
-                        OLLAMA_TIMEOUT,
-
-                    validateStatus:
-                        () => true,
-                }
-            );
-
-        const elapsed =
-            (
-                Date.now() -
-                started
-            ) / 1000;
-
-        console.log(
-            `Ollama HTTP ${response.status} in ${elapsed.toFixed(1)}s`
-        );
-
-        if (
-            response.status < 200 ||
-            response.status >= 300
-        ) {
-            console.error(
-                "OLLAMA HTTP ERROR:",
-                response.data
-            );
-
-            throw new Error(
-                `OLLAMA_HTTP_ERROR_${response.status}`
-            );
-        }
-
-        const raw =
-            response.data?.response;
-
-        if (
-            !raw ||
-            typeof raw !== "string"
-        ) {
-            throw new Error(
-                "OLLAMA_EMPTY_RESPONSE"
-            );
-        }
-
-        console.log(
-            "Ollama raw response:",
-            raw.substring(
-                0,
-                500
-            )
-        );
-
-        return parseOllamaJson(
-            raw
-        );
-
-    } catch (error) {
-
-        console.error(
-            "================================="
-        );
-
-        console.error(
-            "OLLAMA ERROR"
-        );
-
-        console.error(
-            "Message:",
-            error.message
-        );
-
-        console.error(
-            "Code:",
-            error.code
-        );
-
-        console.error(
-            "HTTP:",
-            error.response?.status
-        );
-
-        console.error(
-            "================================="
-        );
-
-        throw error;
-    }
-};
-
+const callAI = async prompt => parseOllamaJson(await evaluatePrompt(prompt));
 
 /*
 ==========================================================
@@ -1776,9 +1622,6 @@ const evaluateInterviewAnswer = async ({
             cleanAnswerValue
         )
     ) {
-        console.log(
-            "ANSWER REJECTED LOCALLY: obvious nonsense"
-        );
 
         return createZeroEvaluation({
             explanation:
@@ -1837,43 +1680,6 @@ const evaluateInterviewAnswer = async ({
         });
 
 
-    console.log(
-        "================================="
-    );
-
-    console.log(
-        "INTERVIEW EVALUATION"
-    );
-
-    console.log(
-        `Model: ${MODEL}`
-    );
-
-    console.log(
-        `Answer length: ${cleanAnswerValue.length}`
-    );
-
-    console.log(
-        `Code detected: ${evidence.hasCode}`
-    );
-
-    console.log(
-        `Technical terms: ${evidence.technicalMatches.length}`
-    );
-
-    console.log(
-        `Expected matches: ${evidence.expectedMatches.length}/${safeExpected.length}`
-    );
-
-    console.log(
-        `Critical matches: ${evidence.criticalMatches.length}/${safeCritical.length}`
-    );
-
-    console.log(
-        "================================="
-    );
-
-
     /*
     ======================================================
     BUILD PROMPT
@@ -1915,7 +1721,7 @@ const evaluateInterviewAnswer = async ({
     try {
 
         const rawEvaluation =
-            await callOllama(
+            await callAI(
                 prompt
             );
 
@@ -2154,155 +1960,15 @@ const evaluateInterviewAnswer = async ({
         ==================================================
         */
 
-        console.log(
-            "================================="
-        );
-
-        console.log(
-            "INTERVIEW EVALUATION COMPLETE"
-        );
-
-        console.log(
-            `Score: ${evaluation.score}/100`
-        );
-
-        console.log(
-            `Verdict: ${evaluation.verdict}`
-        );
-
-        console.log(
-            "Dimensions:",
-            evaluation.dimensions
-        );
-
-        console.log(
-            "AI assessment:",
-            evaluation.assessment
-        );
-
-        console.log(
-            "Explanation:",
-            evaluation.explanation
-        );
-
-        console.log(
-            "================================="
-        );
-
 
         return evaluation;
 
     } catch (error) {
-
-        console.error(
-            "================================="
-        );
-
-        console.error(
-            "INTERVIEW EVALUATION FAILED"
-        );
-
-        console.error(
-            "Message:",
-            error.message
-        );
-
-        console.error(
-            "Code:",
-            error.code
-        );
-
-        console.error(
-            "================================="
-        );
-
-
-        /*
-        ==================================================
-        OLLAMA NOT RUNNING
-        ==================================================
-        */
-
-        if (
-            error.code ===
-            "ECONNREFUSED"
-        ) {
-            throw new Error(
-                "Ollama is not running. Start Ollama first."
-            );
+        if (error instanceof InterviewAIError) throw error;
+        if (['OLLAMA_INVALID_JSON', 'OLLAMA_EMPTY_RESPONSE', 'OLLAMA_INVALID_SCORES'].includes(error.message)) {
+            throw new InterviewAIError('INTERVIEW_AI_RESPONSE');
         }
-
-
-        /*
-        ==================================================
-        TIMEOUT
-        ==================================================
-        */
-
-        if (
-            error.code ===
-                "ECONNABORTED" ||
-            error.code ===
-            "ETIMEDOUT"
-        ) {
-            throw new Error(
-                "Local AI evaluation timed out. Please try again."
-            );
-        }
-
-
-        /*
-        ==================================================
-        HTTP ERROR
-        ==================================================
-        */
-
-        if (
-            error.message?.startsWith(
-                "OLLAMA_HTTP_ERROR_"
-            )
-        ) {
-            throw new Error(
-                "Ollama returned an HTTP error while evaluating the answer."
-            );
-        }
-
-
-        /*
-        ==================================================
-        INVALID JSON
-        ==================================================
-        */
-
-        if (
-            error.message ===
-            "OLLAMA_INVALID_JSON"
-        ) {
-            throw new Error(
-                "The AI returned invalid evaluation JSON. Please try again."
-            );
-        }
-
-
-        /*
-        ==================================================
-        INVALID SCORES
-        ==================================================
-        */
-
-        if (
-            error.message ===
-            "OLLAMA_INVALID_SCORES"
-        ) {
-            throw new Error(
-                "The AI returned invalid evaluation scores."
-            );
-        }
-
-
-        throw new Error(
-            "AI interview evaluation failed."
-        );
+        throw new InterviewAIError('INTERVIEW_AI_FAILED');
     }
 };
 
