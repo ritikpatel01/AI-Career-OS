@@ -2205,7 +2205,7 @@ html[data-eye-comfort="on"][data-comfort-effects="reduced"] .dashboard-page .nex
 @container dashboard (max-width: 650px) {
     .dashboard-page .dashboard-header h1 {
         font-size: clamp(16px, 5.7cqi, 34px);
-        white-space: nowrap;
+        white-space: normal;
         letter-spacing: -.035em;
     }
     .dashboard-page .dashboard-greeting-name {

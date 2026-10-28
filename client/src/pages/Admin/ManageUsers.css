@@ -644,3 +644,9 @@ body[data-theme="dark"] .manage-users-alert-success {
     .manage-users-state p { font-size: 13px; line-height: 1.6; }
     .manage-users-alert { padding: 12px; font-size: 13px; overflow-wrap: anywhere; }
 }
+
+/* Account actions need the same touch height in tablet rows as phone cards. */
+@container manage-users (max-width: 800px) {
+    .manage-users-promote,
+    .manage-users-demote { min-height: 44px; }
+}

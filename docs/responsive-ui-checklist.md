@@ -325,3 +325,82 @@ Approve/run the prepared isolated replica-set integration suite; verify authenti
 
 - Profile.css only: above 600px profile containers, compact grid identity header with avatar/name/preview grouping; biography separator and right-aligned professional actions; balanced title/control typography, restrained border accent, 180px resizable editors, refined panel gaps and explicitly padded save bar. At 860px content width, restore two editing columns and a three-column professional-link row. Existing phone styles, fields, preview disclosure, saving/API and data unchanged.
 - Lightning CSS parsing and focused whitespace checks passed. Expanded existing static Profile/Evidence Chrome fixture checks to actual appZoom function at 100/125/150%: 120 cases across ten viewport sizes including laptop/desktop and landscape, both theme attributes. No document overflow or reported mobile control issues. Includes 60 Profile cases; remaining 60 verify unchanged Evidence fixtures. These are synthetic browser layout checks, not authenticated account editing, real persistence, physical devices or native browser-menu zoom. Production readiness remains incomplete.
+
+## Full responsive review — 2026-10-28
+
+### Baseline and scope
+
+The Git working tree was clean at the start of this review. Current routing, shared shell/sidebar/navigation, page components, eagerly imported page CSS, theme/eye-comfort/app-zoom styles, existing tests and previous checklist entries were inspected. Existing designs, the mobile drawer/focus handling, route guards, role checks, API calls and environment files are preserved. The historical sections above describe earlier project states; this section records the current review.
+
+All 24 routes were reviewed. The existing responsive foundation was retained rather than replaced. Initial basic route fixtures passed 910 layout cases; expanded content/state fixtures subsequently exposed the issues below.
+
+### Confirmed issues and focused changes
+
+| File | Reproduced issue | Change |
+| --- | --- | --- |
+| `client/src/pages/Dashboard/Dashboard.css` | A long name forced the greeting outside the page at 320–430px and narrow landscape widths because it was forced onto one line. | Allow natural wrapping in the existing narrow container rule; retain font size and branding. Short names still use available line space. |
+| `client/src/pages/Interview/Interview.css` | Active interview answer textarea used 14px text; an error-state Try Again button measured about 42.8px at tablet width. | Existing content-container breakpoint supplies 16px answer text and a minimum 44px hint/retry target. |
+| `client/src/pages/Admin/ManageUsers.css` | Populated account action buttons were 40px high at 768px. | Existing tablet container breakpoint supplies a minimum 44px promotion/demotion target. |
+| `client/src/pages/Auth/AuthControls.test.js` | Full frontend test run revealed that the fixture did not provide the login component's existing useLayoutEffect. | Model the mount effect and scrollTo in the fixture; assert scroll reset occurs exactly once through password toggling. No production auth code changed. |
+
+No shared layout redesign was necessary: the existing shell already constrains old desktop canvases, adapts grids and provides navigation/safe-area behavior. The small CSS changes reuse existing selectors and breakpoints. Other page files were left unchanged where the checked fixtures did not reproduce a defect.
+
+### Route review coverage
+
+These are source and static browser fixture checks, not blanket certification of each real workflow.
+
+| Routes | Reviewed fixture/content coverage |
+| --- | --- |
+| `/` | Landing hero, illustrative preview, feature grid and links. |
+| `/login`, `/register` | Public forms, labels/actions and errors through existing control tests. Login reveal/empty validation also checked in the running local frontend. |
+| `/forgot-password`, `/reset-password` | Email/code entry, reset form with synthetic route-state token, empty/invalid-session state. No real email or password change. |
+| `/dashboard` | Summary/cards/actions and short/long identity text. Fixed the reproduced long-name overflow. |
+| `/profile` | Identity/biography/forms/social fields and save area. No changes to existing responsive refinements. |
+| `/settings` | Profile, appearance, AI, notifications, account and security tab fixtures. |
+| `/roadmap` | Default, notes, resources and practice states; code/reference blocks. |
+| `/skills` | Skill/evidence editor fixtures. |
+| `/dsa` | Topic/question lists and code/practice presentation. |
+| `/interview` | Setup, role dropdown, active question, feedback, evaluation error and results. Fixed answer text/retry touch targets. |
+| `/projects`, `/documents` | Empty/populated/loading/error states plus upload, preview and AI dialog fixtures. |
+| `/resume` | Upload and job-description input view fixtures. Real analysis/print/export not exercised. |
+| `/jobs` | Search/filter/list/details source and populated fixture. Live provider results unverified. |
+| `/github` | Analyzer form/default state; real populated remote analysis unverified. |
+| `/knowledge` | Resource library/search/categories/cards. |
+| `/progress`, `/activities`, `/notifications` | Default overview/forms/filter/list/settings fixtures; existing feature behavior retained. |
+| `/admin/users` | Empty and populated table/card rows, pagination/actions; fixed tablet target height. No role mutation. |
+| `/admin/evidence` | Review layout; authenticated review writes unverified. |
+| `/admin/data` | Collection filters plus separately populated nested User/social fields and raw JSON disclosure. No real record reads/writes. |
+
+### Checks actually performed
+
+- Expanded local-file Chrome fixtures: **1,320 cases passed**, covering 44 route/state variants, both light/dark theme attributes, widths 320, 360, 375, 390, 430, 768, 820, 1024, 1180, 1280, 1366, 1440 and 1920px, plus 768×390 and 844×390 landscape. Includes iPad-style 820×1180/1180×820. No measured document overflow, overflowing visible headings/buttons/labels, or reported narrow-screen field/touch-target issues after the fixes. Screen-reader-only text was correctly excluded from visual clipping checks.
+- Separate Projects/Documents fixtures: **242 cases passed** for populated/empty/loading/error and three dialog states. No measured page overflow or reported mobile control issues.
+- Shared navigation fixtures: **36 cases passed**, including open/closed drawer layouts; no page overflow or excessive short-content page height. The mock NavLink emitted a fixture-only React `end` attribute warning; no production component was changed for that mock warning.
+- Admin Data Center nested details with complete shared CSS/shell: **14 cases passed**; no page overflow/detail-panel issues, JSON bounded at at most 360px. The older isolated harness's stale desktop comparison was not used as a product regression verdict.
+- Actual running local frontend: **20 public-page cases passed**; all **19 protected routes redirected unauthenticated visits to login**; password reveal and blank-login validation worked. No API writes occurred. This does not test authenticated saving or admin role authorization end-to-end.
+- All **26 frontend test files** run using `node --test --test-isolation=none --test-concurrency=1 --test-reporter=spec`: **146 passed, 2 skipped, 0 failed**. Optional Torch/TensorFlow curriculum runtime cases skipped because those packages are absent (10/9 optional acceptance checks respectively). The first run had two auth-fixture failures, corrected as documented above; the full suite then passed. Temporary curriculum filesystem/database fixtures were isolated; real data and services were not modified.
+- Active import graph: **125 modules / 95 scripts / 198 relative import edges**, all resolved and compiled. **31 CSS files parsed** with Lightning CSS. An exhaustive scan also identified two pre-existing unreachable scaffold issues: `components/common/Sidebar.jsx` imports a missing `Sidebar.css`; `components/dashboard/LearningProgress.jsx` contains invalid source. Neither is reachable from `main.jsx`; no unrelated scaffold repair was made or claimed.
+- `client/vercel.json` parses and retains the existing `/(.*)` → `/index.html` SPA rewrite. No route/deployment configuration edits.
+- No lint script/configuration is provided in `client/package.json`; no lint success is claimed. JSX compilation, import checks, tests and CSS parsing are separate checks.
+- `npm --prefix client run build` **attempted and failed** at the existing VITE_API_URL HTTPS/API-base validation. No environment value was printed or changed; no guard bypass, alternate API URL or configuration override was used.
+- `git diff --check` passed.
+
+### Limits and remaining release work
+
+The supplied Vercel frontend and Render health URL could not be read through the web tool; this is a tool-access limitation, not evidence that production is down. No production deployment or authenticated production testing was performed.
+
+Static fixtures use synthetic data and disabled effects; they do not verify API persistence, uploads/downloads, real interview evaluation, every provider-populated result, browser-native dropdown rendering, soft keyboard behavior, physical safe areas, screen readers, touch hardware or native browser-menu zoom. Those remain manual/device/authenticated test requirements. Page-specific states not listed above are unverified. Existing website zoom/theme behavior was preserved and its existing unit tests passed, but the 1,320-case matrix is at normal app zoom, not a new claim of all zoom combinations.
+
+The app remains **not production-ready** until the production API URL build configuration is resolved through a separately authorized configuration change, the normal build succeeds, and remaining authenticated, device/browser, security and deployment verification is complete. This review changes only three page stylesheets, one test harness and this checklist; no backend, environment, dependency, API or permission changes.
+
+## Production build configuration follow-up — 2026-10-28
+
+- Inspected `git status --short`, `git diff --stat`, and the existing page/test/checklist diffs before changes. Confirmed the dashboard wrapping, interview input/retry controls, tablet admin action sizes and auth fixture improvements are in the actual working tree. These existing tracked changes remain intact.
+- Exact blocker: `npm --prefix client run build` invokes Vite production mode. `client/vite.config.js` uses `loadEnv(mode, clientDirectory, "VITE_")` and validates **VITE_API_URL**. The resolved value came from `client/.env`; no process override or higher-priority production env files existed. The value was HTTP on a non-loopback host, violating the rule requiring HTTPS except for explicit HTTP loopback previews. The existing guard also rejects credentials, query/fragment and paths not ending in `/api`. No secret or original hostname was printed.
+- The user supplied the intended HTTPS Render API base in the preceding request. Added **client/.env.production** containing only that public VITE_API_URL configuration, leaving the development `.env`, all backend settings and secrets untouched. `git check-ignore client/.env.production` confirms the file is ignored. The URL was not added to application source, Vite config, package scripts or request handlers. This ignored local file is not a Vercel configuration update and is not included in a commit by default.
+- Rechecked Vite effective production/development settings with sanitized Node checks: production exactly matches the user-supplied API, uses HTTPS and `/api`; development remains separate. Generated JavaScript contains the intended public API base. `client/vercel.json` SPA rewrite is unchanged.
+- `npm --prefix client run build`: **passed**, 456 modules transformed, normal `client/dist` artifacts generated. Existing Roadmap chunk size warning remains (about 2.47 MB minified / 810 kB gzip); no warning threshold or validation guard was changed.
+- `rg --files -0 client/src -g '*.test.js' | xargs -0 node --test --test-isolation=none --test-concurrency=1 --test-reporter=spec`: **146 passed, 2 optional Torch/TensorFlow cases skipped, 0 failures**. Output captured in `/tmp/responsive-build-followup-tests.log`; temporary fixtures only, no production data/provider calls.
+- `git diff --exit-code -- client/vite.config.js client/vercel.json client/.env.example client/src/services/api.js server/`: passed, confirming no diff in these protected areas. `git diff --check`: passed.
+- Files newly changed in this follow-up: ignored `client/.env.production` and this checklist (which was already modified by the prior audit). No new responsive source changes were needed. Generated `client/dist` is build output, not a source/deployment change. The prior four page/test modifications remain uncommitted.
+- The earlier build-blocker status above is superseded by this successful local build. Real authenticated workflows, actual device/browser coverage, deployment environment verification and outstanding security/release checks remain incomplete. No commit, push, deployment, secret edit, auth/permission change or backend API change was performed. Wait for user approval before committing or pushing.

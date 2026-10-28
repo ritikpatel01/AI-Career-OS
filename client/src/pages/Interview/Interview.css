@@ -1874,3 +1874,12 @@ html body .interview-page .start-card .eyebrow {
     word-break: normal;
     font-variant-numeric: tabular-nums;
 }
+
+/* Answer-entry text stays readable on phone and tablet content widths. */
+@container app-content (max-width: 768px) {
+    .interview-page .question-card textarea {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+    .interview-page .hint-button { min-height: 44px; }
+}

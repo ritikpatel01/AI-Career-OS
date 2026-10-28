@@ -13,8 +13,12 @@ async function mount(name, overrides = {}) {
     const slots = [];
     let index = 0;
     const requests = [];
+    const scrolls = [];
+    let layoutMounted = false;
     const scope = {
         React, Link: 'a', API_BASE_URL: '/fixture-api',
+        window: { scrollTo: options => scrolls.push(options) },
+        useLayoutEffect(effect) { if (!layoutMounted) { layoutMounted = true; effect(); } },
         useState(initial) {
             const i = index++;
             if (!(i in slots)) slots[i] = typeof initial === 'function' ? initial() : initial;
@@ -44,7 +48,7 @@ async function mount(name, overrides = {}) {
     const input = name => find(n => n.type === 'input' && n.props.name === name);
     const change = (name, value) => input(name).props.onChange({ target: { name, value } });
     const submit = () => find(n => n.type === 'form').props.onSubmit({ preventDefault() {} });
-    return { nodes, find, input, change, submit, requests };
+    return { nodes, find, input, change, submit, requests, scrolls };
 }
 
 test('sign-in password reveal preserves input and exposes its pressed state', async () => {
@@ -58,6 +62,8 @@ test('sign-in password reveal preserves input and exposes its pressed state', as
     assert.equal(reveal().props['aria-pressed'], true);
     reveal().props.onClick();
     assert.equal(app.input('password').props.type, 'password');
+    assert.equal(app.scrolls.length, 1);
+    assert.equal(app.scrolls[0].top, 0);
 });
 
 test('sign-in rejects invalid input locally and keeps fields after request failure', async () => {
