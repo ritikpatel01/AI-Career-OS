@@ -1,45 +1,58 @@
-const nodemailer = require("nodemailer");
-
-// Lazy initialization permits startup without mail in development, but delivery
-// always validates explicit settings. Never fall back to another SMTP server.
-let transporter;
-let sender;
-function getTransport() {
-    if (transporter) return transporter;
-    const keys = ['MAIL_HOST', 'MAIL_PORT', 'MAIL_SECURE', 'MAIL_USER', 'MAIL_PASS', 'MAIL_FROM'];
-    const env = process.env;
-    const invalid = keys.filter(key => typeof env[key] !== 'string' || !env[key].trim());
-    if (env.MAIL_HOST && !/^[a-zA-Z0-9.-]+$/.test(env.MAIL_HOST)) invalid.push('MAIL_HOST');
-    if (!/^\d+$/.test(env.MAIL_PORT || '') || Number(env.MAIL_PORT) < 1 || Number(env.MAIL_PORT) > 65535) invalid.push('MAIL_PORT');
-    if (!['true', 'false'].includes(env.MAIL_SECURE)) invalid.push('MAIL_SECURE');
-    if (!/^[^\s<>@]+@[^\s<>@]+\.[^\s<>@]+$/.test(env.MAIL_FROM || '')) invalid.push('MAIL_FROM');
+// Resend HTTPS delivery. Never fall back to SMTP on Render Free.
+function mailError(code, statusCode) {
+    const error = new Error('Password recovery email request failed');
+    error.code = code;
+    if (Number.isInteger(statusCode)) error.statusCode = statusCode;
+    return error;
+}
+function validateMailConfiguration(env = process.env) {
+    const invalid = [];
+    if (typeof env.RESEND_API_KEY !== 'string' || !env.RESEND_API_KEY.trim() || /\s/.test(env.RESEND_API_KEY.trim())) invalid.push('RESEND_API_KEY');
+    if (typeof env.MAIL_FROM !== 'string' || !/^[^\s<>@]+@[^\s<>@]+\.[^\s<>@]+$/.test(env.MAIL_FROM)) invalid.push('MAIL_FROM');
     if (invalid.length) {
-        const error = new Error('Invalid email configuration; check the named MAIL settings');
-        error.code = 'ECONFIG';
-        error.configurationFields = [...new Set(invalid)];
+        const error = mailError('ECONFIG');
+        error.message = `Invalid email configuration: ${invalid.join(', ')}`;
+        error.configurationFields = invalid;
         throw error;
     }
-    const transport = nodemailer.createTransport({
-        host: env.MAIL_HOST, port: Number(env.MAIL_PORT), secure: env.MAIL_SECURE === 'true',
-        requireTLS: true,
-        connectionTimeout: 10000, greetingTimeout: 10000, socketTimeout: 20000,
-        auth: { user: env.MAIL_USER, pass: env.MAIL_PASS },
-    });
-    sender = env.MAIL_FROM;
-    transporter = transport;
-    return transporter;
+    return { apiKey: env.RESEND_API_KEY.trim(), sender: env.MAIL_FROM };
 }
-
+async function sendWithResend(apiKey, message) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 20000);
+    try {
+        const response = await fetch('https://api.resend.com/emails', {
+            method: 'POST', redirect: 'error', signal: controller.signal,
+            headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify(message),
+        });
+        if (!response.ok) {
+            const code = response.status === 401 ? 'EMAIL_AUTH' : response.status === 429 ? 'EMAIL_RATE_LIMIT' : response.status >= 500 ? 'EMAIL_PROVIDER' : 'EMAIL_REJECTED';
+            // Do not copy provider bodies: they can echo addresses or message data.
+            try { await response.body?.cancel(); } catch { /* Ignore body cleanup errors. */ }
+            throw mailError(code, response.status);
+        }
+        let result;
+        try { result = await response.json(); }
+        catch { throw mailError(controller.signal.aborted ? 'ETIMEDOUT' : 'EMAIL_RESPONSE'); }
+        if (result?.error || typeof result?.id !== 'string' || !result.id.trim()) throw mailError('EMAIL_RESPONSE');
+        // Acceptance is not proof of inbox delivery; do not expose IDs or message data.
+    } catch (error) {
+        if (controller.signal.aborted) throw mailError('ETIMEDOUT');
+        if (['EMAIL_AUTH', 'EMAIL_RATE_LIMIT', 'EMAIL_PROVIDER', 'EMAIL_REJECTED', 'EMAIL_RESPONSE'].includes(error?.code)) throw error;
+        throw mailError('ECONNECTION');
+    } finally { clearTimeout(timer); }
+}
 
 const sendPasswordResetCode = async (
     email,
     code
 ) => {
 
-    const transport = getTransport();
-    const result = await transport.sendMail({
-        from: { name: "AI Career OS", address: sender },
-        to: email,
+    const { apiKey, sender } = validateMailConfiguration();
+    await sendWithResend(apiKey, {
+        from: `AI Career OS <${sender}>`,
+        to: [email],
 
         subject:
             "Your AI Career OS password reset code",
@@ -200,15 +213,6 @@ const sendPasswordResetCode = async (
             </html>
         `
     });
-    // SMTP acceptance is not proof of inbox delivery. Explicit rejection is failure.
-    if (result?.rejected?.length || (Array.isArray(result?.accepted) && !result.accepted.length)) {
-        const error = new Error('Email was not accepted by the mail server');
-        error.code = 'EENVELOPE';
-        throw error;
-    }
 };
 
-
-module.exports = {
-    sendPasswordResetCode
-};
+module.exports = { sendPasswordResetCode, validateMailConfiguration };

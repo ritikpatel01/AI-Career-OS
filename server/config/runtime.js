@@ -40,10 +40,7 @@ function validateEnvironment(env = process.env) {
     allowedOrigins(env);
     if (env.NODE_ENV === "production") {
         if (Buffer.byteLength(env.JWT_SECRET) < 32) throw new Error("JWT_SECRET must be at least 32 bytes in production");
-        for (const key of ["MAIL_HOST", "MAIL_PORT", "MAIL_SECURE", "MAIL_USER", "MAIL_PASS", "MAIL_FROM"]) {
-            if (!env[key]?.trim()) throw new Error(`Missing required configuration: ${key}`);
-        }
-        if (!["true", "false"].includes(env.MAIL_SECURE) || !Number.isInteger(Number(env.MAIL_PORT)) || Number(env.MAIL_PORT) < 1 || Number(env.MAIL_PORT) > 65535) throw new Error("Invalid mail transport configuration");
+        require('../services/emailService').validateMailConfiguration(env);
     }
 }
 

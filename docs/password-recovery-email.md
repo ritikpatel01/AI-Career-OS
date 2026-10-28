@@ -1,49 +1,62 @@
-# Password recovery email delivery
+# Password recovery email — Resend HTTPS
 
-## Findings and limits
+## Transport and preserved behavior
 
-The frontend uses `API_BASE_URL` from `client/src/services/api.js`: Vite's build-time `VITE_API_URL`, with a localhost fallback only when it is absent. The inspected local client environment points to a remote API. No configured hostname or secret is reproduced here. This means local server code or SMTP settings do not automatically affect password recovery initiated by that frontend. Restarting/rebuilding the frontend and deploying the API are separate operations; neither was performed.
+Recovery email now uses Node's built-in `fetch` to call `POST https://api.resend.com/emails` over HTTPS, following [Resend's Send Email API](https://resend.com/docs/api-reference/emails/send-email). No SDK/dependency installation is needed. Use the project's supported modern Node runtime (Node 22+ recommended). There is no SMTP connection, no Nodemailer transport and no SMTP fallback. Render Free's blocked SMTP ports no longer affect this request; no Render plan upgrade is needed.
 
-The controller returns the same generic success body for an unknown account, provider failure and account-dependent storage failure. This is intentional account-enumeration protection, not proof of email delivery. The service previously used SMTP defaults and had no per-delivery configuration validation. Its controller discarded provider diagnostic metadata. These are confirmed diagnostic/configuration weaknesses; the actual remote delivery failure is **not confirmed** without remote logs and configuration verification.
+The existing `sendPasswordResetCode(email, code)` contract, subject, text/HTML template and ten-minute expiry wording remain. Routes/controllers, account lookup, random code generation, hashing, expiry, attempt limits, reset tokens, password changes and rate limiting are unchanged. A failed provider request propagates to the controller; its existing cleanup deletes the new failed reset challenge. Cleanup failure handling remains intact. Unknown accounts and failures retain the same generic public response to avoid account enumeration. That public response does not prove that mail was sent.
 
-The repository includes `server/config/runtime.js` production startup validation, blank `.env.example` templates and `docs/project/deployment.md`. Root Docker/compose placeholders do not identify an operational remote API deployment or provide access to its environment/logs. Do not assume backup/extracted project directories describe the running deployment.
+The HTTPS request has a 20-second abort deadline covering the request and response body, with timer cleanup and redirects rejected. HTTP authentication failures, rejected sender/recipient/validation requests, rate limits and provider failures are errors. Malformed JSON, missing/empty IDs and error-shaped success bodies are also errors. No automatic retry or fabricated delivery result. A valid Resend acceptance ID indicates API acceptance, not inbox delivery; delayed delivery, suppression and bounces must be checked in Resend.
 
-## Required environment names
+## Exact required email environment variables
 
-`MAIL_HOST`, `MAIL_PORT`, `MAIL_SECURE`, `MAIL_USER`, `MAIL_PASS`, `MAIL_FROM`.
+| Server variable | Configure |
+| --- | --- |
+| `RESEND_API_KEY` | A Resend API key with sending permission for the chosen domain. Set in Render backend Environment, not Vercel/client configuration. |
+| `MAIL_FROM` | A **bare mailbox address on an owned domain verified in the same Resend account**. Do not include display names, brackets, whitespace or line breaks. The service supplies the `AI Career OS` display name. |
 
-Supply all values in the backend's protected configuration, not frontend variables. `MAIL_FROM` must be a bare mailbox address (no display name, brackets or line breaks); the service supplies the display name separately. Configure a sender authorized by the current provider, including sender/domain verification when required. Use credentials authorized for SMTP, not an invented password or an unrelated frontend login password.
+There are no additional required email variables. `MAIL_HOST`, `MAIL_PORT`, `MAIL_SECURE`, `MAIL_USER` and `MAIL_PASS` are no longer used or required by production startup. Old SMTP values can be removed manually from Render after the approved migration; real `.env` files were not edited here. Preserve existing unrelated backend variables such as database/auth/CORS/provider configuration.
 
-Follow the current provider's transport settings. Implicit TLS uses `MAIL_SECURE=true`; STARTTLS uses `false` and remains mandatory. Certificates are verified. Transport creation is lazy and cached; missing/invalid settings fail before delivery without falling back to Gmail or localhost. Production startup also retains its existing configuration guard. After changing backend configuration, restart the backend through the existing deployment procedure so cached transport settings are refreshed.
+A personal Gmail address is not a sender domain you own and cannot serve as an arbitrary verified Resend sender. Add an owned domain/subdomain in Resend, install its required DNS records and wait for verification. Use the provider's displayed DNS values rather than invented records. [Resend domain requirements](https://resend.com/docs/dashboard/domains/introduction) explain verification and sender addresses. Any Resend onboarding/test-domain restrictions still apply; use an owned verified domain for production reset recipients.
+
+No key, sender value, credentials, addresses, verification codes or reset tokens are copied into source, frontend code or logs. `.env.example` contains names/placeholders only. Production startup validates RESEND_API_KEY and MAIL_FROM instead of requiring obsolete SMTP settings. Development also validates them on send; there is no fake-mail fallback.
+
+## Render configuration and manual test steps
+
+These steps are for the owner after authorizing a normal code rollout; nothing was committed, pushed or deployed automatically.
+
+1. Create/select the Resend account and verified sending domain. Create a sending-authorized API key for that domain.
+2. In **Render backend → Environment**, set RESEND_API_KEY and MAIL_FROM. Do not place the key in Vercel or a VITE variable. Keep the backend on Free.
+3. Apply an authorized deployment of these code changes. Configure both required values before production startup validation runs. Merely changing environment values does not turn an older SMTP implementation into Resend.
+4. Optional local configuration check from the backend's working directory: `node scripts/verifyMailConnection.js` (or `node server/scripts/verifyMailConnection.js` from the repository root). The legacy filename remains, but this is now **configuration-only**: it sends no network request or email and returns `networkChecked:false,emailSent:false`. Exit 0 means the local variable formats pass; it does not prove API-key validity/domain authorization. Render Free has no shell access, so do not depend on running it there.
+5. Use a dedicated, registered test account in the actual frontend. Request a reset once. Check Resend's protected dashboard for acceptance/delivery/failure and check the mailbox/spam folder. Do not share or log the code. Unknown accounts intentionally do not generate mail.
+6. Enter the code, reset the password and confirm expected old/new password and session behavior. Confirm wrong/expired/reused codes fail. Do not change real user passwords for testing.
 
 ## Safe diagnostics
 
-`password_recovery_failure` records contain stage (`delivery`, `cleanup`, or `request`), allowlisted error name/code, allowlisted SMTP command, numeric SMTP error status and configuration field **names** where present. Raw messages, provider responses, stack traces, recipients, credentials, codes and tokens are deliberately excluded. Logging errors cannot stop cleanup or alter the public response.
+If new production requests still log `ESOCKET` with `command: CONN`, check the Render deployment's commit and branch. The Resend implementation below cannot emit that SMTP command; updating environment variables alone does not replace the committed SMTP code. Commit and push the migration files listed at the end of this document, then confirm Render deployed that commit. Check timestamps to exclude historical logs. No deployment is performed by the local diagnostic.
 
-- `ECONFIG`: check the listed MAIL variable names and required formats.
-- `EAUTH`, often SMTP 535: check the backend SMTP identity/credential and provider authentication policy.
-- Connection/DNS/socket/timeout codes: inspect provider reachability, backend egress restrictions, host, port and TLS mode.
-- `EENVELOPE` or SMTP 550/553: inspect sender authorization, recipient rejection and provider restrictions in the provider's protected dashboard.
-- SMTP 4xx: temporary provider-side failure; consult protected provider logs before retrying.
-- `UNKNOWN`: classification was not allowlisted; use provider-side diagnostics. Do not expand logs to include unrestricted provider text.
+The existing `password_recovery_failure` record retains safe stage/error metadata. Resend errors include allowlisted codes and numeric `httpStatus` only; provider bodies/messages are never logged or returned to clients.
 
-Delivery failure deletes the specific newly created reset request. Cleanup failures are diagnosed safely and the public response remains generic. If the database cannot perform cleanup, the hashed request may remain until its existing expiration; no claim of guaranteed deletion during database failure is made. Existing hashing, 10-minute expiry, attempt reservation, token handling, authentication and rate limits remain unchanged.
+- `ECONFIG`: missing/invalid RESEND_API_KEY or MAIL_FROM; only variable names are logged.
+- `EMAIL_AUTH` / 401: invalid or unauthorized API credential.
+- `EMAIL_REJECTED` / 4xx other than 401/429: sender/domain/key permission, recipient/testing or validation restrictions; inspect Resend's protected dashboard. HTTP status alone does not identify a unique cause.
+- `EMAIL_RATE_LIMIT` / 429: provider throttling/quota; resolve in Resend before retrying.
+- `EMAIL_PROVIDER` / 5xx: upstream provider error.
+- `EMAIL_RESPONSE`: invalid/incomplete acceptance response.
+- `ETIMEDOUT`: request exceeded the 20-second deadline. Delivery may be ambiguous if the upstream accepted it before the timeout; the controller still invalidates that failed challenge.
+- `ECONNECTION`: network/TLS/request failure; no raw exception/URL/header dump.
 
-Public response equivalence does not mean constant execution time: existing inline SMTP work and account lookup have timing differences. This patch adds no account-dependent public errors, transport retries or queueing architecture. Durable delivery/timing mitigation remains a release review item.
+Old allowlisted SMTP metadata remains recognizable for historical diagnostics but is not emitted by the Resend transport. Logging cannot interrupt controller cleanup. The operator script is not exposed as an HTTP endpoint. No unauthenticated provider-debug route exists.
 
-## Manual remote follow-up
+Inline provider work is not constant-time across account states. Public response equivalence and current rate limits are preserved; a durable queue/timing mitigation remains a separate security/release design decision.
 
-1. Identify the API actually used by the running frontend (Vite build environment / Network request destination); do not share credentials or tokens.
-2. Apply these server changes through an explicitly authorized remote release. Nothing here deploys them automatically.
-3. Check that server's MAIL settings and provider-authorized sender. Review sanitized failure records and the provider dashboard. No real environment files were modified here.
-4. With explicit authorization and a dedicated test account/mailbox, request a code, confirm receipt (including spam filtering), verify it, reset the password and check old/new login and session behavior. Mock success or SMTP acceptance alone does not verify inbox delivery.
+## Verification
 
-No real provider was contacted or real mail sent during this implementation. Real delivery, remote rollout, production build validation and remaining production/security checks are still required.
+Tests mock HTTPS responses; they do not send real email or contact Resend. Coverage includes request URL/auth/sender/template, missing configuration and SMTP-only configuration, non-2xx rejection, malformed acceptance, connection/timeout (including slow body), safe logs, generic public responses, unknown accounts, failed-request cleanup and cleanup failures. Existing release-readiness tests exercise code expiry/attempt caps/one-use, reset/session behavior with a disposable local MongoDB replica set and mocked delivery.
 
-## Local validation results
+Real Resend credentials, domain verification, acceptance/inbox delivery and production rollout remain unverified until the owner performs the manual steps. No Render plan/environment changes, live emails, commits, pushes or deployments were performed by this migration.
 
-- `passwordRecoveryDelivery.test.cjs`, `runtime.test.cjs`, `releaseReadiness.test.cjs`: **19 tests passed**, including eight release subtests using real loopback HTTP/auth/Mongoose against a disposable local MongoDB replica set with SMTP mocked. The initial sandbox run could not bind loopback (`EPERM`); the authorized escalated rerun passed. Temporary test database/process cleanup completed.
-- `errorPrivacy.test.cjs`: **8 tests passed**.
-- The five delivery regression tests passed again after strengthening cleanup-stage/unknown-account assertions.
-- Changed JavaScript syntax checks and `git diff --check` passed.
-- No real emails, provider authentication tests, remote requests, production data writes, environment edits, dependency changes, builds, pushes or deployments were performed. Local tests demonstrate code behavior, not remote SMTP delivery.
+Final local checks: `node --test --test-isolation=none --test-concurrency=1 --test-reporter=spec server/tests/passwordRecoveryDelivery.test.cjs server/tests/runtime.test.cjs server/tests/releaseReadiness.test.cjs server/tests/errorPrivacy.test.cjs` completed with **33 passed, 0 failed, 0 skipped**. Changed JavaScript syntax checks and `git diff --check` passed. A source comparison confirmed the existing HTML template is unchanged. All API/mail responses were mocked; no live emails were sent.
+
+Files changed by this migration: `server/services/emailService.js`, `server/config/runtime.js`, `server/utils/mailDiagnostics.js`, `server/scripts/verifyMailConnection.js`, `server/tests/passwordRecoveryDelivery.test.cjs`, `server/tests/runtime.test.cjs`, `server/.env.example`, `docs/password-recovery-email.md`, `docs/project/deployment.md`. The pre-existing SMTP diagnostics work was adapted rather than discarded. Existing real `.env` files, routes/controllers/models, frontend and dependencies remain unchanged.

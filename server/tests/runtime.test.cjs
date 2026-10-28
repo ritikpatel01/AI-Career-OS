@@ -20,11 +20,11 @@ test('development origins remain available; production requires explicit HTTPS o
 
 test('startup checks required values without exposing their contents', () => {
     assert.throws(() => validateEnvironment({}), /MONGO_URI/);
-    const env = { NODE_ENV: 'production', MONGO_URI: 'fixture', JWT_SECRET: 'x'.repeat(48), CORS_ORIGINS: 'https://frontend.example.test', MAIL_HOST: 'mail.example.test', MAIL_PORT: '465', MAIL_SECURE: 'true', MAIL_USER: 'fixture', MAIL_PASS: 'PRIVATE_SENTINEL', MAIL_FROM: 'fixture@example.test' };
+    const env = { NODE_ENV: 'production', MONGO_URI: 'fixture', JWT_SECRET: 'x'.repeat(48), CORS_ORIGINS: 'https://frontend.example.test', RESEND_API_KEY: 're_PRIVATE_SENTINEL', MAIL_FROM: 'fixture@example.test' };
     assert.doesNotThrow(() => validateEnvironment(env));
     assert.throws(() => validateEnvironment({ ...env, JWT_SECRET: 'short' }), /JWT_SECRET/);
-    assert.throws(() => validateEnvironment({ ...env, MAIL_PASS: '' }), /MAIL_PASS/);
-    assert.throws(() => validateEnvironment({ ...env, MAIL_PORT: 'invalid' }), /Invalid mail transport/);
+    assert.throws(() => validateEnvironment({ ...env, RESEND_API_KEY: '' }), /RESEND_API_KEY/);
+    assert.throws(() => validateEnvironment({ ...env, MAIL_FROM: 'invalid' }), /MAIL_FROM/);
 });
 
 test('environment and backup exclusions work in an isolated git fixture; examples stay includable', t => {
@@ -42,18 +42,10 @@ test('environment and backup exclusions work in an isolated git fixture; example
     } finally { rmSync(directory, { recursive: true, force: true }); }
 });
 
-test('mail transport requires encrypted delivery without contacting SMTP', async () => {
-    const vm = require('node:vm'), { readFileSync } = require('node:fs');
-    for (const secure of ['true', 'false']) {
-        let options;
-        const module = { exports: {} };
-        vm.runInNewContext(readFileSync(require.resolve('../services/emailService'), 'utf8'), {
-            module, process: { env: { MAIL_SECURE: secure, MAIL_HOST: 'smtp.example.test', MAIL_PORT: secure === 'true' ? '465' : '587', MAIL_USER: 'fixture', MAIL_PASS: 'fixture', MAIL_FROM: 'sender@example.test' } },
-            require: id => { assert.equal(id, 'nodemailer'); return { createTransport(config) { options = config; return { sendMail: async () => { throw Error('Not invoked by this test'); } }; } }; },
-        });
-        await assert.rejects(module.exports.sendPasswordResetCode('recipient@example.test', '123456'), /Not invoked/);
-        assert.equal(options.secure, secure === 'true'); assert.equal(options.requireTLS, true);
-    }
+test('production mail configuration uses Resend without requiring SMTP variables', () => {
+    const env = { NODE_ENV: 'production', MONGO_URI: 'fixture', JWT_SECRET: 'x'.repeat(48), CORS_ORIGINS: 'https://frontend.example.test', RESEND_API_KEY: 're_fixture', MAIL_FROM: 'sender@example.test' };
+    assert.doesNotThrow(() => validateEnvironment(env));
+    assert.throws(() => validateEnvironment({ ...env, RESEND_API_KEY: '' }), /RESEND_API_KEY/);
 });
 
 test('database startup requires transaction capability and redacts connection errors', async () => {

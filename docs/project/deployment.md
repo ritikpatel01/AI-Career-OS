@@ -13,11 +13,8 @@ Use the actual environment's protected secret/configuration store. `.env.example
 | `MONGO_URI` | Actual authenticated MongoDB replica-set or sharded-cluster URI, with target-specific TLS/network policy and least-privilege credentials | Startup connects and checks transaction-capable topology; no standalone non-atomic fallback |
 | `JWT_SECRET` | Protected high-entropy signing secret; at least 32 bytes in production | Required at startup; retain current value for compatible rollout unless a separately planned rotation is needed |
 | `CORS_ORIGINS` | Comma-separated exact HTTPS frontend origins (scheme + host + optional port), without paths, wildcards or credentials | Required in production; production has no implicit localhost/LAN allowances. Development retains its existing origins and may add explicit ones |
-| `MAIL_HOST` | Configured SMTP provider hostname | Required at production startup |
-| `MAIL_PORT` | Provider-prescribed integer port | Required/validated in production |
-| `MAIL_SECURE` | Literal `true` for implicit TLS, or `false` for provider-supported STARTTLS | STARTTLS is required when implicit TLS is off; certificate verification is not disabled |
-| `MAIL_USER`, `MAIL_PASS` | Actual SMTP identity and credential authorized for the target environment | Required in production; never put these in frontend variables |
-| `MAIL_FROM` | Provider-authorized sender address | Required in production; owner must verify sender permissions and delivery |
+| `RESEND_API_KEY` | Server-only Resend API key authorized to send from the verified domain | Required in production; HTTPS API only, never expose as VITE configuration |
+| `MAIL_FROM` | Bare mailbox address on a Resend-verified owned domain | Required/validated in production; sender-domain authorization and inbox delivery require operator verification |
 | `VITE_API_URL` | Actual HTTPS API base ending in `/api`, without trailing slash, credentials, query or fragment | Frontend build-time setting. Rebuild when changing it. Explicit HTTP loopback URLs are permitted for local preview only; non-loopback HTTP builds are rejected |
 
 Optional feature configuration, only where actually enabled: `OPENAI_API_KEY`, `GROQ_API_KEY`, `GROQ_MODEL`, `GITHUB_TOKEN`; interview evaluator `OLLAMA_URL`, `OLLAMA_MODEL`, `OLLAMA_TIMEOUT_MS`; standalone integration configurations `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`, `REDIS_URL`. The presence of integration config files does not certify those features or make Redis a required dependency of the current HTTP application. Validate enabled integrations separately; do not create provider accounts or invent credentials to fill blanks.
@@ -38,7 +35,7 @@ No variable prefixed `VITE_` is a safe place for a secret. Its value can appear 
 - Backend: install locked dependencies, provide the values above, then `npm --prefix server start`. Startup validates configuration and waits for database connection/capability before listening. It does not automatically modify existing users or reset records.
 - Frontend: `npm --prefix client run build` requires a secure API configuration. The existing local non-loopback HTTP environment is intentionally blocked. Set an explicit loopback URL only for a local test preview, not a deployed frontend. Do not ship stale dist assets after a failed build.
 - `GET /api/health` is liveness and retains its existing 200 response. `GET /api/ready` pings MongoDB, returns 200 only on success and 503 on failure/disconnection; responses expose no database details. Probes bypass the API abuse budget and return no-store headers. Configure the target's startup/readiness/liveness probes accordingly.
-- Local tests: `npm --prefix server test` requires `mongod` on PATH for real disposable replica-set coverage. It never loads `.env`; SMTP is stubbed. Roadmap suite: `node --test --test-isolation=none --test-reporter=spec client/src/data/careerRoadmaps/*.test.js`.
+- Local tests: `npm --prefix server test` requires `mongod` on PATH for real disposable replica-set coverage. It never loads `.env`; Email delivery is stubbed. Roadmap suite: `node --test --test-isolation=none --test-reporter=spec client/src/data/careerRoadmaps/*.test.js`.
 
 ## Owner must configure/test outside this code change
 
@@ -46,4 +43,4 @@ No variable prefixed `VITE_` is a safe place for a secret. Its value can appear 
 - SPA fallback for app routes, real 404 for missing hashed assets, no-cache/revalidated HTML, long immutable caching for existing hashed assets, no shared caching of authenticated/auth/recovery responses, atomic asset/HTML releases and old-chunk retention/rollback.
 - Target-specific CI/deployment/container definitions. Current placeholder Dockerfile/compose/workflows were not converted into an invented deployment configuration.
 - Authorized staging email delivery to a dedicated mailbox, code verification, password update and new sign-in, old-password/JWT rejection, concurrency, DB index/TTL and backup/restore, failure alerts and sanitized edge/APM logs. Recovery remains code-based; no email-link feature was introduced.
-- Request response/status normalization does not make SMTP timing constant. SMTP still runs inline; evaluate durable queueing/timing exposure and targeted send budgets before a high-assurance public release. No actual provider was contacted during implementation.
+- Request response/status normalization does not make provider timing constant. The Resend request still runs inline; evaluate durable queueing/timing exposure and targeted send budgets before a high-assurance public release. No actual provider was contacted during implementation.
